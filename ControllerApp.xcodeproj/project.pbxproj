@@ -7,14 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A2828FF2365D75B00CC93FA /* IOUSBDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2828FE2365D75B00CC93FA /* IOUSBDetector.swift */; };
+		3A2829012366EBB800CC93FA /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2829002366EBB800CC93FA /* Device.swift */; };
 		3AFBF3852361EC5E00522537 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFBF3842361EC5E00522537 /* AppDelegate.swift */; };
 		3AFBF3872361EC5E00522537 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFBF3862361EC5E00522537 /* ContentView.swift */; };
 		3AFBF3892361EC6100522537 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AFBF3882361EC6100522537 /* Assets.xcassets */; };
 		3AFBF38C2361EC6100522537 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AFBF38B2361EC6100522537 /* Preview Assets.xcassets */; };
 		3AFBF38F2361EC6100522537 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AFBF38D2361EC6100522537 /* Main.storyboard */; };
+		3AFBF3982361EF6B00522537 /* DriverHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFBF3972361EF6B00522537 /* DriverHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A2828FE2365D75B00CC93FA /* IOUSBDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOUSBDetector.swift; sourceTree = "<group>"; };
+		3A2829002366EBB800CC93FA /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		3AFBF3812361EC5E00522537 /* ControllerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ControllerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AFBF3842361EC5E00522537 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3AFBF3862361EC5E00522537 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -23,6 +28,7 @@
 		3AFBF38E2361EC6100522537 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3AFBF3902361EC6100522537 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3AFBF3912361EC6100522537 /* ControllerApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ControllerApp.entitlements; sourceTree = "<group>"; };
+		3AFBF3972361EF6B00522537 /* DriverHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +42,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A2829022366EBBD00CC93FA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3A2829002366EBB800CC93FA /* Device.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		3AFBF3782361EC5E00522537 = {
 			isa = PBXGroup;
 			children = (
@@ -57,6 +71,9 @@
 			children = (
 				3AFBF3842361EC5E00522537 /* AppDelegate.swift */,
 				3AFBF3862361EC5E00522537 /* ContentView.swift */,
+				3AFBF3972361EF6B00522537 /* DriverHelper.swift */,
+				3A2828FE2365D75B00CC93FA /* IOUSBDetector.swift */,
+				3A2829022366EBBD00CC93FA /* Model */,
 				3AFBF3882361EC6100522537 /* Assets.xcassets */,
 				3AFBF38D2361EC6100522537 /* Main.storyboard */,
 				3AFBF3902361EC6100522537 /* Info.plist */,
@@ -145,8 +162,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AFBF3982361EF6B00522537 /* DriverHelper.swift in Sources */,
 				3AFBF3872361EC5E00522537 /* ContentView.swift in Sources */,
+				3A2828FF2365D75B00CC93FA /* IOUSBDetector.swift in Sources */,
 				3AFBF3852361EC5E00522537 /* AppDelegate.swift in Sources */,
+				3A2829012366EBB800CC93FA /* Device.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
