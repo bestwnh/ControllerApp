@@ -9,15 +9,14 @@
 import Foundation
 import IOKit.usb
 
+// Only slightly modified from this code: http://stackoverflow.com/a/39662693/459877 (MIT Licence)
+
 class IOUSBDetector {
 
     enum Event {
         case Matched
         case Terminated
     }
-
-    let vendorID: Int
-    let productID: Int
 
     var callbackQueue: DispatchQueue?
 
@@ -60,9 +59,7 @@ class IOUSBDetector {
     }
 
 
-    init? ( vendorID: Int, productID: Int ) {
-        self.vendorID = vendorID
-        self.productID = productID
+    init? () {
         self.internalQueue = DispatchQueue(label: "IODetector")
 
         let notifyPort = IONotificationPortCreate(kIOMasterPortDefault)
@@ -77,13 +74,17 @@ class IOUSBDetector {
     }
 
 
-    func startDetection ( ) -> Bool {
+    func startDetection(productID: Int? = nil, vendorID: Int? = nil) -> Bool {
         guard matchedIterator == 0 else { return true }
 
         let matchingDict = IOServiceMatching(kIOUSBDeviceClassName)
             as NSMutableDictionary
-        matchingDict[kUSBVendorID] = NSNumber(value: vendorID)
-        matchingDict[kUSBProductID] = NSNumber(value: productID)
+        if let productID = productID {
+            matchingDict[kUSBProductID] = NSNumber(value: productID)
+        }
+        if let vendorID = vendorID {
+            matchingDict[kUSBVendorID] = NSNumber(value: vendorID)
+        }
 
         let matchCallback: IOServiceMatchingCallback = {
             (userData, iterator) in

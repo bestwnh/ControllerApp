@@ -72,10 +72,6 @@ struct DriverHelper {
         result = IOServiceGetMatchingServices(kIOMasterPortDefault, classesToMatch, &portIterator)
         if result == KERN_SUCCESS {
             let deivices = getHIDDevices(iterator: portIterator)
-            if var device = deivices.first {
-                
-                device.start()
-            }
             return deivices
         }
         
@@ -112,14 +108,6 @@ struct DriverHelper {
 
 //        serialDevices = newDevices
         return newDevices
-    }
-}
-
-struct IOUSBHelper {
-    static func getParent(device: io_object_t) -> io_object_t {
-        var parent: io_object_t = 0
-        IORegistryEntryGetParentEntry(device, kIOServicePlane, &parent)
-        return parent
     }
 }
 

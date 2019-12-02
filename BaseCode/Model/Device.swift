@@ -110,33 +110,56 @@ class Device {
         case XboxOne
         case XboxOnePretend360
         case Xbox360Pretend360
+        
+        var validRumbleTypes: [DeviceConfiguration.RumbleType] {
+            switch self {
+            case .XboxOne, .XboxOnePretend360:
+                return [.default, .none, .triggersOnly, .both]
+            default:
+                return [.default, .none]
+            }
+        }
     }
+    var didTriggerEvent: (String) -> () = { _ in }
+    
     let displayName: String
     let type: ControlType
-    let isWireless: Bool
-    let rawDevice: io_object_t
+    private(set) var rawDevice: io_object_t
     private(set) var ffDevice: FFDeviceObjectReference?
-    var hidDevice: IOHIDDeviceInterface122
+    var hidDevice: IOHIDDeviceInterface122?
     var hidDevicePtrPtr: UnsafeMutablePointer<UnsafeMutablePointer<IOHIDDeviceInterface122>?>?
     
     var axis: [IOHIDElementCookie] = Array(repeating: 0, count: 6)
     var buttons: [IOHIDElementCookie] = Array(repeating: 0, count: 15)
     var hidQueue: IOHIDQueueInterface?
     var hidQueuePtrPtr: UnsafeMutablePointer<UnsafeMutablePointer<IOHIDQueueInterface>?>?
-
+    
+    var configurations: DeviceConfiguration {
+        didSet {
+            saveConfigurations()
+        }
+    }
+    
+    deinit {
+        if rawDevice != 0 {
+            IOObjectRelease(rawDevice)
+        }
+        if hidDevicePtrPtr != nil {
+            _ = hidDevice!.Release(hidDevicePtrPtr)
+        }
+        if ffDevice != nil {
+            FFReleaseDevice(ffDevice)
+        }
+    }
+    
     init?(rawDevice: io_object_t) {
-        let parent = IOUSBHelper.getParent(device: rawDevice)
-        let isDeviceWired = IOObjectConformsTo(parent, "Xbox360Peripheral") != 0 || IOObjectConformsTo(rawDevice, "Xbox360ControllerClass") != 0
-        let isDeviceWireless = IOObjectConformsTo(rawDevice, "WirelessHIDDevice") != 0 || IOObjectConformsTo(rawDevice, "WirelessOneController") != 0
-        isWireless = isDeviceWireless
         
-        if !isDeviceWired && !isDeviceWireless {
+        if !rawDevice.isWired && !rawDevice.isWireless {
             return nil
         }
         
         self.rawDevice = rawDevice
         FFCreateDevice(rawDevice, &ffDevice)
-        
         displayName = {
             var serviceProperties: Unmanaged<CFMutableDictionary>?
             
@@ -151,25 +174,12 @@ class Device {
         }()
         
         type = {
-            func getControllerType(from device: io_object_t) -> ControlType? {
-                var serviceProperties: Unmanaged<CFMutableDictionary>?
-                if IORegistryEntryCreateCFProperties(rawDevice, &serviceProperties, kCFAllocatorDefault, 0) == KERN_SUCCESS {
-                    let properties = serviceProperties?.takeRetainedValue()
-                    if let dict = properties as? [String: Any],
-                        let deviceData = dict["DeviceData"] as? [String: Any],
-                        let controllerType = deviceData["ControllerType"] as? NSNumber {
-                        return ControlType(rawValue: controllerType.intValue)
-                    }
-                }
-                
-                return nil
-            }
-            if let type = getControllerType(from: rawDevice) {
+            if let type = rawDevice.controllerType {
                 return type
             }
             
-            let parent = IOUSBHelper.getParent(device: rawDevice)
-            if parent != 0, let type = getControllerType(from: parent) {
+            let parent = rawDevice.parent
+            if parent != 0, let type = parent.controllerType {
                 return type
             }
             
@@ -219,6 +229,32 @@ class Device {
         }
         self.hidDevice = hidDevice
         self.hidDevicePtrPtr = hidDevicePtrPtr
+        
+        // load configurations
+        _ = CFPreferencesSynchronize(applicationID, kCFPreferencesCurrentUser, kCFPreferencesCurrentHost)
+        let value = CFPreferencesCopyValue(self.rawDevice.serialNumber, applicationID, kCFPreferencesCurrentUser, kCFPreferencesCurrentHost)
+        configurations = DeviceConfiguration(value as? [String: Any])
+    }
+    
+    private func saveConfigurations() {
+        IORegistryEntrySetCFProperties(rawDevice, configurations.toDict() as CFTypeRef)
+        CFPreferencesSetValue(
+            rawDevice.serialNumber,
+            configurations.toDict() as CFPropertyList,
+            applicationID,
+            kCFPreferencesCurrentUser,
+            kCFPreferencesCurrentHost)
+        _ = CFPreferencesSynchronize(applicationID, kCFPreferencesCurrentUser, kCFPreferencesCurrentHost)
+    }
+}
+
+extension Device: Hashable {
+    static func == (lhs: Device, rhs: Device) -> Bool {
+        return lhs.hashValue == rhs.hashValue
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(rawDevice)
     }
 }
 
@@ -227,12 +263,11 @@ extension Device {
         var devicePathCString:[CChar] = [CChar](repeating: 0, count: 128)
         IORegistryEntryGetPath(rawDevice, "IOService", &devicePathCString)
         var elements: Unmanaged<CFArray>?
-        guard hidDevice.copyMatchingElements(hidDevicePtrPtr, nil, &elements) == kIOReturnSuccess,
+        guard hidDevice!.copyMatchingElements(hidDevicePtrPtr, nil, &elements) == kIOReturnSuccess,
             let elementList = elements?.takeRetainedValue() as? [[String: Any]] else {
             print("Can't get elements list")
             return
         }
-        
         
         for element in elementList {
             
@@ -274,12 +309,12 @@ extension Device {
         print(buttons)
         
         // Start queue
-        guard hidDevice.open(hidDevicePtrPtr, 0) == kIOReturnSuccess else {
+        guard hidDevice!.open(hidDevicePtrPtr, 0) == kIOReturnSuccess else {
             print("Can't open device")
             return
         }
         
-        hidQueuePtrPtr = hidDevice.allocQueue(hidDevicePtrPtr)
+        hidQueuePtrPtr = hidDevice!.allocQueue(hidDevicePtrPtr)
         hidQueue = hidQueuePtrPtr?.pointee?.pointee
         guard let hidQueue = hidQueue else {
             print("Unable to create the queue")
@@ -300,8 +335,9 @@ extension Device {
         
         let eventCallback: IOHIDCallbackFunction = {
             (target, result, refcon, sender) in
+            guard let target = target else { return }
             let device = Unmanaged<Device>
-            .fromOpaque(target!).takeUnretainedValue()
+            .fromOpaque(target).takeUnretainedValue()
             guard result == kIOReturnSuccess else { return }
             device.eventQueueFired()
         }
@@ -328,6 +364,25 @@ extension Device {
         print("started.")
     }
     
+    func stop() {
+        guard rawDevice != 0 else { return }
+        if hidQueuePtrPtr != nil {
+            _ = hidQueue?.stop(hidQueuePtrPtr)
+            if let eventSource = hidQueue?.getAsyncEventSource(hidQueuePtrPtr)?.takeUnretainedValue(),
+                CFRunLoopContainsSource(CFRunLoopGetCurrent(), eventSource, CFRunLoopMode.commonModes) {
+                CFRunLoopRemoveSource(CFRunLoopGetCurrent(), eventSource, CFRunLoopMode.commonModes)
+            }
+            _ = hidQueue?.Release(hidQueuePtrPtr)
+            hidQueuePtrPtr = nil
+            hidQueue = nil
+        }
+        if hidDevicePtrPtr != nil {
+            _ = hidDevice!.close(hidDevicePtrPtr)
+            hidDevicePtrPtr = nil
+            hidDevice = nil
+        }
+        rawDevice = 0
+    }
     
     func eventQueueFired() {
         print("event fired!!")
@@ -344,6 +399,7 @@ extension Device {
                 if event.elementCookie == cookie {
                     
                     print("axis changed: \(ControllerAxis(rawValue: index)?.title ?? "") value: \(event.value)")
+                    didTriggerEvent("axis changed: \(ControllerAxis(rawValue: index)?.title ?? "") value: \(event.value)")
                     continue mainLoop
                 }
             }
@@ -352,9 +408,179 @@ extension Device {
             for (index, cookie) in buttons.enumerated() {
                 if event.elementCookie == cookie {
                     print("buttons change: \(ControllerButton(rawValue: index)?.title ?? "") value: \(event.value)")
+                    didTriggerEvent("buttons change: \(ControllerButton(rawValue: index)?.title ?? "") value: \(event.value)")
                     continue mainLoop
                 }
             }
         }
+    }
+    
+}
+
+let applicationID = "com.mice.driver.Xbox360Controller.devices" as CFString
+
+extension io_object_t {
+    var parent: io_object_t {
+        var parent: io_object_t = 0
+        IORegistryEntryGetParentEntry(self, kIOServicePlane, &parent)
+        return parent
+    }
+    var controllerType: Device.ControlType? {
+        var serviceProperties: Unmanaged<CFMutableDictionary>?
+        if IORegistryEntryCreateCFProperties(self, &serviceProperties, kCFAllocatorDefault, 0) == KERN_SUCCESS {
+            let properties = serviceProperties?.takeRetainedValue()
+            if let dict = properties as? [String: Any],
+                let deviceData = dict["DeviceData"] as? [String: Any],
+                let controllerType = deviceData["ControllerType"] as? NSNumber {
+                return Device.ControlType(rawValue: controllerType.intValue)
+            }
+        }
+        
+        return nil
+    }
+    var isWired: Bool {
+        return IOObjectConformsTo(parent, "Xbox360Peripheral") != 0 || IOObjectConformsTo(self, "Xbox360ControllerClass") != 0
+    }
+    var isWireless: Bool {
+        return IOObjectConformsTo(self, "WirelessHIDDevice") != 0 || IOObjectConformsTo(self, "WirelessOneController") != 0
+    }
+    var serialNumber: CFString {
+        if let value = IORegistryEntrySearchCFProperty(
+            self,
+            kIOServicePlane,
+            "USB Serial Number" as CFString,
+            kCFAllocatorDefault,
+            IOOptionBits(kIORegistryIterateRecursively)) {
+            return value as! CFString
+        } else if let value = IORegistryEntrySearchCFProperty(
+            self,
+            kIOServicePlane,
+            "SerialNumber" as CFString,
+            kCFAllocatorDefault,
+            IOOptionBits(kIORegistryIterateRecursively)) {
+            return value as! CFString
+        }
+        return "" as CFString
+    }
+    
+}
+
+struct DeviceConfiguration {
+    enum RumbleType: Int {
+        case `default` = 0
+        case none
+        case triggersOnly
+        case both
+        
+        var name: String {
+            switch self {
+            case .default:
+                return "Default"
+            case .none:
+                return "None"
+            case .triggersOnly:
+                return "Triggers Only"
+            case .both:
+                return "Both"
+            }
+        }
+    }
+    var invertLeftX: Bool = false
+    var invertLeftY: Bool = false
+    var invertRightX: Bool = false
+    var invertRightY: Bool = false
+    var deadzoneLeft: Int = 0
+    var deadzoneRight: Int = 0
+    var relativeLeft: Bool = false
+    var relativeRight: Bool = false
+    var deadOffLeft: Bool = false
+    var deadOffRight: Bool = false
+    var controllerType: Int = Device.ControlType.XboxOne.rawValue
+    var rumbleType: Int = RumbleType.default.rawValue
+    var bindingUp: Int = 0
+    var bindingDown: Int = 1
+    var bindingLeft: Int = 2
+    var bindingRight: Int = 3
+    var bindingStart: Int = 4
+    var bindingBack: Int = 5
+    var bindingLSC: Int = 6
+    var bindingRSC: Int = 7
+    var bindingLB: Int = 8
+    var bindingRB: Int = 9
+    var bindingGuide: Int = 10
+    var bindingA: Int = 11
+    var bindingB: Int = 12
+    var bindingX: Int = 13
+    var bindingY: Int = 14
+    var swapSticks: Bool = false
+    var pretend360: Bool = false
+    
+    init(_ detail:[String: Any]?) {
+        guard let detail = detail else { return }
+        
+        invertLeftX = detail["InvertLeftX"] as? Bool ?? invertLeftX
+        invertLeftY = detail["InvertLeftY"] as? Bool ?? invertLeftY
+        invertRightX = detail["InvertRightX"] as? Bool ?? invertRightX
+        invertRightY = detail["InvertRightY"] as? Bool ?? invertRightY
+        deadzoneLeft = detail["DeadzoneLeft"] as? Int ?? deadzoneLeft
+        deadzoneRight = detail["DeadzoneRight"] as? Int ?? deadzoneRight
+        relativeLeft = detail["RelativeLeft"] as? Bool ?? relativeLeft
+        relativeRight = detail["RelativeRight"] as? Bool ?? relativeRight
+        deadOffLeft = detail["DeadOffLeft"] as? Bool ?? deadOffLeft
+        deadOffRight = detail["DeadOffRight"] as? Bool ?? deadOffRight
+        controllerType = detail["ControllerType"] as? Int ?? controllerType
+        rumbleType = detail["RumbleType"] as? Int ?? rumbleType
+        bindingUp = detail["BindingUp"] as? Int ?? bindingUp
+        bindingDown = detail["BindingDown"] as? Int ?? bindingDown
+        bindingLeft = detail["BindingLeft"] as? Int ?? bindingLeft
+        bindingRight = detail["BindingRight"] as? Int ?? bindingRight
+        bindingStart = detail["BindingStart"] as? Int ?? bindingStart
+        bindingBack = detail["BindingBack"] as? Int ?? bindingBack
+        bindingLSC = detail["BindingLSC"] as? Int ?? bindingLSC
+        bindingRSC = detail["BindingRSC"] as? Int ?? bindingRSC
+        bindingLB = detail["BindingLB"] as? Int ?? bindingLB
+        bindingRB = detail["BindingRB"] as? Int ?? bindingRB
+        bindingGuide = detail["BindingGuide"] as? Int ?? bindingGuide
+        bindingA = detail["BindingA"] as? Int ?? bindingA
+        bindingB = detail["BindingB"] as? Int ?? bindingB
+        bindingX = detail["BindingX"] as? Int ?? bindingX
+        bindingY = detail["BindingY"] as? Int ?? bindingY
+        swapSticks = detail["SwapSticks"] as? Bool ?? swapSticks
+        pretend360 = detail["Pretend360"] as? Bool ?? pretend360
+        
+    }
+    
+    func toDict() -> [String: Any] {
+        return [
+            "InvertLeftX": invertLeftX,
+            "InvertLeftY": invertLeftY,
+            "InvertRightX": invertRightX,
+            "InvertRightY": invertRightY,
+            "DeadzoneLeft": deadzoneLeft,
+            "DeadzoneRight": deadzoneRight,
+            "RelativeLeft": relativeLeft,
+            "RelativeRight": relativeRight,
+            "DeadOffLeft": deadOffLeft,
+            "DeadOffRight": deadOffRight,
+            "ControllerType": controllerType,
+            "RumbleType": rumbleType,
+            "BindingUp": bindingUp,
+            "BindingDown": bindingDown,
+            "BindingLeft": bindingLeft,
+            "BindingRight": bindingRight,
+            "BindingStart": bindingStart,
+            "BindingBack": bindingBack,
+            "BindingLSC": bindingLSC,
+            "BindingRSC": bindingRSC,
+            "BindingLB": bindingLB,
+            "BindingRB": bindingRB,
+            "BindingGuide": bindingGuide,
+            "BindingA": bindingA,
+            "BindingB": bindingB,
+            "BindingX": bindingX,
+            "BindingY": bindingY,
+            "SwapSticks": swapSticks,
+            "Pretend360": pretend360,
+        ]
     }
 }
