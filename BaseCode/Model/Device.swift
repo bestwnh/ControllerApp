@@ -120,7 +120,7 @@ class Device {
             }
         }
     }
-    var didTriggerEvent: (String) -> () = { _ in }
+    var didTriggerEvent: (ControllerAxis?, Int) -> () = { _, _ in }
     
     let displayName: String
     let type: ControlType
@@ -397,9 +397,8 @@ extension Device {
             // Check axis
             for (index, cookie) in axis.enumerated() {
                 if event.elementCookie == cookie {
-                    
                     print("axis changed: \(ControllerAxis(rawValue: index)?.title ?? "") value: \(event.value)")
-                    didTriggerEvent("axis changed: \(ControllerAxis(rawValue: index)?.title ?? "") value: \(event.value)")
+                    didTriggerEvent(ControllerAxis(rawValue: index), Int(event.value))
                     continue mainLoop
                 }
             }
@@ -408,7 +407,7 @@ extension Device {
             for (index, cookie) in buttons.enumerated() {
                 if event.elementCookie == cookie {
                     print("buttons change: \(ControllerButton(rawValue: index)?.title ?? "") value: \(event.value)")
-                    didTriggerEvent("buttons change: \(ControllerButton(rawValue: index)?.title ?? "") value: \(event.value)")
+                    didTriggerEvent(ControllerAxis(rawValue: index), Int(event.value))
                     continue mainLoop
                 }
             }
@@ -418,52 +417,6 @@ extension Device {
 }
 
 let applicationID = "com.mice.driver.Xbox360Controller.devices" as CFString
-
-extension io_object_t {
-    var parent: io_object_t {
-        var parent: io_object_t = 0
-        IORegistryEntryGetParentEntry(self, kIOServicePlane, &parent)
-        return parent
-    }
-    var controllerType: Device.ControlType? {
-        var serviceProperties: Unmanaged<CFMutableDictionary>?
-        if IORegistryEntryCreateCFProperties(self, &serviceProperties, kCFAllocatorDefault, 0) == KERN_SUCCESS {
-            let properties = serviceProperties?.takeRetainedValue()
-            if let dict = properties as? [String: Any],
-                let deviceData = dict["DeviceData"] as? [String: Any],
-                let controllerType = deviceData["ControllerType"] as? NSNumber {
-                return Device.ControlType(rawValue: controllerType.intValue)
-            }
-        }
-        
-        return nil
-    }
-    var isWired: Bool {
-        return IOObjectConformsTo(parent, "Xbox360Peripheral") != 0 || IOObjectConformsTo(self, "Xbox360ControllerClass") != 0
-    }
-    var isWireless: Bool {
-        return IOObjectConformsTo(self, "WirelessHIDDevice") != 0 || IOObjectConformsTo(self, "WirelessOneController") != 0
-    }
-    var serialNumber: CFString {
-        if let value = IORegistryEntrySearchCFProperty(
-            self,
-            kIOServicePlane,
-            "USB Serial Number" as CFString,
-            kCFAllocatorDefault,
-            IOOptionBits(kIORegistryIterateRecursively)) {
-            return value as! CFString
-        } else if let value = IORegistryEntrySearchCFProperty(
-            self,
-            kIOServicePlane,
-            "SerialNumber" as CFString,
-            kCFAllocatorDefault,
-            IOOptionBits(kIORegistryIterateRecursively)) {
-            return value as! CFString
-        }
-        return "" as CFString
-    }
-    
-}
 
 struct DeviceConfiguration {
     enum RumbleType: Int {

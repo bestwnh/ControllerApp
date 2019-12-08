@@ -30,7 +30,7 @@ class ViewController: NSViewController {
         
         buttons.forEach{ $0.isEnabled = false }
         
-        DeviceManager.shared.startMonitorDevice()
+        DeviceManager.shared.startMonitorDeviceChange()
         
         
     }
@@ -51,12 +51,12 @@ class ViewController: NSViewController {
             
             buttons.forEach{ $0.isEnabled = true }
             
-            device.start()
-            device.didTriggerEvent = { [weak self] message in
-                DispatchQueue.main.async {
-                    self?.output(message)
-                }
-            }
+//            device.start()
+//            device.didTriggerEvent = { [weak self] message in
+//                DispatchQueue.main.async {
+//                    self?.output(message)
+//                }
+//            }
             
         } else {
             self.device = nil

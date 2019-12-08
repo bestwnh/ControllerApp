@@ -32,7 +32,7 @@ extension DeviceManager {
     func selectedDevice(atIndex index: Int) {
         currentDevice = deviceList[safe: index]
     }
-    func startMonitorDevice() {
+    func startMonitorDeviceChange() {
         usbDetector = IOUSBDetector()
         
         usbDetector?.callbackQueue = DispatchQueue.global()
@@ -46,6 +46,7 @@ extension DeviceManager {
         };
         _ = usbDetector?.startDetection()
     }
+    
 }
 
 private extension DeviceManager {

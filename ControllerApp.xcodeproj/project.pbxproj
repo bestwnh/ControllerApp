@@ -16,6 +16,10 @@
 		3A53678E23814E0600C9A5BD /* IOUSBDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2828FE2365D75B00CC93FA /* IOUSBDetector.swift */; };
 		3A983999238F421900818D7E /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A983997238F421900818D7E /* DeviceManager.swift */; };
 		3A9839A02394FE3400818D7E /* CollectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A98399E2394FE3400818D7E /* CollectionExtension.swift */; };
+		3A9839A22395D89500818D7E /* DeviceListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9839A12395D89500818D7E /* DeviceListVC.swift */; };
+		3A9839A423962D4200818D7E /* SceneKitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9839A323962D4200818D7E /* SceneKitVC.swift */; };
+		3A9839A82396308900818D7E /* xboxController.scn in Resources */ = {isa = PBXBuildFile; fileRef = 3A9839A72396308900818D7E /* xboxController.scn */; };
+		3AEDD7AA239D42410030C3EB /* IOExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEDD7A9239D42410030C3EB /* IOExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +34,10 @@
 		3A53678823811FCA00C9A5BD /* DemoApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DemoApp.entitlements; sourceTree = "<group>"; };
 		3A983997238F421900818D7E /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
 		3A98399E2394FE3400818D7E /* CollectionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionExtension.swift; sourceTree = "<group>"; };
+		3A9839A12395D89500818D7E /* DeviceListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceListVC.swift; sourceTree = "<group>"; };
+		3A9839A323962D4200818D7E /* SceneKitVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitVC.swift; sourceTree = "<group>"; };
+		3A9839A72396308900818D7E /* xboxController.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = xboxController.scn; sourceTree = "<group>"; };
+		3AEDD7A9239D42410030C3EB /* IOExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOExtension.swift; sourceTree = "<group>"; };
 		3AFBF3972361EF6B00522537 /* DriverHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -57,6 +65,9 @@
 			children = (
 				3A53677E23811FC800C9A5BD /* AppDelegate.swift */,
 				3A53678023811FC800C9A5BD /* ViewController.swift */,
+				3A9839A12395D89500818D7E /* DeviceListVC.swift */,
+				3A9839A323962D4200818D7E /* SceneKitVC.swift */,
+				3A9839A72396308900818D7E /* xboxController.scn */,
 				3A53678223811FCA00C9A5BD /* Assets.xcassets */,
 				3A53678423811FCA00C9A5BD /* Main.storyboard */,
 				3A53678723811FCA00C9A5BD /* Info.plist */,
@@ -81,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				3A98399E2394FE3400818D7E /* CollectionExtension.swift */,
+				3AEDD7A9239D42410030C3EB /* IOExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -169,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A53678323811FCA00C9A5BD /* Assets.xcassets in Resources */,
+				3A9839A82396308900818D7E /* xboxController.scn in Resources */,
 				3A53678623811FCA00C9A5BD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -182,8 +195,11 @@
 			files = (
 				3A53678C2381261200C9A5BD /* Device.swift in Sources */,
 				3A9839A02394FE3400818D7E /* CollectionExtension.swift in Sources */,
+				3A9839A22395D89500818D7E /* DeviceListVC.swift in Sources */,
 				3A983999238F421900818D7E /* DeviceManager.swift in Sources */,
 				3A53678D23814E0300C9A5BD /* DriverHelper.swift in Sources */,
+				3AEDD7AA239D42410030C3EB /* IOExtension.swift in Sources */,
+				3A9839A423962D4200818D7E /* SceneKitVC.swift in Sources */,
 				3A53678123811FC800C9A5BD /* ViewController.swift in Sources */,
 				3A53677F23811FC800C9A5BD /* AppDelegate.swift in Sources */,
 				3A53678E23814E0600C9A5BD /* IOUSBDetector.swift in Sources */,
@@ -218,7 +234,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.galvin.DemoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -239,7 +255,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.galvin.DemoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -296,7 +312,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -350,7 +366,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
