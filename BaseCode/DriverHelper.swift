@@ -10,8 +10,9 @@ import Foundation
 
 
 struct DriverHelper {
-    static var driverName = "360Controller.kext"
-    
+    static let driverName = "360Controller.kext"
+    static let applicationID = "com.mice.driver.Xbox360Controller.devices" as CFString
+
     static var rootDirectory: URL? {
         guard let dir = FileManager.default.urls(for: .libraryDirectory, in: .localDomainMask).first else {
             return nil
@@ -89,25 +90,24 @@ struct DriverHelper {
         }
         IOObjectRelease(iterator)
 
-//        if (filterDevices != nil) {
-//            newDevices = filterDevices!(newDevices)
-//        }
-
-//        let oldSet = Set(serialDevices)
-//        let newSet = Set(newDevices)
-
-
-
-//        for sd in oldSet.subtracting(newSet) {
-//            NotificationCenter.default.post(name: .SerialDeviceRemoved, object: ["device": sd])
-//        }
-//
-//        for sd in newSet.subtracting(oldSet) {
-//            NotificationCenter.default.post(name: .SerialDeviceAdded, object: ["device": sd])
-//        }
-
-//        serialDevices = newDevices
         return newDevices
+    }
+    
+    static func loadDeviceConfiguration(rawDevice: io_object_t) -> DeviceConfiguration {
+        _ = CFPreferencesSynchronize(applicationID, kCFPreferencesCurrentUser, kCFPreferencesCurrentHost)
+        let value = CFPreferencesCopyValue(rawDevice.serialNumber, applicationID, kCFPreferencesCurrentUser, kCFPreferencesCurrentHost)
+        return DeviceConfiguration(value as? [String: Any])
+    }
+    
+    static func saveDeviceConfiguration(rawDevice: io_object_t, configuration: DeviceConfiguration) {
+        IORegistryEntrySetCFProperties(rawDevice, configuration.toDict() as CFTypeRef)
+        CFPreferencesSetValue(
+            rawDevice.serialNumber,
+            configuration.toDict() as CFPropertyList,
+            applicationID,
+            kCFPreferencesCurrentUser,
+            kCFPreferencesCurrentHost)
+        _ = CFPreferencesSynchronize(applicationID, kCFPreferencesCurrentUser, kCFPreferencesCurrentHost)
     }
 }
 

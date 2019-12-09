@@ -16,12 +16,22 @@ final class DeviceManager {
     private(set) var currentDevice: Device? {
         didSet {
             guard oldValue != currentDevice else { return }
-            oldValue?.stop()
-            currentDevice?.start()
+            if let device = oldValue {
+                stopMonitor(device: device)
+            }
+            guard let device = currentDevice else { return }
+            startMonitor(device: device)
         }
     }
     
     private var usbDetector: IOUSBDetector?
+    
+    var deviceEvents: [DeviceEvent] = []
+    var hidQueue: IOHIDQueueInterface?
+    var hidQueuePtrPtr: UnsafeMutablePointer<UnsafeMutablePointer<IOHIDQueueInterface>?>?
+    
+    var didTriggerEvent: (DeviceEvent) -> () = { _ in }
+
     
     deinit {
         usbDetector?.stopDetection()
@@ -43,10 +53,12 @@ extension DeviceManager {
                 print("Usb device changed.")
                 self.updateDeviceList()
             }
-        };
+        }
         _ = usbDetector?.startDetection()
     }
-    
+    func deviceEvent(mode: DeviceEvent.Mode) -> DeviceEvent? {
+        return deviceEvents.first(where: { $0.mode == mode })
+    }
 }
 
 private extension DeviceManager {
@@ -58,6 +70,109 @@ private extension DeviceManager {
         
         if self.currentDevice == nil {
             self.currentDevice = deviceList.first
+        }
+    }
+    
+    func startMonitor(device: Device) {
+        guard let hidDevice = device.hidDevice, let hidDevicePtrPtr = device.hidDevicePtrPtr else { return }
+        var devicePathCString:[CChar] = [CChar](repeating: 0, count: 128)
+        IORegistryEntryGetPath(device.rawDevice, "IOService", &devicePathCString)
+        
+        var elements: Unmanaged<CFArray>?
+        guard hidDevice.copyMatchingElements(hidDevicePtrPtr, nil, &elements) == kIOReturnSuccess,
+            let elementList = elements?.takeRetainedValue() as? [[String: Any]] else {
+            print("Can't get elements list")
+            return
+        }
+        
+        deviceEvents = elementList.compactMap(DeviceEvent.init(element:))
+        
+        // Start queue
+        guard hidDevice.open(hidDevicePtrPtr, 0) == kIOReturnSuccess else {
+            print("Can't open device")
+            return
+        }
+        
+        hidQueuePtrPtr = hidDevice.allocQueue(hidDevicePtrPtr)
+        hidQueue = hidQueuePtrPtr?.pointee?.pointee
+        guard let hidQueue = hidQueue else {
+            print("Unable to create the queue")
+            return
+        }
+        
+        guard hidQueue.create(hidQueuePtrPtr, 0, 32) == kIOReturnSuccess else {
+            print("Unable to create the queue")
+            return
+        }
+        
+        // Create event source
+        var eventSource: Unmanaged<CFRunLoopSource>?
+        guard hidQueue.createAsyncEventSource(hidQueuePtrPtr, &eventSource) == kIOReturnSuccess else {
+            print("Unable to create async event source")
+            return
+        }
+        
+        let eventCallback: IOHIDCallbackFunction = {
+            (target, result, refcon, sender) in
+            guard let target = target else { return }
+            let deviceManager = Unmanaged<DeviceManager>
+            .fromOpaque(target).takeUnretainedValue()
+            guard result == kIOReturnSuccess else { return }
+            deviceManager.eventQueueFired()
+        }
+        // Set callback
+        let selfPtr = Unmanaged.passUnretained(self).toOpaque()
+        guard hidQueue.setEventCallout(hidQueuePtrPtr, eventCallback, selfPtr, nil) == kIOReturnSuccess else {
+            print("Unable to set event callback")
+            return
+        }
+        
+        // Add to runloop
+        CFRunLoopAddSource(CFRunLoopGetCurrent(), eventSource?.takeRetainedValue(), CFRunLoopMode.commonModes)
+        
+        // Add some elements
+        deviceEvents.forEach{ _ = hidQueue.addElement(hidQueuePtrPtr, $0.rawElement, 0) }
+
+        // Start
+        guard hidQueue.start(hidQueuePtrPtr) == kIOReturnSuccess else {
+            print("Unable to start queue")
+            return
+        }
+        
+        print("started.")
+    }
+    
+    func stopMonitor(device: Device) {
+        if hidQueuePtrPtr != nil {
+            _ = hidQueue?.stop(hidQueuePtrPtr)
+            if let eventSource = hidQueue?.getAsyncEventSource(hidQueuePtrPtr)?.takeUnretainedValue(),
+                CFRunLoopContainsSource(CFRunLoopGetCurrent(), eventSource, CFRunLoopMode.commonModes) {
+                CFRunLoopRemoveSource(CFRunLoopGetCurrent(), eventSource, CFRunLoopMode.commonModes)
+            }
+            _ = hidQueue?.Release(hidQueuePtrPtr)
+            hidQueuePtrPtr = nil
+            hidQueue = nil
+        }
+        if device.hidDevicePtrPtr != nil {
+            _ = device.hidDevice!.close(device.hidDevicePtrPtr)
+        }
+        deviceEvents = []
+    }
+    
+    func eventQueueFired() {
+        print("event fired!!")
+        guard let hidQueue = hidQueue else { return }
+        var event: IOHIDEventStruct = IOHIDEventStruct()
+        var result: IOReturn = kIOReturnSuccess
+        mainLoop: while result == kIOReturnSuccess {
+            result = hidQueue.getNextEvent(hidQueuePtrPtr, &event, event.timestamp, 0)
+            
+            guard result == kIOReturnSuccess else { continue }
+            
+            for deviceEvent in deviceEvents where deviceEvent.rawElement == event.elementCookie {
+                print("event: \(deviceEvent.mode) value: \(event.value)")
+                didTriggerEvent(deviceEvent.withValue(event.value))
+            }
         }
     }
 }

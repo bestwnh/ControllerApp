@@ -42,21 +42,14 @@ class ViewController: NSViewController {
             output("binded device: \(device.displayName)")
             
             self.device = device
-            print(device.configurations)
-            swapSticksButton.state = device.configurations.swapSticks ? .on : .off
-            leftStickInvertX.state = device.configurations.invertLeftX ? .on : .off
-            leftStickInvertY.state = device.configurations.invertLeftY ? .on : .off
-            rightStickInvertX.state = device.configurations.invertRightX ? .on : .off
-            rightStickInvertY.state = device.configurations.invertRightY ? .on : .off
+            print(device.configuration)
+            swapSticksButton.state = device.configuration.swapSticks ? .on : .off
+            leftStickInvertX.state = device.configuration.invertLeftX ? .on : .off
+            leftStickInvertY.state = device.configuration.invertLeftY ? .on : .off
+            rightStickInvertX.state = device.configuration.invertRightX ? .on : .off
+            rightStickInvertY.state = device.configuration.invertRightY ? .on : .off
             
             buttons.forEach{ $0.isEnabled = true }
-            
-//            device.start()
-//            device.didTriggerEvent = { [weak self] message in
-//                DispatchQueue.main.async {
-//                    self?.output(message)
-//                }
-//            }
             
         } else {
             self.device = nil
@@ -70,31 +63,31 @@ class ViewController: NSViewController {
     
     @IBAction func tapSwapSticksButton(_ sender: Any) {
         if let device = self.device {
-            device.configurations.swapSticks = swapSticksButton.state.boolValue
+            device.configuration.swapSticks = swapSticksButton.state.boolValue
         }
     }
     
     @IBAction func tapLeftStickInvertXButton(_ sender: Any) {
         if let device = self.device {
-            device.configurations.invertLeftX = leftStickInvertX.state.boolValue
+            device.configuration.invertLeftX = leftStickInvertX.state.boolValue
         }
     }
     
     @IBAction func tapLeftStickInvertYButton(_ sender: Any) {
         if let device = self.device {
-            device.configurations.invertLeftY = leftStickInvertY.state.boolValue
+            device.configuration.invertLeftY = leftStickInvertY.state.boolValue
         }
     }
     
     @IBAction func tapRightStickInvertXButton(_ sender: Any) {
         if let device = self.device {
-            device.configurations.invertRightX = rightStickInvertX.state.boolValue
+            device.configuration.invertRightX = rightStickInvertX.state.boolValue
         }
     }
     
     @IBAction func tapRightStickInvertYButton(_ sender: Any) {
         if let device = self.device {
-            device.configurations.invertRightY = rightStickInvertY.state.boolValue
+            device.configuration.invertRightY = rightStickInvertY.state.boolValue
         }
     }
 
