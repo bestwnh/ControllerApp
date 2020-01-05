@@ -9,6 +9,23 @@
 import Foundation
 
 struct DeviceConfiguration {
+    enum Button: Int {
+        case up = 1
+        case down
+        case left
+        case right
+        case start
+        case back
+        case lsc
+        case rsc
+        case lb
+        case rb
+        case guide
+        case a
+        case b
+        case x
+        case y
+    }
     enum RumbleType: Int {
         case `default` = 0
         case none
@@ -32,29 +49,29 @@ struct DeviceConfiguration {
     var invertLeftY: Bool = false
     var invertRightX: Bool = false
     var invertRightY: Bool = false
-    var deadzoneLeft: Int = 0
-    var deadzoneRight: Int = 0
+    @Clamping(0...32768) var deadzoneLeft: Int = 0 // 0~32768
+    @Clamping(0...32768) var deadzoneRight: Int = 0 // 0~32768
     var relativeLeft: Bool = false
     var relativeRight: Bool = false
     var deadOffLeft: Bool = false
     var deadOffRight: Bool = false
     var controllerType: Int = Device.ControlType.XboxOne.rawValue
     var rumbleType: Int = RumbleType.default.rawValue
-    var bindingUp: Int = 0
-    var bindingDown: Int = 1
-    var bindingLeft: Int = 2
-    var bindingRight: Int = 3
-    var bindingStart: Int = 4
-    var bindingBack: Int = 5
-    var bindingLSC: Int = 6
-    var bindingRSC: Int = 7
-    var bindingLB: Int = 8
-    var bindingRB: Int = 9
-    var bindingGuide: Int = 10
-    var bindingA: Int = 11
-    var bindingB: Int = 12
-    var bindingX: Int = 13
-    var bindingY: Int = 14
+    var bindingUp: Int = Button.up.rawValue
+    var bindingDown: Int = Button.down.rawValue
+    var bindingLeft: Int = Button.left.rawValue
+    var bindingRight: Int = Button.right.rawValue
+    var bindingStart: Int = Button.start.rawValue
+    var bindingBack: Int = Button.back.rawValue
+    var bindingLSC: Int = Button.lsc.rawValue
+    var bindingRSC: Int = Button.rsc.rawValue
+    var bindingLB: Int = Button.lb.rawValue
+    var bindingRB: Int = Button.rb.rawValue
+    var bindingGuide: Int = Button.guide.rawValue
+    var bindingA: Int = Button.a.rawValue
+    var bindingB: Int = Button.b.rawValue
+    var bindingX: Int = Button.x.rawValue
+    var bindingY: Int = Button.y.rawValue
     var swapSticks: Bool = false
     var pretend360: Bool = false
     
@@ -126,4 +143,38 @@ struct DeviceConfiguration {
             "Pretend360": pretend360,
         ]
     }
+    
+    var deadzoneLeftPrecent: Float {
+        set {
+            deadzoneLeft = Int(newValue * 32768)
+        }
+        get {
+            return Float(deadzoneLeft) / 32768
+        }
+    }
+    var deadzoneRightPrecent: Float {
+        set {
+            deadzoneRight = Int(newValue * 32768)
+        }
+        get {
+            return Float(deadzoneRight) / 32768
+        }
+    }
+}
+
+@propertyWrapper
+struct Clamping<Value: Comparable> {
+  var value: Value
+  let range: ClosedRange<Value>
+
+  init(wrappedValue: Value, _ range: ClosedRange<Value>) {
+    precondition(range.contains(wrappedValue))
+    self.value = wrappedValue
+    self.range = range
+  }
+
+  var wrappedValue: Value {
+    get { value }
+    set { value = min(max(range.lowerBound, newValue), range.upperBound) }
+  }
 }

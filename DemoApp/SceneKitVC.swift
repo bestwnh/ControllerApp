@@ -53,7 +53,7 @@ class SceneKitVC: NSViewController {
         
     }
     @IBAction func tapButton1(_ sender: NSButton) {
-        
+        print(DeviceManager.shared.currentDevice?.configuration)
     }
     @IBAction func changeCircleSlider(_ sender: NSSlider) {
         

@@ -21,6 +21,11 @@ let kIOCFPlugInInterfaceID = CFUUIDGetConstantUUIDWithBytes(nil,
                                                             0xC2, 0x44, 0xE8, 0x58, 0x10, 0x9C, 0x11, 0xD4,
                                                             0x91, 0xD4, 0x00, 0x50, 0xE4, 0xC6, 0x42, 0x6F)
 
+//from ForceFeedbackConstants.h
+let kFFEffectType_CustomForce_ID = CFUUIDGetConstantUUIDWithBytes(nil,
+                                                                  0xE5, 0x59, 0xC4, 0x6B, 0xC5, 0xCD, 0x11, 0xD6,
+                                                                  0x8A, 0x1C, 0x00, 0x03, 0x93, 0x53, 0xBD, 0x00)
+
 extension io_object_t {
     var parent: io_object_t {
         var parent: io_object_t = 0

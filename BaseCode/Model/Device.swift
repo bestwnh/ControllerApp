@@ -63,7 +63,9 @@ class Device {
         }
         
         self.rawDevice = rawDevice
+        #warning("Can't get Force Feedback device, https://github.com/360Controller/360Controller/issues/978")
         FFCreateDevice(rawDevice, &ffDevice)
+        
         displayName = {
             var serviceProperties: Unmanaged<CFMutableDictionary>?
             

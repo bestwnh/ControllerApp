@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import ForceFeedback
+import ForceFeedback.ForceFeedbackConstants
 
 final class DeviceManager {
     static let shared = DeviceManager()
@@ -32,6 +34,11 @@ final class DeviceManager {
     
     var didTriggerEvent: (DeviceEvent) -> () = { _ in }
 
+    var effect: FFEFFECT?
+    var customForce: FFCUSTOMFORCE?
+    var effectRef: FFEffectObjectReference?
+    var largeMotor: Int32 = 0
+    var smallMotor: Int32 = 0
     
     deinit {
         usbDetector?.stopDetection()
@@ -43,6 +50,7 @@ extension DeviceManager {
         currentDevice = deviceList[safe: index]
     }
     func startMonitorDeviceChange() {
+        guard usbDetector == nil else { return }
         usbDetector = IOUSBDetector()
         
         usbDetector?.callbackQueue = DispatchQueue.global()
@@ -139,10 +147,17 @@ private extension DeviceManager {
             return
         }
         
+        startRumbleMotor()
+        activeRumbleMotor(large: 0, small: 0)
+        largeMotor = 0
+        smallMotor = 0
+        
         print("started.")
     }
     
     func stopMonitor(device: Device) {
+        activeRumbleMotor(large: 0, small: 0)
+        stopRumbleMotor()
         if hidQueuePtrPtr != nil {
             _ = hidQueue?.stop(hidQueuePtrPtr)
             if let eventSource = hidQueue?.getAsyncEventSource(hidQueuePtrPtr)?.takeUnretainedValue(),
@@ -172,7 +187,84 @@ private extension DeviceManager {
             for deviceEvent in deviceEvents where deviceEvent.rawElement == event.elementCookie {
                 print("event: \(deviceEvent.mode) value: \(event.value)")
                 didTriggerEvent(deviceEvent.withValue(event.value))
+                switch deviceEvent.mode {
+                case .axis(.leftTrigger):
+                    largeMotor = event.value
+                    self.activeRumbleMotor(large: largeMotor, small: smallMotor)
+                case .axis(.rightTrigger):
+                    smallMotor = event.value
+                    self.activeRumbleMotor(large: largeMotor, small: smallMotor)
+                default: break
+                }
             }
         }
+    }
+    
+    func startRumbleMotor() {
+        guard let ffDevice = currentDevice?.ffDevice else { return }
+        var capabs = FFCAPABILITIES()
+        FFDeviceGetForceFeedbackCapabilities(ffDevice, &capabs)
+        
+        guard capabs.numFfAxes == 2 else { return }
+        
+        var effect = calloc(1, MemoryLayout<FFEFFECT>.size).load(as: FFEFFECT.self)
+        var customForce = calloc(1, MemoryLayout<FFCUSTOMFORCE>.size).load(as: FFCUSTOMFORCE.self)
+        self.effect = effect
+        self.customForce = customForce
+        
+        let rglForceData = calloc(2, MemoryLayout<LPLONG>.size).load(as: LPLONG.self)
+        let rgdwAxes = calloc(2, MemoryLayout<LPDWORD>.size).load(as: LPDWORD.self)
+        let rglDirection = calloc(2, MemoryLayout<LPLONG>.size).load(as: LPLONG.self)
+        
+        rglForceData[0] = 0
+        rglForceData[1] = 0
+        rgdwAxes[0] = DWORD(capabs.ffAxes.0)
+        rgdwAxes[1] = DWORD(capabs.ffAxes.1)
+        rglDirection[0] = 0
+        rglDirection[1] = 0
+        
+        customForce.cChannels = 2
+        customForce.cSamples = 2
+        customForce.rglForceData = rglForceData
+        customForce.dwSamplePeriod = 100_000
+        
+        effect.cAxes = capabs.numFfAxes
+        effect.rglDirection = rglDirection
+        effect.rgdwAxes = rgdwAxes
+        effect.dwSamplePeriod = 0
+        effect.dwGain = 10000
+        effect.dwFlags = DWORD(FFEFF_OBJECTOFFSETS) | DWORD(FFEFF_SPHERICAL)
+        effect.dwSize = DWORD(MemoryLayout<FFEFFECT>.size)
+        effect.dwDuration = DWORD(FF_INFINITE)
+        effect.dwSamplePeriod = 100_000
+        effect.cbTypeSpecificParams = DWORD(MemoryLayout<FFCUSTOMFORCE>.size)
+        effect.lpvTypeSpecificParams = UnsafeMutableRawPointer(&customForce)
+        effect.lpEnvelope = nil
+        FFDeviceCreateEffect(ffDevice, kFFEffectType_CustomForce_ID, &effect, &effectRef)
+    }
+    
+    func stopRumbleMotor() {
+        guard effectRef != nil else { return }
+        
+        FFDeviceReleaseEffect(currentDevice?.ffDevice, effectRef)
+        if customForce != nil {
+            free(customForce?.rglForceData)
+            free(&customForce)
+            customForce = nil
+        }
+        if effect != nil {
+            free(effect?.rgdwAxes)
+            free(effect?.rglDirection)
+            free(&effect)
+            effect = nil
+        }
+    }
+    func activeRumbleMotor(large: Int32, small: Int32) {
+        guard effectRef != nil, effect != nil else { return }
+        print("large: \(large) small: \(small)")
+        customForce?.rglForceData[0] = LONG(large * 10000 / 255)
+        customForce?.rglForceData[1] = LONG(small * 10000 / 255)
+        FFEffectSetParameters(effectRef, &effect!, FFEP_TYPESPECIFICPARAMS)
+        FFEffectStart(effectRef, 1, 0)
     }
 }
