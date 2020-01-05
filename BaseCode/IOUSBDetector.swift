@@ -136,7 +136,7 @@ class IOUSBDetector {
     }
 
 
-    func stopDetection ( ) {
+    func stopDetection() {
         guard self.matchedIterator != 0 else { return }
         IOObjectRelease(self.matchedIterator)
         IOObjectRelease(self.terminatedIterator)
