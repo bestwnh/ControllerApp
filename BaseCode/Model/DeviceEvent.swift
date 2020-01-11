@@ -101,32 +101,22 @@ extension DeviceEvent.Mode {
         
         var title: String {
             switch self {
-            case .leftStickX:
-                return "leftStickX"
-            case .leftStickY:
-                return "leftStickY"
-            case .rightStickX:
-                return "rightStickX"
-            case .rightStickY:
-                return "rightStickY"
-            case .leftTrigger:
-                return "leftTrigger"
-            case .rightTrigger:
-                return "rightTrigger"
+            case .leftStickX: return "leftStickX"
+            case .leftStickY: return "leftStickY"
+            case .rightStickX: return "rightStickX"
+            case .rightStickY: return "rightStickY"
+            case .leftTrigger: return "leftTrigger"
+            case .rightTrigger: return "rightTrigger"
             }
         }
         var nodeName: String {
             switch self {
             case .leftStickX,
-                 .leftStickY:
-                return "buttonL"
+                 .leftStickY: return "buttonL"
             case .rightStickX,
-                 .rightStickY:
-                return "buttonR"
-            case .leftTrigger:
-                return "buttonLT"
-            case .rightTrigger:
-                return "buttonRT"
+                 .rightStickY: return "buttonR"
+            case .leftTrigger: return "buttonLT"
+            case .rightTrigger: return "buttonRT"
             }
         }
     }
@@ -155,106 +145,87 @@ extension DeviceEvent.Mode {
                 return nil
             }
         }
+        init?(mappingValue: Int) {
+            if let button = Button.allCases.first(where: { $0.mappingValue == mappingValue }) {
+                self = button
+            } else {
+                return nil
+            }
+        }
         var title: String {
             switch self {
-            case .a:
-                return "A"
-            case .b:
-                return "B"
-            case .x:
-                return "X"
-            case .y:
-                return "Y"
-            case .lb:
-                return "LB"
-            case .rb:
-                return "RB"
-            case .leftStick:
-                return "LeftStick"
-            case .rightStick:
-                return "RightStick"
-            case .start:
-                return "start"
-            case .back:
-                return "back"
-            case .home:
-                return "home"
-            case .up:
-                return "up"
-            case .down:
-                return "down"
-            case .left:
-                return "left"
-            case .right:
-                return "right"
+            case .a: return "A"
+            case .b: return "B"
+            case .x: return "X"
+            case .y: return "Y"
+            case .lb: return "LB"
+            case .rb: return "RB"
+            case .leftStick: return "LeftStick"
+            case .rightStick: return "RightStick"
+            case .start: return "Start"
+            case .back: return "Back"
+            case .home: return "Home"
+            case .up: return "Up"
+            case .down: return "Down"
+            case .left: return "Left"
+            case .right: return "Right"
+            }
+        }
+        var configurationKey: String {
+            switch self {
+            case .a: return "BindingA"
+            case .b: return "BindingB"
+            case .x: return "BindingX"
+            case .y: return "BindingY"
+            case .lb: return "BindingLB"
+            case .rb: return "BindingRB"
+            case .leftStick: return "BindingLSC"
+            case .rightStick: return "BindingRSC"
+            case .start: return "BindingStart"
+            case .back: return "BindingBack"
+            case .home: return "BindingGuide"
+            case .up: return "BindingUp"
+            case .down: return "BindingDown"
+            case .left: return "BindingLeft"
+            case .right: return "BindingRight"
             }
         }
         var nodeName: String {
             switch self {
-            case .a:
-                return "buttonA1"
-            case .b:
-                return "buttonB1"
-            case .x:
-                return "buttonX1"
-            case .y:
-                return "buttonY1"
-            case .lb:
-                return "buttonLB"
-            case .rb:
-                return "buttonRB"
-            case .leftStick:
-                return "buttonL"
-            case .rightStick:
-                return "buttonR"
-            case .start:
-                return "button2a"
-            case .back:
-                return "button1a"
-            case .home:
-                return "logo_white"
-            case .up:
-                return "button_cross"
-            case .down:
-                return "button_cross"
-            case .left:
-                return "button_cross"
-            case .right:
-                return "button_cross"
+            case .a: return "buttonA1"
+            case .b: return "buttonB1"
+            case .x: return "buttonX1"
+            case .y: return "buttonY1"
+            case .lb: return "buttonLB"
+            case .rb: return "buttonRB"
+            case .leftStick: return "buttonL"
+            case .rightStick: return "buttonR"
+            case .start: return "button2a"
+            case .back: return "button1a"
+            case .home: return "logo_white"
+            case .up: return "button_cross"
+            case .down: return "button_cross"
+            case .left: return "button_cross"
+            case .right: return "button_cross"
             }
         }
         var mappingValue: Int {
             switch self {
-            case .a:
-                return 12
-            case .b:
-                return 13
-            case .x:
-                return 14
-            case .y:
-                return 15
-            case .lb:
-                return 8
-            case .rb:
-                return 9
-            case .leftStick:
-                return 6
-            case .rightStick:
-                return 7
-            case .start:
-                return 4
-            case .back:
-                return 5
-            case .home:
-                return 10
-            case .up:
-                return 0
-            case .down:
-                return 1
-            case .left:
-                return 2
-            case .right:
-                return 3
+            case .a: return 12
+            case .b: return 13
+            case .x: return 14
+            case .y: return 15
+            case .lb: return 8
+            case .rb: return 9
+            case .leftStick: return 6
+            case .rightStick: return 7
+            case .start: return 4
+            case .back: return 5
+            case .home: return 10
+            case .up: return 0
+            case .down: return 1
+            case .left: return 2
+            case .right: return 3
             }
         }
     }
