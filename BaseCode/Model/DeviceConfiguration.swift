@@ -9,23 +9,6 @@
 import Foundation
 
 struct DeviceConfiguration {
-    enum Button: Int {
-        case up = 1
-        case down
-        case left
-        case right
-        case start
-        case back
-        case lsc
-        case rsc
-        case lb
-        case rb
-        case guide
-        case a
-        case b
-        case x
-        case y
-    }
     enum RumbleType: Int {
         case `default` = 0
         case none
@@ -57,21 +40,21 @@ struct DeviceConfiguration {
     var deadOffRight: Bool = false
     var controllerType: Int = Device.ControlType.XboxOne.rawValue
     var rumbleType: Int = RumbleType.default.rawValue
-    var bindingUp: Int = Button.up.rawValue
-    var bindingDown: Int = Button.down.rawValue
-    var bindingLeft: Int = Button.left.rawValue
-    var bindingRight: Int = Button.right.rawValue
-    var bindingStart: Int = Button.start.rawValue
-    var bindingBack: Int = Button.back.rawValue
-    var bindingLSC: Int = Button.lsc.rawValue
-    var bindingRSC: Int = Button.rsc.rawValue
-    var bindingLB: Int = Button.lb.rawValue
-    var bindingRB: Int = Button.rb.rawValue
-    var bindingGuide: Int = Button.guide.rawValue
-    var bindingA: Int = Button.a.rawValue
-    var bindingB: Int = Button.b.rawValue
-    var bindingX: Int = Button.x.rawValue
-    var bindingY: Int = Button.y.rawValue
+    var bindingUp: Int = DeviceEvent.Mode.Button.up.mappingValue
+    var bindingDown: Int = DeviceEvent.Mode.Button.down.mappingValue
+    var bindingLeft: Int = DeviceEvent.Mode.Button.left.mappingValue
+    var bindingRight: Int = DeviceEvent.Mode.Button.right.mappingValue
+    var bindingStart: Int = DeviceEvent.Mode.Button.start.mappingValue
+    var bindingBack: Int = DeviceEvent.Mode.Button.back.mappingValue
+    var bindingLSC: Int = DeviceEvent.Mode.Button.leftStick.mappingValue
+    var bindingRSC: Int = DeviceEvent.Mode.Button.rightStick.mappingValue
+    var bindingLB: Int = DeviceEvent.Mode.Button.lb.mappingValue
+    var bindingRB: Int = DeviceEvent.Mode.Button.rb.mappingValue
+    var bindingGuide: Int = DeviceEvent.Mode.Button.home.mappingValue
+    var bindingA: Int = DeviceEvent.Mode.Button.a.mappingValue
+    var bindingB: Int = DeviceEvent.Mode.Button.b.mappingValue
+    var bindingX: Int = DeviceEvent.Mode.Button.x.mappingValue
+    var bindingY: Int = DeviceEvent.Mode.Button.y.mappingValue
     var swapSticks: Bool = false
     var pretend360: Bool = false
     

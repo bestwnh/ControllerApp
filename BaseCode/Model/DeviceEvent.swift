@@ -48,7 +48,7 @@ class DeviceEvent {
         case (0x01, 0x30): // Left stick X
             mode = .axis(.leftStickX)
         case (0x09, 1...15):
-            if let button = DeviceEvent.Mode.Button(rawValue: usage - 1) {
+            if let button = DeviceEvent.Mode.Button(usage: usage) {
                 mode = .button(button)
             } else {
                 return nil
@@ -91,7 +91,7 @@ protocol DeviceEventModeProtocol {
 }
 
 extension DeviceEvent.Mode {
-    enum Axis: Int, DeviceEventModeProtocol {
+    enum Axis: Int, DeviceEventModeProtocol, CaseIterable {
         case leftStickX = 0
         case leftStickY
         case rightStickX
@@ -131,15 +131,15 @@ extension DeviceEvent.Mode {
         }
     }
 
-    enum Button: Int, DeviceEventModeProtocol {
-        case A = 0
-        case B
-        case X
-        case Y
-        case LB
-        case RB
-        case LeftStick
-        case RightStick
+    enum Button: Int, DeviceEventModeProtocol, CaseIterable {
+        case a = 0
+        case b
+        case x
+        case y
+        case lb
+        case rb
+        case leftStick
+        case rightStick
         case start
         case back
         case home
@@ -148,23 +148,30 @@ extension DeviceEvent.Mode {
         case left
         case right
         
+        init?(usage: Int) {
+            if let button = Button(rawValue: usage - 1) {
+                self = button
+            } else {
+                return nil
+            }
+        }
         var title: String {
             switch self {
-            case .A:
+            case .a:
                 return "A"
-            case .B:
+            case .b:
                 return "B"
-            case .X:
+            case .x:
                 return "X"
-            case .Y:
+            case .y:
                 return "Y"
-            case .LB:
+            case .lb:
                 return "LB"
-            case .RB:
+            case .rb:
                 return "RB"
-            case .LeftStick:
+            case .leftStick:
                 return "LeftStick"
-            case .RightStick:
+            case .rightStick:
                 return "RightStick"
             case .start:
                 return "start"
@@ -184,21 +191,21 @@ extension DeviceEvent.Mode {
         }
         var nodeName: String {
             switch self {
-            case .A:
+            case .a:
                 return "buttonA1"
-            case .B:
+            case .b:
                 return "buttonB1"
-            case .X:
+            case .x:
                 return "buttonX1"
-            case .Y:
+            case .y:
                 return "buttonY1"
-            case .LB:
+            case .lb:
                 return "buttonLB"
-            case .RB:
+            case .rb:
                 return "buttonRB"
-            case .LeftStick:
+            case .leftStick:
                 return "buttonL"
-            case .RightStick:
+            case .rightStick:
                 return "buttonR"
             case .start:
                 return "button2a"
@@ -214,6 +221,40 @@ extension DeviceEvent.Mode {
                 return "button_cross"
             case .right:
                 return "button_cross"
+            }
+        }
+        var mappingValue: Int {
+            switch self {
+            case .a:
+                return 12
+            case .b:
+                return 13
+            case .x:
+                return 14
+            case .y:
+                return 15
+            case .lb:
+                return 8
+            case .rb:
+                return 9
+            case .leftStick:
+                return 6
+            case .rightStick:
+                return 7
+            case .start:
+                return 4
+            case .back:
+                return 5
+            case .home:
+                return 10
+            case .up:
+                return 0
+            case .down:
+                return 1
+            case .left:
+                return 2
+            case .right:
+                return 3
             }
         }
     }

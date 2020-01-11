@@ -12,7 +12,10 @@ final class DeviceManager {
     static let shared = DeviceManager()
     private init() {}
     
-    var deviceList: [Device] = []
+    var didTriggerEvent: (DeviceEvent) -> () = { _ in }
+    var didChangeDevice: (Device?) -> () = { _ in }
+
+    private(set) var deviceList: [Device] = []
     private(set) var currentDevice: Device? {
         didSet {
             guard oldValue != currentDevice else { return }
@@ -21,22 +24,23 @@ final class DeviceManager {
                 rumble?.stopRumbleMotor()
                 rumble = nil
             }
-            guard let device = currentDevice else { return }
-            startMonitor(device: device)
-            rumble = DeviceRumble()
-            rumble?.startRumbleMotor(ffDevice: device.ffDevice)
+            if let device = currentDevice {
+                startMonitor(device: device)
+                rumble = DeviceRumble()
+                rumble?.startRumbleMotor(ffDevice: device.ffDevice)
+            }
+            didChangeDevice(currentDevice)
         }
     }
     
     private var usbDetector: IOUSBDetector?
     
-    var deviceEvents: [DeviceEvent] = []
-    var hidQueue: IOHIDQueueInterface?
-    var hidQueuePtrPtr: UnsafeMutablePointer<UnsafeMutablePointer<IOHIDQueueInterface>?>?
+    private var deviceEvents: [DeviceEvent] = []
+    private var hidQueue: IOHIDQueueInterface?
+    private var hidQueuePtrPtr: UnsafeMutablePointer<UnsafeMutablePointer<IOHIDQueueInterface>?>?
     
-    var didTriggerEvent: (DeviceEvent) -> () = { _ in }
-
     private var rumble: DeviceRumble?
+    private var prevDeviceConfiguration: DeviceConfiguration?
     
     deinit {
         usbDetector?.stopDetection()

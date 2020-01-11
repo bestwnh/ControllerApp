@@ -11,13 +11,13 @@ import SceneKit
 
 class SceneHelper {
     static func basicConfig(scene: SCNScene) {
-        configStickPivot(scene: scene, nodeName: DeviceEvent.Mode.Button.LeftStick.nodeName)
-        configStickPivot(scene: scene, nodeName: DeviceEvent.Mode.Button.RightStick.nodeName)
+        configStickPivot(scene: scene, nodeName: DeviceEvent.Mode.Button.leftStick.nodeName)
+        configStickPivot(scene: scene, nodeName: DeviceEvent.Mode.Button.rightStick.nodeName)
 
-        configButtonPivot(scene: scene, nodeName: DeviceEvent.Mode.Button.A.nodeName)
-        configButtonPivot(scene: scene, nodeName: DeviceEvent.Mode.Button.B.nodeName)
-        configButtonPivot(scene: scene, nodeName: DeviceEvent.Mode.Button.X.nodeName)
-        configButtonPivot(scene: scene, nodeName: DeviceEvent.Mode.Button.Y.nodeName)
+        configButtonPivot(scene: scene, nodeName: DeviceEvent.Mode.Button.a.nodeName)
+        configButtonPivot(scene: scene, nodeName: DeviceEvent.Mode.Button.b.nodeName)
+        configButtonPivot(scene: scene, nodeName: DeviceEvent.Mode.Button.x.nodeName)
+        configButtonPivot(scene: scene, nodeName: DeviceEvent.Mode.Button.y.nodeName)
         configButtonPivot(scene: scene, nodeName: DeviceEvent.Mode.Button.back.nodeName)
         configButtonPivot(scene: scene, nodeName: DeviceEvent.Mode.Button.start.nodeName)
         configButtonPivot(scene: scene, nodeName: DeviceEvent.Mode.Button.home.nodeName)
@@ -25,8 +25,8 @@ class SceneHelper {
         configTriggerPivot(scene: scene, nodeName: DeviceEvent.Mode.Axis.leftTrigger.nodeName)
         configTriggerPivot(scene: scene, nodeName: DeviceEvent.Mode.Axis.rightTrigger.nodeName)
         
-        configTopButtonPivot(scene: scene, nodeName: DeviceEvent.Mode.Button.LB.nodeName, offset: 0.2)
-        configTopButtonPivot(scene: scene, nodeName: DeviceEvent.Mode.Button.RB.nodeName, offset: -0.2)
+        configTopButtonPivot(scene: scene, nodeName: DeviceEvent.Mode.Button.lb.nodeName, offset: 0.2)
+        configTopButtonPivot(scene: scene, nodeName: DeviceEvent.Mode.Button.rb.nodeName, offset: -0.2)
 
     }
     
@@ -53,16 +53,16 @@ class SceneHelper {
         }
         
         switch event.mode {
-        case .axis(.leftStickX), .axis(.leftStickY), .button(.LeftStick):
+        case .axis(.leftStickX), .axis(.leftStickY), .button(.leftStick):
             if let x = DeviceManager.shared.deviceEvent(mode: .axis(.leftStickY))?.value,
                 let y = DeviceManager.shared.deviceEvent(mode: .axis(.leftStickX))?.value,
-                let value = DeviceManager.shared.deviceEvent(mode: .button(.LeftStick))?.value {
+                let value = DeviceManager.shared.deviceEvent(mode: .button(.leftStick))?.value {
                 moveStick(x: x, y: y, value: value)
             }
-        case .axis(.rightStickX), .axis(.rightStickY), .button(.RightStick):
+        case .axis(.rightStickX), .axis(.rightStickY), .button(.rightStick):
             if let x = DeviceManager.shared.deviceEvent(mode: .axis(.rightStickY))?.value,
                 let y = DeviceManager.shared.deviceEvent(mode: .axis(.rightStickX))?.value,
-                let value = DeviceManager.shared.deviceEvent(mode: .button(.RightStick))?.value {
+                let value = DeviceManager.shared.deviceEvent(mode: .button(.rightStick))?.value {
                 moveStick(x: x, y: y, value: value)
             }
         case .axis(.leftTrigger), .axis(.rightTrigger):
@@ -70,16 +70,16 @@ class SceneHelper {
                 moveTrigger(value: value)
             }
             
-        case .button(.A), .button(.B), .button(.X), .button(.Y), .button(.back), .button(.start), .button(.home):
+        case .button(.a), .button(.b), .button(.x), .button(.y), .button(.back), .button(.start), .button(.home):
             if let value = DeviceManager.shared.deviceEvent(mode: event.mode)?.value {
                 tapButton(value: value)
             }
         case .button(.up), .button(.down), .button(.left), .button(.right): break
-        case .button(.LB):
+        case .button(.lb):
             if let value = DeviceManager.shared.deviceEvent(mode: event.mode)?.value {
                 tapTopButton(value: value, reverse: false)
             }
-        case .button(.RB):
+        case .button(.rb):
             if let value = DeviceManager.shared.deviceEvent(mode: event.mode)?.value {
                 tapTopButton(value: value, reverse: true)
             }
