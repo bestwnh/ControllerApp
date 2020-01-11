@@ -25,7 +25,7 @@ class MappingButtonVC: NSViewController {
     @IBOutlet weak var tableView: NSTableView!
     
     private var currentMapping: MappingButtonAndList?
-    
+    private var isMappingAllButtons: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
@@ -35,13 +35,34 @@ class MappingButtonVC: NSViewController {
         }
         DeviceManager.shared.didTriggerEvent = { buttonEvent in
             guard let currentMapping = self.currentMapping,
-                case let DeviceEvent.Mode.button(button) = buttonEvent.mode else { return }
+                case let DeviceEvent.Mode.button(button) = buttonEvent.mode, buttonEvent.value == 1 else { return }
             
             currentMapping.list.first(where: { $0.orgButton == currentMapping.button })?.mapToButton = button
             DeviceManager.shared.currentDevice?.configuration.buttonMappingList = currentMapping.list
-            self.currentMapping = nil
+            if self.isMappingAllButtons, let nextButton = DeviceEvent.Mode.Button(rawValue: currentMapping.button.rawValue + 1) {
+                self.currentMapping?.button = nextButton
+            } else {
+                self.currentMapping = nil
+            }
             self.tableView.reloadData()
+            if self.currentMapping != nil {
+                DeviceManager.shared.currentDevice?.configuration.resetButtonMapping()
+            }
         }
+    }
+    @IBAction func clickMapAllButtonsButton(_ sender: NSButton) {
+        guard self.currentMapping == nil, !isMappingAllButtons else { return }
+        isMappingAllButtons = true
+        if isMappingAllButtons {
+            self.currentMapping = (.a, DeviceManager.shared.currentDevice?.configuration.buttonMappingList ?? [])
+            self.tableView.reloadData()
+            DeviceManager.shared.currentDevice?.configuration.resetButtonMapping()
+        }
+    }
+    @IBAction func clickResetMappingButton(_ sender: NSButton) {
+        self.currentMapping = nil
+        DeviceManager.shared.currentDevice?.configuration.resetButtonMapping()
+        self.tableView.reloadData()
     }
     
 }
@@ -69,6 +90,7 @@ extension MappingButtonVC: NSTableViewDataSource, NSTableViewDelegate {
                 }
                 mappingCell.didClickMapButton = { [weak self] in
                     guard let self = self else { return }
+                    self.isMappingAllButtons = false
                     if let currentMapping = self.currentMapping {
                         if orgButton == currentMapping.button {
                             // cancel mapping

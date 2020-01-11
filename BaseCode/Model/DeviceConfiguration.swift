@@ -124,12 +124,6 @@ struct DeviceConfiguration {
     mutating func resetButtonMapping() {
         buttonMappingList = ButtonMapping.mappingList()
     }
-    mutating func update(orgButton: DeviceEvent.Mode.Button, mapTo mapToButton: DeviceEvent.Mode.Button) {
-        let buttonMapping = ButtonMapping(orgButton: orgButton, mapTo: mapToButton)
-        if let index = buttonMappingList.firstIndex(where: { $0.orgButton == orgButton }) {
-            buttonMappingList[index] = buttonMapping
-        }
-    }
 }
 
 @propertyWrapper

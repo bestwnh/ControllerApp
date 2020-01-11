@@ -736,21 +736,21 @@
         <scene sceneID="9mX-RL-JQa">
             <objects>
                 <viewController id="yhY-tb-Rfr" customClass="MappingButtonVC" customModule="DemoApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" misplaced="YES" id="jdQ-xP-uAK">
+                    <view key="view" id="jdQ-xP-uAK">
                         <rect key="frame" x="0.0" y="0.0" width="346" height="275"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x97-ww-2Mb">
+                            <stackView distribution="equalSpacing" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x97-ww-2Mb">
                                 <rect key="frame" x="0.0" y="0.0" width="346" height="275"/>
                                 <subviews>
                                     <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2oL-p9-6ZX">
-                                        <rect key="frame" x="0.0" y="0.0" width="346" height="275"/>
+                                        <rect key="frame" x="0.0" y="165" width="346" height="110"/>
                                         <clipView key="contentView" id="9xx-2J-2fD">
-                                            <rect key="frame" x="1" y="0.0" width="344" height="274"/>
+                                            <rect key="frame" x="1" y="0.0" width="344" height="109"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="aS5-8z-xka" viewBased="YES" id="Dks-ow-5SZ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="344" height="249"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="344" height="84"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <size key="intercellSpacing" width="3" height="2"/>
                                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -758,7 +758,7 @@
                                                     <tableColumns>
                                                         <tableColumn width="156" minWidth="40" maxWidth="1000" id="ivO-4K-mwV">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Org Button">
-                                                                <font key="font" metaFont="label" size="11"/>
+                                                                <font key="font" metaFont="controlContent" size="11"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                             </tableHeaderCell>
@@ -795,7 +795,7 @@
                                                         </tableColumn>
                                                         <tableColumn width="182" minWidth="10" maxWidth="3.4028234663852886e+38" id="yjz-4m-Ed4">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Map To">
-                                                                <font key="font" metaFont="label" size="11"/>
+                                                                <font key="font" metaFont="controlContent" size="11"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </tableHeaderCell>
@@ -881,6 +881,26 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableHeaderView>
                                     </scrollView>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="akw-8w-r5w">
+                                        <rect key="frame" x="106" y="76" width="134" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Map all buttons" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ftc-c0-HIa">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="clickMapAllButtonsButton:" target="yhY-tb-Rfr" id="BEL-BO-oWj"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sKV-YO-XaJ">
+                                        <rect key="frame" x="108" y="-7" width="131" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Reset mapping" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pDV-ct-tTD">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="clickResetMappingButton:" target="yhY-tb-Rfr" id="iYf-QI-UW6"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="2oL-p9-6ZX" firstAttribute="leading" secondItem="x97-ww-2Mb" secondAttribute="leading" id="Vyp-Ck-0BE"/>
@@ -888,8 +908,12 @@
                                 </constraints>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
@@ -907,7 +931,7 @@
                 </viewController>
                 <customObject id="Icm-tR-w2g" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="555" y="682"/>
+            <point key="canvasLocation" x="555" y="681.5"/>
         </scene>
         <!--Device ListVC-->
         <scene sceneID="2Ku-Zd-NbK">
@@ -953,7 +977,7 @@
                                                     <tableColumns>
                                                         <tableColumn width="445" minWidth="40" maxWidth="1000" id="SLU-dY-8UT">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                                <font key="font" metaFont="label" size="11"/>
+                                                                <font key="font" metaFont="controlContent" size="11"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                             </tableHeaderCell>
