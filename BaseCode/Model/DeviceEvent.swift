@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DeviceEvent {
+class DeviceEvent: Codable {
     enum Mode: Equatable {
         case axis(Axis)
         case button(Button)
@@ -85,13 +85,42 @@ class DeviceEvent {
     }
 }
 
+extension DeviceEvent.Mode: Codable {
+    enum CodingKeys: CodingKey {
+        case axis
+        case button
+    }
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        do {
+            let axisValue =  try container.decode(Axis.self, forKey: .axis)
+            self = .axis(axisValue)
+        } catch {
+            let buttonValue =  try container.decode(Button.self, forKey: .button)
+            self = .button(buttonValue)
+        }
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        switch self {
+        case .axis(let value):
+            try container.encode(value, forKey: .axis)
+        case .button(let value):
+            try container.encode(value, forKey: .button)
+        }
+    }
+    
+    
+}
+
 protocol DeviceEventModeProtocol {
     var title: String { get }
     var nodeName: String { get }
 }
 
 extension DeviceEvent.Mode {
-    enum Axis: Int, DeviceEventModeProtocol, CaseIterable {
+    enum Axis: Int, DeviceEventModeProtocol, CaseIterable, Codable {
         case leftStickX = 0
         case leftStickY
         case rightStickX
@@ -121,7 +150,7 @@ extension DeviceEvent.Mode {
         }
     }
 
-    enum Button: Int, DeviceEventModeProtocol, CaseIterable {
+    enum Button: Int, DeviceEventModeProtocol, CaseIterable, Codable {
         case a = 0
         case b
         case x

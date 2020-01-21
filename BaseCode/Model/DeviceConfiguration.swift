@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct DeviceConfiguration {
-    enum RumbleType: Int {
+struct DeviceConfiguration: Codable {
+    enum RumbleType: Int, Codable {
         case `default` = 0
         case none
         case triggersOnly
@@ -28,7 +28,7 @@ struct DeviceConfiguration {
             }
         }
     }
-    class ButtonMapping {
+    class ButtonMapping: Codable {
         let orgButton: DeviceEvent.Mode.Button
         var mapToButton: DeviceEvent.Mode.Button
         
@@ -127,7 +127,7 @@ struct DeviceConfiguration {
 }
 
 @propertyWrapper
-struct Clamping<Value: Comparable> {
+struct Clamping<Value: Comparable & Codable>: Codable {
   var value: Value
   let range: ClosedRange<Value>
 

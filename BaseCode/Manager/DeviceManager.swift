@@ -8,12 +8,14 @@
 
 import Foundation
 
+extension Notification.Target {
+    static let deviceEventTriggered = ObserverTarget<DeviceEvent>(name: "deviceEventTriggered")
+    static let deviceChanged = ObserverTarget<Nil>(name: "deviceChanged")
+}
+
 final class DeviceManager {
     static let shared = DeviceManager()
     private init() {}
-    
-    var didTriggerEvent: (DeviceEvent) -> () = { _ in }
-    var didChangeDevice: (Device?) -> () = { _ in }
 
     private(set) var deviceList: [Device] = []
     private(set) var currentDevice: Device? {
@@ -29,7 +31,8 @@ final class DeviceManager {
                 rumble = DeviceRumble()
                 rumble?.startRumbleMotor(ffDevice: device.ffDevice)
             }
-            didChangeDevice(currentDevice)
+
+            Notification.post(target: Notification.Target.deviceChanged, param: nil)
         }
     }
     
@@ -182,7 +185,8 @@ private extension DeviceManager {
             
             for deviceEvent in deviceEvents where deviceEvent.rawElement == event.elementCookie {
                 print("event: \(deviceEvent.mode) value: \(event.value)")
-                didTriggerEvent(deviceEvent.withValue(event.value))
+                Notification.post(target: Notification.Target.deviceEventTriggered,
+                                  param: deviceEvent.withValue(event.value))
             }
         }
     }

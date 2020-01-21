@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A481CCA23D76A8600297B50 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A481CC923D76A8600297B50 /* Notification.swift */; };
+		3A481CCC23D76DBF00297B50 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A481CCB23D76DBF00297B50 /* BaseVC.swift */; };
 		3A53677F23811FC800C9A5BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A53677E23811FC800C9A5BD /* AppDelegate.swift */; };
 		3A53678123811FC800C9A5BD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A53678023811FC800C9A5BD /* ViewController.swift */; };
 		3A53678323811FCA00C9A5BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A53678223811FCA00C9A5BD /* Assets.xcassets */; };
@@ -30,6 +32,8 @@
 /* Begin PBXFileReference section */
 		3A2828FE2365D75B00CC93FA /* IOUSBDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOUSBDetector.swift; sourceTree = "<group>"; };
 		3A2829002366EBB800CC93FA /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		3A481CC923D76A8600297B50 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		3A481CCB23D76DBF00297B50 /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		3A53677C23811FC800C9A5BD /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A53677E23811FC800C9A5BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A53678023811FC800C9A5BD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +100,8 @@
 				3AFBF3972361EF6B00522537 /* DriverHelper.swift */,
 				3A2828FE2365D75B00CC93FA /* IOUSBDetector.swift */,
 				3AEDD7AF239E97A70030C3EB /* SceneHelper.swift */,
+				3A481CC923D76A8600297B50 /* Notification.swift */,
+				3A481CCB23D76DBF00297B50 /* BaseVC.swift */,
 				3AAB5DAF23844624009F7465 /* Manager */,
 				3A2829022366EBBD00CC93FA /* Model */,
 				3A98399D2394FE2000818D7E /* Extension */,
@@ -209,9 +215,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A53678C2381261200C9A5BD /* Device.swift in Sources */,
+				3A481CCC23D76DBF00297B50 /* BaseVC.swift in Sources */,
 				3A9839A02394FE3400818D7E /* CollectionExtension.swift in Sources */,
 				3AD134F823C2B8B0009B1811 /* MappingButtonVC.swift in Sources */,
 				3AD134F623C29DB1009B1811 /* DeviceRumble.swift in Sources */,
+				3A481CCA23D76A8600297B50 /* Notification.swift in Sources */,
 				3AEDD7B0239E97A70030C3EB /* SceneHelper.swift in Sources */,
 				3AEDD7AC239DC7790030C3EB /* DeviceConfiguration.swift in Sources */,
 				3A9839A22395D89500818D7E /* DeviceListVC.swift in Sources */,

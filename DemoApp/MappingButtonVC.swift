@@ -20,7 +20,7 @@ class MappingCell: NSTableCellView {
     
 }
 
-class MappingButtonVC: NSViewController {
+class MappingButtonVC: BaseVC {
     typealias MappingButtonAndList = (button: DeviceEvent.Mode.Button, list: [DeviceConfiguration.ButtonMapping])
     @IBOutlet weak var tableView: NSTableView!
     
@@ -30,10 +30,14 @@ class MappingButtonVC: NSViewController {
         super.viewDidLoad()
         // Do view setup here.
         tableView.reloadData()
-        DeviceManager.shared.didChangeDevice = { _ in
-            self.tableView.reloadData()
-        }
-        DeviceManager.shared.didTriggerEvent = { buttonEvent in
+
+        Notification.addObserver(target: Notification.Target.deviceChanged) { [weak self] (_) in
+            self?.tableView.reloadData()
+        }.handle(by: observerBag)
+        
+        Notification.addObserver(target: Notification.Target.deviceEventTriggered) { [weak self] (buttonEvent) in
+            guard let self = self else { return }
+            guard let buttonEvent = buttonEvent else { return }
             guard let currentMapping = self.currentMapping,
                 case let DeviceEvent.Mode.button(button) = buttonEvent.mode, buttonEvent.value == 1 else { return }
             
@@ -48,7 +52,7 @@ class MappingButtonVC: NSViewController {
             if self.currentMapping != nil {
                 DeviceManager.shared.currentDevice?.configuration.resetButtonMapping()
             }
-        }
+        }.handle(by: observerBag)
     }
     @IBAction func clickMapAllButtonsButton(_ sender: NSButton) {
         guard self.currentMapping == nil, !isMappingAllButtons else { return }

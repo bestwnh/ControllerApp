@@ -9,7 +9,7 @@
 import Cocoa
 import SceneKit
 
-class SceneKitVC: NSViewController {
+class SceneKitVC: BaseVC {
 
     @IBOutlet weak var topSCNView: SCNView!
     @IBOutlet weak var leftSCNView: SCNView!
@@ -41,11 +41,15 @@ class SceneKitVC: NSViewController {
         topSCNView.pointOfView = scene.rootNode.childNode(withName: "cameraTop", recursively: true)
         
         
-        DeviceManager.shared.didTriggerEvent = { [weak self] event in
+//        DeviceManager.shared.didTriggerEvent = { event in
+//
+//            SceneHelper.updateScene(scene: self.scene, event: event)
+//        }
+        Notification.addObserver(target: Notification.Target.deviceEventTriggered) { [weak self] (buttonEvent) in
             guard let self = self else { return }
-            
-            SceneHelper.updateScene(scene: self.scene, event: event)
-        }
+            guard let buttonEvent = buttonEvent else { return }
+            SceneHelper.updateScene(scene: self.scene, event: buttonEvent)
+        }.handle(by: observerBag)
     }
     override func viewDidAppear() {
         super.viewDidAppear()

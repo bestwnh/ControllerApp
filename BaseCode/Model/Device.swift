@@ -12,7 +12,7 @@ import IOKit.hid
 import ForceFeedback
 
 class Device {
-    enum ControlType: Int {
+    enum ControlType: Int, Codable {
         case Xbox360 = 0
         case XboxOriginal
         case XboxOne
