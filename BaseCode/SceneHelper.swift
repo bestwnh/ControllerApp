@@ -35,7 +35,7 @@ class SceneHelper {
 
         func moveStick(x: Float, y: Float, value: Float) {
             let translate = CATransform3DTranslate(node.pivot, 0, 0, -CGFloat(value / 50))
-            let rotate = CATransform3DRotate(translate, CGFloat.pi * CGFloat(max(abs(x), abs(y))), CGFloat(x * 10), CGFloat(y * 10), 0)
+            let rotate = CATransform3DRotate(translate, CGFloat.pi * CGFloat(sqrt(x * x + y * y) / 10), CGFloat(x), CGFloat(y), 0)
             node.transform = rotate
         }
         func tapButton(value: Float) {

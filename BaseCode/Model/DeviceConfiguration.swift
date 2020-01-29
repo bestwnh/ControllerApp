@@ -51,12 +51,12 @@ struct DeviceConfiguration: Codable {
     var invertLeftY: Bool = false
     var invertRightX: Bool = false
     var invertRightY: Bool = false
-    @Clamping(0...32768) var deadzoneLeft: Int = 0 // 0~32768
-    @Clamping(0...32768) var deadzoneRight: Int = 0 // 0~32768
-    var relativeLeft: Bool = false
-    var relativeRight: Bool = false
-    var deadOffLeft: Bool = false
-    var deadOffRight: Bool = false
+    @Clamping(0...32767) var deadzoneLeft: Int = 0 // 0~32767
+    @Clamping(0...32767) var deadzoneRight: Int = 0 // 0~32767
+    var normalizeLeft: Bool = false
+    var normalizeRight: Bool = false
+    var linkedLeft: Bool = false
+    var linkedRight: Bool = false
     var controllerType: Int = Device.ControlType.XboxOne.rawValue
     var rumbleType: Int = RumbleType.default.rawValue
     var swapSticks: Bool = false
@@ -72,10 +72,10 @@ struct DeviceConfiguration: Codable {
         invertRightY = detail["InvertRightY"] as? Bool ?? invertRightY
         deadzoneLeft = detail["DeadzoneLeft"] as? Int ?? deadzoneLeft
         deadzoneRight = detail["DeadzoneRight"] as? Int ?? deadzoneRight
-        relativeLeft = detail["RelativeLeft"] as? Bool ?? relativeLeft
-        relativeRight = detail["RelativeRight"] as? Bool ?? relativeRight
-        deadOffLeft = detail["DeadOffLeft"] as? Bool ?? deadOffLeft
-        deadOffRight = detail["DeadOffRight"] as? Bool ?? deadOffRight
+        normalizeLeft = detail["DeadOffLeft"] as? Bool ?? normalizeLeft
+        normalizeRight = detail["DeadOffRight"] as? Bool ?? normalizeRight
+        linkedLeft = detail["RelativeLeft"] as? Bool ?? linkedLeft
+        linkedRight = detail["RelativeRight"] as? Bool ?? linkedRight
         controllerType = detail["ControllerType"] as? Int ?? controllerType
         rumbleType = detail["RumbleType"] as? Int ?? rumbleType
         swapSticks = detail["SwapSticks"] as? Bool ?? swapSticks
@@ -92,10 +92,10 @@ struct DeviceConfiguration: Codable {
             "InvertRightY": invertRightY,
             "DeadzoneLeft": deadzoneLeft,
             "DeadzoneRight": deadzoneRight,
-            "RelativeLeft": relativeLeft,
-            "RelativeRight": relativeRight,
-            "DeadOffLeft": deadOffLeft,
-            "DeadOffRight": deadOffRight,
+            "DeadOffLeft": normalizeLeft,
+            "DeadOffRight": normalizeRight,
+            "RelativeLeft": linkedLeft,
+            "RelativeRight": linkedRight,
             "ControllerType": controllerType,
             "RumbleType": rumbleType,
             "SwapSticks": swapSticks,

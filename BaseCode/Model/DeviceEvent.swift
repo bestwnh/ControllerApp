@@ -69,7 +69,7 @@ class DeviceEvent: Codable {
              .axis(.leftStickY),
              .axis(.rightStickX),
              .axis(.rightStickY):
-            self.value = floatValue / 327670
+            self.value = floatValue / 327670 * 10
         case .axis(.leftTrigger),
              .axis(.rightTrigger):
             self.value = floatValue / 255
