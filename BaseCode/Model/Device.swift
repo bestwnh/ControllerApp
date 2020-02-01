@@ -138,6 +138,8 @@ class Device {
         
         // load configurations
         configuration = DriverHelper.loadDeviceConfiguration(rawDevice: rawDevice)
+        // make sure configuration active in driver
+        DriverHelper.saveDeviceConfiguration(rawDevice: rawDevice, configuration: configuration)
     }
     
 }

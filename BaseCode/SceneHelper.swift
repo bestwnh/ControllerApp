@@ -37,19 +37,33 @@ class SceneHelper {
             let translate = CATransform3DTranslate(node.pivot, 0, 0, -CGFloat(value / 50))
             let rotate = CATransform3DRotate(translate, CGFloat.pi * CGFloat(sqrt(x * x + y * y) / 10), CGFloat(x), CGFloat(y), 0)
             node.transform = rotate
+            highlightNode(shouldHighlight: x != 0 || y != 0)
         }
         func tapButton(value: Float) {
             let translate = CATransform3DTranslate(node.pivot, 0, 0, -CGFloat(value / 50))
             node.transform = translate
+            highlightNode(shouldHighlight: value != 0)
         }
         func tapTopButton(value: Float, reverse: Bool) {
             let scaleValue: CGFloat = 0.01 * (reverse ? -1 : 1)
             let rotate = CATransform3DRotate(node.pivot, CGFloat.pi * scaleValue * CGFloat(value), 0, 0, 1)
             node.transform = rotate
+            highlightNode(shouldHighlight: value != 0)
         }
         func moveTrigger(value: Float) {
-            let rotate = CATransform3DRotate(node.pivot, CGFloat.pi * -CGFloat(value * 0.01), 1, 0, 0)
+            let rotate = CATransform3DRotate(node.pivot, CGFloat.pi * -CGFloat(value * 0.08), 1, 0, 0)
             node.transform = rotate
+            highlightNode(shouldHighlight: value != 0)
+        }
+        func highlightNode(shouldHighlight: Bool) {
+            
+            let material = node.geometry!.firstMaterial!
+
+            SCNTransaction.begin()
+
+            material.emission.contents = shouldHighlight ? NSColor.red : NSColor.black
+
+            SCNTransaction.commit()
         }
         
         switch event.mode {

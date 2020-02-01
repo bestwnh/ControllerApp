@@ -8,30 +8,38 @@
 
 import Cocoa
 
-class DeviceListVC: NSViewController {
+class DeviceListVC: BaseVC {
 
     @IBOutlet weak var tableView: NSTableView!
+    private var deviceList: [Device] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
         tableView.reloadData()
+        NotificationObserver.addObserver(target: NotificationObserver.Target.deviceChanged) { [weak self] (_) in
+            guard let self = self else { return }
+            self.deviceList = DeviceManager.shared.deviceList
+            self.tableView.reloadData()
+        }.handle(by: observerBag)
     }
     
 }
 
 extension DeviceListVC: NSTableViewDataSource, NSTableViewDelegate {
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return 10
+        return deviceList.count
     }
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         guard let cell = tableView.makeView(withIdentifier: tableColumn!.identifier, owner: self) as?  NSTableCellView else { return nil }
-        cell.textField?.stringValue = "row: \(row)"
+        let device = deviceList[row]
+        cell.textField?.stringValue = "\(device.displayName)(\(device.rawDevice))"
         return cell
     }
-    func tableViewSelectionDidChange(_ notification: Notification) {
+    func tableViewSelectionDidChange(_ notification: NotificationObserver) {
         guard tableView.selectedRow >= 0 else { return }
         print("\(#function) row \(tableView.selectedRow)")
+        DeviceManager.shared.selectedDevice(atIndex: tableView.selectedRow)
     }
 }
 

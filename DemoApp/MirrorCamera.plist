@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>passes</key>
+        <dict>
+            <key>pass_mirror_camera</key>
+            <dict>
+                <key>draw</key>
+                <string>DRAW_SCENE</string>
+                <key>metalVertexShader</key>
+                <string>mirrorVertex</string>
+                <key>metalFragmentShader</key>
+                <string>mirrorFragment</string>
+                <key>inputs</key>
+                <dict>
+                    <key>colorSampler</key>
+                    <string>COLOR</string>
+                </dict>
+                <key>outputs</key>
+                <dict>
+                    <key>color</key>
+                    <string>COLOR</string>
+                </dict>
+                <key>draw</key>
+                <string>DRAW_QUAD</string>
+            </dict>
+        </dict>
+        <key>sequence</key>
+        <array>
+            <string>pass_mirror_camera</string>
+        </array>
+    </dict>
+</plist>

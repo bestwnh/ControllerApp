@@ -758,12 +758,12 @@
                                                     <tableColumns>
                                                         <tableColumn width="156" minWidth="40" maxWidth="1000" id="ivO-4K-mwV">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Org Button">
-                                                                <font key="font" metaFont="label" size="11"/>
+                                                                <font key="font" metaFont="message" size="11"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                             </tableHeaderCell>
                                                             <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="aoc-Hh-7Qf">
-                                                                <font key="font" metaFont="system"/>
+                                                                <font key="font" metaFont="label" size="13"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -776,7 +776,7 @@
                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="iVu-aT-r8T">
                                                                             <rect key="frame" x="1" y="2" width="154" height="16"/>
                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="mpr-bA-UoV">
-                                                                                <font key="font" metaFont="system"/>
+                                                                                <font key="font" metaFont="label" size="13"/>
                                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
@@ -795,12 +795,12 @@
                                                         </tableColumn>
                                                         <tableColumn width="182" minWidth="10" maxWidth="3.4028234663852886e+38" id="yjz-4m-Ed4">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Map To">
-                                                                <font key="font" metaFont="label" size="11"/>
+                                                                <font key="font" metaFont="message" size="11"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </tableHeaderCell>
                                                             <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="g8e-gK-Lhx">
-                                                                <font key="font" metaFont="system"/>
+                                                                <font key="font" metaFont="label" size="13"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -816,7 +816,7 @@
                                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="2c1-MS-Pbl">
                                                                                     <rect key="frame" x="-2" y="4" width="131" height="16"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="Yfo-ir-sQQ">
-                                                                                        <font key="font" metaFont="system"/>
+                                                                                        <font key="font" metaFont="label" size="13"/>
                                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                                     </textFieldCell>
@@ -825,7 +825,7 @@
                                                                                     <rect key="frame" x="121" y="-5" width="67" height="32"/>
                                                                                     <buttonCell key="cell" type="push" title="Map" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vSl-qI-0Lv">
                                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                                        <font key="font" metaFont="system"/>
+                                                                                        <font key="font" metaFont="label" size="13"/>
                                                                                     </buttonCell>
                                                                                     <connections>
                                                                                         <action selector="clickMapButton:" target="itg-fe-2wN" id="4bf-76-xn6"/>
@@ -885,7 +885,7 @@
                                         <rect key="frame" x="106" y="106" width="134" height="32"/>
                                         <buttonCell key="cell" type="push" title="Map all buttons" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ftc-c0-HIa">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
+                                            <font key="font" metaFont="label" size="13"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="clickMapAllButtonsButton:" target="yhY-tb-Rfr" id="BEL-BO-oWj"/>
@@ -895,7 +895,7 @@
                                         <rect key="frame" x="108" y="-7" width="131" height="32"/>
                                         <buttonCell key="cell" type="push" title="Reset mapping" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pDV-ct-tTD">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
+                                            <font key="font" metaFont="label" size="13"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="clickResetMappingButton:" target="yhY-tb-Rfr" id="iYf-QI-UW6"/>
@@ -977,12 +977,12 @@
                                                     <tableColumns>
                                                         <tableColumn width="445" minWidth="40" maxWidth="1000" id="SLU-dY-8UT">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                                <font key="font" metaFont="label" size="11"/>
+                                                                <font key="font" metaFont="message" size="11"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                             </tableHeaderCell>
                                                             <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="QzS-Gy-tbx">
-                                                                <font key="font" metaFont="system"/>
+                                                                <font key="font" metaFont="label" size="13"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -1002,7 +1002,7 @@
                                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sEx-1J-WSu">
                                                                                     <rect key="frame" x="19" y="8" width="418" height="16"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="cIM-q7-55q">
-                                                                                        <font key="font" metaFont="system"/>
+                                                                                        <font key="font" metaFont="label" size="13"/>
                                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                                     </textFieldCell>
@@ -1080,16 +1080,16 @@
             </objects>
             <point key="canvasLocation" x="1135.5" y="64"/>
         </scene>
-        <!--View Controller-->
+        <!--ConfigurationVC-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="DemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="ConfigurationVC" customModule="DemoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="431" height="321"/>
+                        <rect key="frame" x="0.0" y="0.0" width="431" height="340"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <box fixedFrame="YES" title="Left Stick" translatesAutoresizingMaskIntoConstraints="NO" id="HAm-5F-GPo">
-                                <rect key="frame" x="17" y="171" width="177" height="128"/>
+                                <rect key="frame" x="17" y="190" width="177" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" id="xqy-b4-wiE">
                                     <rect key="frame" x="3" y="3" width="171" height="110"/>
@@ -1100,7 +1100,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Invert X" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="A5o-Ru-Z8a">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
+                                                <font key="font" metaFont="label" size="13"/>
                                             </buttonCell>
                                             <connections>
                                                 <action selector="tapLeftStickInvertXButton:" target="XfG-lQ-9wD" id="3YC-Fp-OGX"/>
@@ -1111,7 +1111,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Invert Y" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ZXk-7Z-vPd">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
+                                                <font key="font" metaFont="label" size="13"/>
                                             </buttonCell>
                                             <connections>
                                                 <action selector="tapLeftStickInvertYButton:" target="XfG-lQ-9wD" id="THs-nj-O5R"/>
@@ -1122,7 +1122,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Normalize" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="W2v-jd-GYs">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
+                                                <font key="font" metaFont="label" size="13"/>
                                             </buttonCell>
                                             <connections>
                                                 <action selector="tapLeftStickNormalizeButton:" target="XfG-lQ-9wD" id="Dz3-Xn-od7"/>
@@ -1133,7 +1133,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Linked" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="S8J-10-2rB">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
+                                                <font key="font" metaFont="label" size="13"/>
                                             </buttonCell>
                                             <connections>
                                                 <action selector="tapLeftStickLinkedButton:" target="XfG-lQ-9wD" id="b29-fG-R1J"/>
@@ -1151,7 +1151,7 @@
                                 </view>
                             </box>
                             <box fixedFrame="YES" title="Right Stick" translatesAutoresizingMaskIntoConstraints="NO" id="zWu-Gn-MwG">
-                                <rect key="frame" x="17" y="36" width="177" height="131"/>
+                                <rect key="frame" x="17" y="55" width="177" height="131"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" id="udQ-Ub-OTK">
                                     <rect key="frame" x="3" y="3" width="171" height="113"/>
@@ -1162,7 +1162,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Invert X" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="iOP-kd-iJv">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
+                                                <font key="font" metaFont="label" size="13"/>
                                             </buttonCell>
                                             <connections>
                                                 <action selector="tapRightStickInvertXButton:" target="XfG-lQ-9wD" id="Uhl-Q9-7A2"/>
@@ -1173,7 +1173,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Invert Y" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="vXS-Ls-6sM">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
+                                                <font key="font" metaFont="label" size="13"/>
                                             </buttonCell>
                                             <connections>
                                                 <action selector="tapRightStickInvertYButton:" target="XfG-lQ-9wD" id="r9F-fY-xHB"/>
@@ -1184,7 +1184,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Normalize" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="uwD-og-JWh">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
+                                                <font key="font" metaFont="label" size="13"/>
                                             </buttonCell>
                                             <connections>
                                                 <action selector="tapRightStickNormalizeButton:" target="XfG-lQ-9wD" id="fpH-Py-kjR"/>
@@ -1195,7 +1195,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Linked" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="LhE-9e-DjI">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
+                                                <font key="font" metaFont="label" size="13"/>
                                             </buttonCell>
                                             <connections>
                                                 <action selector="tapRightStickLinkedButton:" target="XfG-lQ-9wD" id="BpF-Uc-1lB"/>
@@ -1240,22 +1240,33 @@
                                 </scroller>
                             </scrollView>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cGS-77-1lM" customClass="StickDeadzoneView" customModule="DemoApp" customModuleProvider="target">
-                                <rect key="frame" x="199" y="18" width="100" height="100"/>
+                                <rect key="frame" x="199" y="37" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </customView>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ydx-JB-95s" customClass="StickDeadzoneView" customModule="DemoApp" customModuleProvider="target">
-                                <rect key="frame" x="307" y="18" width="100" height="100"/>
+                                <rect key="frame" x="307" y="37" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </customView>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XjH-Bs-p6O">
-                                <rect key="frame" x="38" y="16" width="96" height="18"/>
+                                <rect key="frame" x="38" y="35" width="96" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Swap Sticks" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="pQj-47-SpJ">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" metaFont="label" size="13"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="tapSwapSticksButton:" target="XfG-lQ-9wD" id="6fg-Va-X3m"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lnG-T0-bnn">
+                                <rect key="frame" x="38" y="15" width="175" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Pretend to 360 controller" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="EMI-pw-7Yv">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="label" size="13"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="tapPretend360ControllerButton:" target="XfG-lQ-9wD" id="qGL-ED-eCd"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1267,6 +1278,7 @@
                         <outlet property="leftStickInvertY" destination="zbd-Sm-4iC" id="uw3-JY-opS"/>
                         <outlet property="leftStickLinked" destination="Pur-HK-Hmw" id="QLp-QV-poM"/>
                         <outlet property="leftStickNormalize" destination="gXk-Ct-Vl7" id="ZKQ-Ne-wHS"/>
+                        <outlet property="pretend360ControllerButton" destination="lnG-T0-bnn" id="SG1-ng-Mfz"/>
                         <outlet property="rightCanvasView" destination="ydx-JB-95s" id="sv4-xd-hBN"/>
                         <outlet property="rightDeadzoneSlider" destination="ndx-cH-71d" id="d1C-WB-wMs"/>
                         <outlet property="rightStickInvertX" destination="bZs-bE-QoX" id="uw1-n3-Lsq"/>
@@ -1279,66 +1291,28 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1250.5" y="466.5"/>
+            <point key="canvasLocation" x="1250.5" y="476"/>
         </scene>
         <!--Scene KitVC-->
         <scene sceneID="2JC-e5-Imf">
             <objects>
                 <viewController id="Xre-SY-rBh" customClass="SceneKitVC" customModule="DemoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="f5M-Iy-8qY">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="451"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="355"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="20l-HV-2dL">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="451"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="355"/>
                                 <subviews>
-                                    <sceneView translatesAutoresizingMaskIntoConstraints="NO" id="Jhq-Fk-pzJ">
-                                        <rect key="frame" x="0.0" y="401" width="600" height="50"/>
+                                    <sceneView autoenablesDefaultLighting="YES" allowsCameraControl="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ngm-ry-E16">
+                                        <rect key="frame" x="0.0" y="55" width="320" height="300"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="3bK-pt-fSA"/>
+                                            <constraint firstAttribute="height" constant="300" id="Zlc-1a-GRd"/>
                                         </constraints>
+                                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </sceneView>
-                                    <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VVi-im-ovn">
-                                        <rect key="frame" x="0.0" y="55" width="600" height="341"/>
-                                        <subviews>
-                                            <sceneView translatesAutoresizingMaskIntoConstraints="NO" id="3ka-pL-l3Q">
-                                                <rect key="frame" x="0.0" y="0.0" width="150" height="341"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="150" id="AVj-A7-bG0"/>
-                                                </constraints>
-                                            </sceneView>
-                                            <sceneView autoenablesDefaultLighting="YES" allowsCameraControl="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ngm-ry-E16">
-                                                <rect key="frame" x="150" y="0.0" width="300" height="341"/>
-                                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </sceneView>
-                                            <sceneView translatesAutoresizingMaskIntoConstraints="NO" id="PwQ-tw-8JS">
-                                                <rect key="frame" x="450" y="0.0" width="150" height="341"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="150" id="q5c-Ua-Zr7"/>
-                                                </constraints>
-                                            </sceneView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="PwQ-tw-8JS" firstAttribute="top" secondItem="VVi-im-ovn" secondAttribute="top" id="Ekf-jr-qm3"/>
-                                            <constraint firstAttribute="bottom" secondItem="3ka-pL-l3Q" secondAttribute="bottom" id="IDb-Ce-voE"/>
-                                            <constraint firstItem="3ka-pL-l3Q" firstAttribute="top" secondItem="VVi-im-ovn" secondAttribute="top" id="NSI-J3-azH"/>
-                                            <constraint firstItem="Ngm-ry-E16" firstAttribute="top" secondItem="VVi-im-ovn" secondAttribute="top" id="Q4g-R5-ypw"/>
-                                            <constraint firstAttribute="bottom" secondItem="Ngm-ry-E16" secondAttribute="bottom" id="YW5-SH-ej4"/>
-                                            <constraint firstAttribute="bottom" secondItem="PwQ-tw-8JS" secondAttribute="bottom" id="fCP-CD-69O"/>
-                                        </constraints>
-                                        <visibilityPriorities>
-                                            <integer value="1000"/>
-                                            <integer value="1000"/>
-                                            <integer value="1000"/>
-                                        </visibilityPriorities>
-                                        <customSpacing>
-                                            <real value="3.4028234663852886e+38"/>
-                                            <real value="3.4028234663852886e+38"/>
-                                            <real value="3.4028234663852886e+38"/>
-                                        </customSpacing>
-                                    </stackView>
                                     <stackView distribution="equalSpacing" orientation="horizontal" alignment="centerY" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Wr-6y-yQX">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                         <subviews>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SVg-bK-wVK">
                                                 <rect key="frame" x="-6" y="8" width="81" height="32"/>
@@ -1347,28 +1321,28 @@
                                                 </constraints>
                                                 <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="26w-45-abj">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
+                                                    <font key="font" metaFont="label" size="13"/>
                                                 </buttonCell>
                                                 <connections>
                                                     <action selector="tapButton1:" target="Xre-SY-rBh" id="TZG-n8-Voj"/>
                                                 </connections>
                                             </button>
                                             <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zXS-ab-dOY">
-                                                <rect key="frame" x="175" y="10" width="28" height="30"/>
+                                                <rect key="frame" x="83" y="10" width="28" height="30"/>
                                                 <sliderCell key="cell" continuous="YES" alignment="left" maxValue="100" allowsTickMarkValuesOnly="YES" sliderType="circular" id="5ot-DK-NwL"/>
                                                 <connections>
                                                     <action selector="changeCircleSlider:" target="Xre-SY-rBh" id="Z11-KM-iB1"/>
                                                 </connections>
                                             </slider>
                                             <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yKA-sy-Wkz">
-                                                <rect key="frame" x="306" y="16" width="96" height="19"/>
+                                                <rect key="frame" x="124" y="16" width="93" height="19"/>
                                                 <sliderCell key="cell" continuous="YES" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="nv6-Gp-InM"/>
                                                 <connections>
                                                     <action selector="changeSlider1:" target="Xre-SY-rBh" id="fFe-WO-JVT"/>
                                                 </connections>
                                             </slider>
                                             <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="39v-aN-9ks">
-                                                <rect key="frame" x="506" y="16" width="96" height="19"/>
+                                                <rect key="frame" x="229" y="16" width="93" height="19"/>
                                                 <sliderCell key="cell" continuous="YES" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="NEm-rI-nom"/>
                                                 <connections>
                                                     <action selector="changeSlider2:" target="Xre-SY-rBh" id="a57-bx-Yf9"/>
@@ -1394,30 +1368,46 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="Jhq-Fk-pzJ" firstAttribute="leading" secondItem="20l-HV-2dL" secondAttribute="leading" id="6aq-Cr-x2h"/>
-                                    <constraint firstAttribute="trailing" secondItem="VVi-im-ovn" secondAttribute="trailing" id="Ab4-uW-3r1"/>
                                     <constraint firstItem="8Wr-6y-yQX" firstAttribute="leading" secondItem="20l-HV-2dL" secondAttribute="leading" id="Dsi-JF-sIV"/>
-                                    <constraint firstItem="VVi-im-ovn" firstAttribute="leading" secondItem="20l-HV-2dL" secondAttribute="leading" id="EZk-B2-LwF"/>
-                                    <constraint firstAttribute="trailing" secondItem="Jhq-Fk-pzJ" secondAttribute="trailing" id="Ybz-Bm-q1C"/>
+                                    <constraint firstItem="Ngm-ry-E16" firstAttribute="leading" secondItem="20l-HV-2dL" secondAttribute="leading" id="uFF-5g-J5l"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ngm-ry-E16" secondAttribute="trailing" id="wHb-u3-3Qs"/>
                                     <constraint firstAttribute="trailing" secondItem="8Wr-6y-yQX" secondAttribute="trailing" id="wtV-qZ-pZj"/>
                                 </constraints>
                                 <visibilityPriorities>
-                                    <integer value="1000"/>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
-                                    <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
+                            <sceneView allowsCameraControl="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3ka-pL-l3Q">
+                                <rect key="frame" x="10" y="295" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="AVj-A7-bG0"/>
+                                    <constraint firstAttribute="height" constant="50" id="v7p-yG-chT"/>
+                                </constraints>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            </sceneView>
+                            <sceneView allowsCameraControl="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PwQ-tw-8JS">
+                                <rect key="frame" x="260" y="295" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="mD6-ll-r0j"/>
+                                    <constraint firstAttribute="width" constant="50" id="q5c-Ua-Zr7"/>
+                                </constraints>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            </sceneView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="20l-HV-2dL" firstAttribute="leading" secondItem="f5M-Iy-8qY" secondAttribute="leading" id="2et-UE-IAO"/>
+                            <constraint firstItem="Ngm-ry-E16" firstAttribute="trailing" secondItem="PwQ-tw-8JS" secondAttribute="trailing" constant="10" id="AAz-uz-HGz"/>
+                            <constraint firstItem="PwQ-tw-8JS" firstAttribute="top" secondItem="Ngm-ry-E16" secondAttribute="top" constant="10" id="AEZ-PE-bxL"/>
                             <constraint firstAttribute="trailing" secondItem="20l-HV-2dL" secondAttribute="trailing" id="WN2-lB-awc"/>
+                            <constraint firstItem="3ka-pL-l3Q" firstAttribute="leading" secondItem="Ngm-ry-E16" secondAttribute="leading" constant="10" id="bRk-G8-jyA"/>
                             <constraint firstAttribute="bottom" secondItem="20l-HV-2dL" secondAttribute="bottom" id="uK2-4T-Ad4"/>
                             <constraint firstItem="20l-HV-2dL" firstAttribute="top" secondItem="f5M-Iy-8qY" secondAttribute="top" id="yki-HB-SMc"/>
+                            <constraint firstItem="3ka-pL-l3Q" firstAttribute="top" secondItem="Ngm-ry-E16" secondAttribute="top" constant="10" id="zSP-5A-NQ9"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1426,12 +1416,11 @@
                         <outlet property="rightSCNView" destination="PwQ-tw-8JS" id="aeS-uZ-a6E"/>
                         <outlet property="slider1" destination="yKA-sy-Wkz" id="2VQ-t0-Bcn"/>
                         <outlet property="slider2" destination="39v-aN-9ks" id="0Uy-bV-VMb"/>
-                        <outlet property="topSCNView" destination="Jhq-Fk-pzJ" id="SQK-sW-bYx"/>
                     </connections>
                 </viewController>
                 <customObject id="VFW-uq-LYS" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1218" y="946"/>
+            <point key="canvasLocation" x="1201" y="938"/>
         </scene>
     </scenes>
     <resources>

@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Notification.Target {
+extension NotificationObserver.Target {
     static let deviceEventTriggered = ObserverTarget<DeviceEvent>(name: "deviceEventTriggered")
     static let deviceChanged = ObserverTarget<Nil>(name: "deviceChanged")
 }
@@ -17,7 +17,11 @@ final class DeviceManager {
     static let shared = DeviceManager()
     private init() {}
 
-    private(set) var deviceList: [Device] = []
+    private(set) var deviceList: [Device] = [] {
+        didSet {
+            NotificationObserver.post(target: NotificationObserver.Target.deviceChanged, param: nil)
+        }
+    }
     private(set) var currentDevice: Device? {
         didSet {
             guard oldValue != currentDevice else { return }
@@ -32,7 +36,7 @@ final class DeviceManager {
                 rumble?.startRumbleMotor(ffDevice: device.ffDevice)
             }
 
-            Notification.post(target: Notification.Target.deviceChanged, param: nil)
+            NotificationObserver.post(target: NotificationObserver.Target.deviceChanged, param: nil)
         }
     }
     
@@ -73,9 +77,6 @@ extension DeviceManager {
     func deviceEvent(mode: DeviceEvent.Mode) -> DeviceEvent? {
         return deviceEvents.first(where: { $0.mode == mode })
     }
-}
-
-private extension DeviceManager {
     func updateDeviceList() {
         deviceList = DriverHelper.getDeviceList()
         if let currentDevice = currentDevice, !deviceList.contains(currentDevice) {
@@ -85,7 +86,11 @@ private extension DeviceManager {
         if self.currentDevice == nil {
             self.currentDevice = deviceList.first
         }
+        
     }
+}
+
+private extension DeviceManager {
     
     func startMonitor(device: Device) {
         guard let hidDevice = device.hidDevice, let hidDevicePtrPtr = device.hidDevicePtrPtr else { return }
@@ -185,7 +190,7 @@ private extension DeviceManager {
             
             for deviceEvent in deviceEvents where deviceEvent.rawElement == event.elementCookie {
                 print("event: \(deviceEvent.mode) value: \(event.value)")
-                Notification.post(target: Notification.Target.deviceEventTriggered,
+                NotificationObserver.post(target: NotificationObserver.Target.deviceEventTriggered,
                                   param: deviceEvent.withValue(event.value))
             }
         }

@@ -31,11 +31,11 @@ class MappingButtonVC: BaseVC {
         // Do view setup here.
         tableView.reloadData()
 
-        Notification.addObserver(target: Notification.Target.deviceChanged) { [weak self] (_) in
+        NotificationObserver.addObserver(target: NotificationObserver.Target.deviceChanged) { [weak self] (_) in
             self?.tableView.reloadData()
         }.handle(by: observerBag)
         
-        Notification.addObserver(target: Notification.Target.deviceEventTriggered) { [weak self] (buttonEvent) in
+        NotificationObserver.addObserver(target: NotificationObserver.Target.deviceEventTriggered) { [weak self] (buttonEvent) in
             guard let self = self else { return }
             guard let buttonEvent = buttonEvent else { return }
             guard let currentMapping = self.currentMapping,
@@ -118,7 +118,7 @@ extension MappingButtonVC: NSTableViewDataSource, NSTableViewDelegate {
         }
         return cell
     }
-    func tableViewSelectionDidChange(_ notification: Notification) {
+    func tableViewSelectionDidChange(_ notification: NotificationObserver) {
         guard tableView.selectedRow >= 0 else { return }
         print("\(#function) row \(tableView.selectedRow)")
     }

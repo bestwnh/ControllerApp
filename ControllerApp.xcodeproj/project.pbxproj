@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A481CCA23D76A8600297B50 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A481CC923D76A8600297B50 /* Notification.swift */; };
+		3A481CCA23D76A8600297B50 /* NotificationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A481CC923D76A8600297B50 /* NotificationObserver.swift */; };
 		3A481CCC23D76DBF00297B50 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A481CCB23D76DBF00297B50 /* BaseVC.swift */; };
+		3A4D58E923E15C980068EFCA /* StickDeadzoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D58E823E15C980068EFCA /* StickDeadzoneView.swift */; };
+		3A4D58EB23E328D90068EFCA /* MirrorShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D58EA23E328D90068EFCA /* MirrorShaders.metal */; };
+		3A4D58ED23E329340068EFCA /* MirrorCamera.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A4D58EC23E329340068EFCA /* MirrorCamera.plist */; };
 		3A53677F23811FC800C9A5BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A53677E23811FC800C9A5BD /* AppDelegate.swift */; };
-		3A53678123811FC800C9A5BD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A53678023811FC800C9A5BD /* ViewController.swift */; };
+		3A53678123811FC800C9A5BD /* ConfigurationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A53678023811FC800C9A5BD /* ConfigurationVC.swift */; };
 		3A53678323811FCA00C9A5BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A53678223811FCA00C9A5BD /* Assets.xcassets */; };
 		3A53678623811FCA00C9A5BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A53678423811FCA00C9A5BD /* Main.storyboard */; };
 		3A53678C2381261200C9A5BD /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2829002366EBB800CC93FA /* Device.swift */; };
@@ -32,11 +35,14 @@
 /* Begin PBXFileReference section */
 		3A2828FE2365D75B00CC93FA /* IOUSBDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOUSBDetector.swift; sourceTree = "<group>"; };
 		3A2829002366EBB800CC93FA /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
-		3A481CC923D76A8600297B50 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		3A481CC923D76A8600297B50 /* NotificationObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationObserver.swift; sourceTree = "<group>"; };
 		3A481CCB23D76DBF00297B50 /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
+		3A4D58E823E15C980068EFCA /* StickDeadzoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickDeadzoneView.swift; sourceTree = "<group>"; };
+		3A4D58EA23E328D90068EFCA /* MirrorShaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = MirrorShaders.metal; sourceTree = "<group>"; };
+		3A4D58EC23E329340068EFCA /* MirrorCamera.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = MirrorCamera.plist; sourceTree = "<group>"; };
 		3A53677C23811FC800C9A5BD /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A53677E23811FC800C9A5BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3A53678023811FC800C9A5BD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3A53678023811FC800C9A5BD /* ConfigurationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationVC.swift; sourceTree = "<group>"; };
 		3A53678223811FCA00C9A5BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A53678523811FCA00C9A5BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3A53678723811FCA00C9A5BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -80,12 +86,15 @@
 		3A53677D23811FC800C9A5BD /* DemoApp */ = {
 			isa = PBXGroup;
 			children = (
+				3A4D58E823E15C980068EFCA /* StickDeadzoneView.swift */,
 				3A53677E23811FC800C9A5BD /* AppDelegate.swift */,
-				3A53678023811FC800C9A5BD /* ViewController.swift */,
+				3A53678023811FC800C9A5BD /* ConfigurationVC.swift */,
 				3A9839A12395D89500818D7E /* DeviceListVC.swift */,
 				3AD134F723C2B8B0009B1811 /* MappingButtonVC.swift */,
 				3A9839A323962D4200818D7E /* SceneKitVC.swift */,
 				3A9839A72396308900818D7E /* xboxController.scn */,
+				3A4D58EA23E328D90068EFCA /* MirrorShaders.metal */,
+				3A4D58EC23E329340068EFCA /* MirrorCamera.plist */,
 				3A53678223811FCA00C9A5BD /* Assets.xcassets */,
 				3A53678423811FCA00C9A5BD /* Main.storyboard */,
 				3A53678723811FCA00C9A5BD /* Info.plist */,
@@ -100,7 +109,7 @@
 				3AFBF3972361EF6B00522537 /* DriverHelper.swift */,
 				3A2828FE2365D75B00CC93FA /* IOUSBDetector.swift */,
 				3AEDD7AF239E97A70030C3EB /* SceneHelper.swift */,
-				3A481CC923D76A8600297B50 /* Notification.swift */,
+				3A481CC923D76A8600297B50 /* NotificationObserver.swift */,
 				3A481CCB23D76DBF00297B50 /* BaseVC.swift */,
 				3AAB5DAF23844624009F7465 /* Manager */,
 				3A2829022366EBBD00CC93FA /* Model */,
@@ -201,6 +210,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A4D58ED23E329340068EFCA /* MirrorCamera.plist in Resources */,
 				3A53678323811FCA00C9A5BD /* Assets.xcassets in Resources */,
 				3A9839A82396308900818D7E /* xboxController.scn in Resources */,
 				3A53678623811FCA00C9A5BD /* Main.storyboard in Resources */,
@@ -215,11 +225,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A53678C2381261200C9A5BD /* Device.swift in Sources */,
+				3A4D58E923E15C980068EFCA /* StickDeadzoneView.swift in Sources */,
 				3A481CCC23D76DBF00297B50 /* BaseVC.swift in Sources */,
+				3A4D58EB23E328D90068EFCA /* MirrorShaders.metal in Sources */,
 				3A9839A02394FE3400818D7E /* CollectionExtension.swift in Sources */,
 				3AD134F823C2B8B0009B1811 /* MappingButtonVC.swift in Sources */,
 				3AD134F623C29DB1009B1811 /* DeviceRumble.swift in Sources */,
-				3A481CCA23D76A8600297B50 /* Notification.swift in Sources */,
+				3A481CCA23D76A8600297B50 /* NotificationObserver.swift in Sources */,
 				3AEDD7B0239E97A70030C3EB /* SceneHelper.swift in Sources */,
 				3AEDD7AC239DC7790030C3EB /* DeviceConfiguration.swift in Sources */,
 				3A9839A22395D89500818D7E /* DeviceListVC.swift in Sources */,
@@ -227,7 +239,7 @@
 				3A53678D23814E0300C9A5BD /* DriverHelper.swift in Sources */,
 				3AEDD7AA239D42410030C3EB /* IOExtension.swift in Sources */,
 				3A9839A423962D4200818D7E /* SceneKitVC.swift in Sources */,
-				3A53678123811FC800C9A5BD /* ViewController.swift in Sources */,
+				3A53678123811FC800C9A5BD /* ConfigurationVC.swift in Sources */,
 				3A53677F23811FC800C9A5BD /* AppDelegate.swift in Sources */,
 				3AEDD7AE239DF3BB0030C3EB /* DeviceEvent.swift in Sources */,
 				3A53678E23814E0600C9A5BD /* IOUSBDetector.swift in Sources */,
