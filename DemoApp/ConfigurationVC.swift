@@ -30,12 +30,24 @@ class ConfigurationVC: BaseVC {
     @IBOutlet weak var rightDeadzoneSlider: NSSlider!
     @IBOutlet weak var rightCanvasView: StickDeadzoneView!
     
+    @IBOutlet weak var driverStatusLabel: NSTextField!
+    
+    @IBOutlet weak var downloadDriverButton: NSButton!
+    
     lazy var buttons: [NSButton] = [swapSticksButton, pretend360ControllerButton, leftStickInvertX, leftStickInvertY, rightStickInvertX, rightStickInvertY, leftStickNormalize, leftStickLinked, rightStickNormalize, rightStickLinked]
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         output("App start")
+        
+        if DriverHelper.isDriverInstalled {
+            driverStatusLabel.stringValue = "Driver installed."
+            downloadDriverButton.isHidden = true
+        } else {
+            driverStatusLabel.stringValue = "Driver not install yet."
+            downloadDriverButton.isHidden = false
+        }
         
         buttons.forEach{ $0.isEnabled = false }
         leftDeadzoneSlider.maxValue = 32767
@@ -174,12 +186,10 @@ class ConfigurationVC: BaseVC {
         }
         updateRightStickDeadzoneView()
     }
-    
-    override var representedObject: Any? {
-        didSet {
-        // Update the view, if already loaded.
-        }
+    @IBAction func clickDownloadDriverButton(_ sender: NSButton) {
+        DriverHelper.openDownloadPage()
     }
+    
 
     private func updateLeftStickDeadzoneView(x: CGFloat? = nil, y: CGFloat? = nil) {
         leftCanvasView.config(deadzone: leftDeadzoneSlider.integerValue,

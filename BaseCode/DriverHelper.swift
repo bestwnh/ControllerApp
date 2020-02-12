@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import Cocoa
 
 struct DriverHelper {
     static let driverName = "360Controller.kext"
@@ -20,16 +20,26 @@ struct DriverHelper {
         
         return dir.appendingPathComponent("Extensions")
     }
+    static var driverFilePath: URL? {
+        return rootDirectory?.appendingPathComponent(driverName, isDirectory: false)
+    }
     
-    static func infoPlistPath(of driver: String = driverName) -> URL? {
-        return rootDirectory?
-            .appendingPathComponent(driver)
+    static func infoPlistPath() -> URL? {
+        return driverFilePath?
             .appendingPathComponent("Contents")
             .appendingPathComponent("Info.plist")
     }
+    static var isDriverInstalled: Bool {
+        guard let filePath = driverFilePath?.path else { return false }
+        return FileManager.default.fileExists(atPath: filePath)
+    }
     
-    static func readDriverConfig(_ driver: String = driverName) -> [String: Any] {
-        guard let file = infoPlistPath(of: driver) else { return [:] }
+    static func openDownloadPage() {
+        NSWorkspace.shared.open(URL(string: "https://github.com/360Controller/360Controller/releases")!)
+    }
+    
+    static func readDriverConfig() -> [String: Any] {
+        guard let file = infoPlistPath() else { return [:] }
         do {
             let data = try Data(contentsOf: file)
             let plist = try PropertyListSerialization.propertyList(from: data, options: [], format: nil)
@@ -41,8 +51,8 @@ struct DriverHelper {
         }
     }
     
-    static func writeDriverConfig(driver: String = driverName, plist: Any) {
-        guard let file = infoPlistPath(of: driver) else { return }
+    static func writeDriverConfig(plist: Any) {
+        guard let file = infoPlistPath() else { return }
         do {
             let data = try PropertyListSerialization.data(fromPropertyList: plist, format: .xml, options: 0)
             let plistAttributes = try FileManager.default.attributesOfFileSystem(forPath: file.path)

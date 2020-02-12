@@ -23,6 +23,18 @@ class SceneKitVC: BaseVC {
         super.viewDidLoad()
         SceneHelper.basicConfig(scene: scene)
         
+        if let rightCamera = scene.rootNode.childNode(withName: "cameraTop", recursively: true) {
+            let flickerUp = SCNAction.customAction(duration: 1) { (node, _) in
+                node.light?.attenuationStartDistance = 1
+            }
+            
+            let flickerDown = SCNAction.customAction(duration: 1) { (node, _) in
+                node.light?.attenuationStartDistance = 100
+            }
+            
+            let action = SCNAction.repeatForever(SCNAction.sequence([flickerUp, flickerDown]))
+            rightCamera.runAction(action)
+        }
         mainSCNView.scene = scene
         mainSCNView.scene?.background.contents = NSColor.clear
         mainSCNView.allowsCameraControl = false
@@ -46,6 +58,7 @@ class SceneKitVC: BaseVC {
         rightSCNView.layer?.borderWidth = 2
         rightSCNView.layer?.borderColor = NSColor(deviceWhite: 0.5, alpha: 0.8).cgColor
 
+        
         if let path = Bundle.main.path(forResource: "MirrorCamera", ofType: "plist") {
             if let dict = NSDictionary(contentsOfFile: path)  {
                 let dict2 = dict as! [String : AnyObject]
@@ -55,10 +68,6 @@ class SceneKitVC: BaseVC {
             }
         }
         
-//        DeviceManager.shared.didTriggerEvent = { event in
-//
-//            SceneHelper.updateScene(scene: self.scene, event: event)
-//        }
         NotificationObserver.addObserver(target: NotificationObserver.Target.deviceEventTriggered) { [weak self] (buttonEvent) in
             guard let self = self else { return }
             guard let buttonEvent = buttonEvent else { return }
