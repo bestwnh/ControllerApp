@@ -19,6 +19,7 @@
 		3A53678C2381261200C9A5BD /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2829002366EBB800CC93FA /* Device.swift */; };
 		3A53678D23814E0300C9A5BD /* DriverHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFBF3972361EF6B00522537 /* DriverHelper.swift */; };
 		3A53678E23814E0600C9A5BD /* IOUSBDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2828FE2365D75B00CC93FA /* IOUSBDetector.swift */; };
+		3A8C416C23F3E66200962929 /* NSBezierPathExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C416B23F3E66200962929 /* NSBezierPathExtension.swift */; };
 		3A983999238F421900818D7E /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A983997238F421900818D7E /* DeviceManager.swift */; };
 		3A9839A02394FE3400818D7E /* CollectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A98399E2394FE3400818D7E /* CollectionExtension.swift */; };
 		3A9839A22395D89500818D7E /* DeviceListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9839A12395D89500818D7E /* DeviceListVC.swift */; };
@@ -47,6 +48,7 @@
 		3A53678523811FCA00C9A5BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3A53678723811FCA00C9A5BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A53678823811FCA00C9A5BD /* DemoApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DemoApp.entitlements; sourceTree = "<group>"; };
+		3A8C416B23F3E66200962929 /* NSBezierPathExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSBezierPathExtension.swift; sourceTree = "<group>"; };
 		3A983997238F421900818D7E /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
 		3A98399E2394FE3400818D7E /* CollectionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionExtension.swift; sourceTree = "<group>"; };
 		3A9839A12395D89500818D7E /* DeviceListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceListVC.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			children = (
 				3A98399E2394FE3400818D7E /* CollectionExtension.swift */,
 				3AEDD7A9239D42410030C3EB /* IOExtension.swift */,
+				3A8C416B23F3E66200962929 /* NSBezierPathExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 				3A983999238F421900818D7E /* DeviceManager.swift in Sources */,
 				3A53678D23814E0300C9A5BD /* DriverHelper.swift in Sources */,
 				3AEDD7AA239D42410030C3EB /* IOExtension.swift in Sources */,
+				3A8C416C23F3E66200962929 /* NSBezierPathExtension.swift in Sources */,
 				3A9839A423962D4200818D7E /* SceneKitVC.swift in Sources */,
 				3A53678123811FC800C9A5BD /* ConfigurationVC.swift in Sources */,
 				3A53677F23811FC800C9A5BD /* AppDelegate.swift in Sources */,

@@ -762,7 +762,7 @@
                                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                             </tableHeaderCell>
                                                             <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="aoc-Hh-7Qf">
-                                                                <font key="font" metaFont="system"/>
+                                                                <font key="font" metaFont="label" size="13"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -775,7 +775,7 @@
                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="iVu-aT-r8T">
                                                                             <rect key="frame" x="1" y="2" width="154" height="16"/>
                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="mpr-bA-UoV">
-                                                                                <font key="font" metaFont="system"/>
+                                                                                <font key="font" metaFont="label" size="13"/>
                                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
@@ -798,7 +798,7 @@
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </tableHeaderCell>
                                                             <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="g8e-gK-Lhx">
-                                                                <font key="font" metaFont="system"/>
+                                                                <font key="font" metaFont="label" size="13"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -814,7 +814,7 @@
                                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="2c1-MS-Pbl">
                                                                                     <rect key="frame" x="-2" y="4" width="131" height="16"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="Yfo-ir-sQQ">
-                                                                                        <font key="font" metaFont="system"/>
+                                                                                        <font key="font" metaFont="label" size="13"/>
                                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                                     </textFieldCell>
@@ -823,7 +823,7 @@
                                                                                     <rect key="frame" x="121" y="-5" width="67" height="32"/>
                                                                                     <buttonCell key="cell" type="push" title="Map" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vSl-qI-0Lv">
                                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                                        <font key="font" metaFont="system"/>
+                                                                                        <font key="font" metaFont="label" size="13"/>
                                                                                     </buttonCell>
                                                                                     <connections>
                                                                                         <action selector="clickMapButton:" target="itg-fe-2wN" id="4bf-76-xn6"/>
@@ -883,7 +883,7 @@
                                         <rect key="frame" x="106" y="106" width="134" height="32"/>
                                         <buttonCell key="cell" type="push" title="Map all buttons" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ftc-c0-HIa">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
+                                            <font key="font" metaFont="label" size="13"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="clickMapAllButtonsButton:" target="yhY-tb-Rfr" id="BEL-BO-oWj"/>
@@ -893,7 +893,7 @@
                                         <rect key="frame" x="108" y="-7" width="131" height="32"/>
                                         <buttonCell key="cell" type="push" title="Reset mapping" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pDV-ct-tTD">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
+                                            <font key="font" metaFont="label" size="13"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="clickResetMappingButton:" target="yhY-tb-Rfr" id="iYf-QI-UW6"/>
@@ -979,7 +979,7 @@
                                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                             </tableHeaderCell>
                                                             <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="QzS-Gy-tbx">
-                                                                <font key="font" metaFont="system"/>
+                                                                <font key="font" metaFont="label" size="13"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -999,7 +999,7 @@
                                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sEx-1J-WSu">
                                                                                     <rect key="frame" x="19" y="8" width="418" height="16"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="cIM-q7-55q">
-                                                                                        <font key="font" metaFont="system"/>
+                                                                                        <font key="font" metaFont="label" size="13"/>
                                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                                     </textFieldCell>
@@ -1097,7 +1097,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Invert X" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="A5o-Ru-Z8a">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
+                                                <font key="font" metaFont="label" size="13"/>
                                             </buttonCell>
                                             <connections>
                                                 <action selector="tapLeftStickInvertXButton:" target="XfG-lQ-9wD" id="3YC-Fp-OGX"/>
@@ -1108,7 +1108,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Invert Y" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ZXk-7Z-vPd">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
+                                                <font key="font" metaFont="label" size="13"/>
                                             </buttonCell>
                                             <connections>
                                                 <action selector="tapLeftStickInvertYButton:" target="XfG-lQ-9wD" id="THs-nj-O5R"/>
@@ -1119,7 +1119,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Normalize" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="W2v-jd-GYs">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
+                                                <font key="font" metaFont="label" size="13"/>
                                             </buttonCell>
                                             <connections>
                                                 <action selector="tapLeftStickNormalizeButton:" target="XfG-lQ-9wD" id="Dz3-Xn-od7"/>
@@ -1130,7 +1130,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Linked" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="S8J-10-2rB">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
+                                                <font key="font" metaFont="label" size="13"/>
                                             </buttonCell>
                                             <connections>
                                                 <action selector="tapLeftStickLinkedButton:" target="XfG-lQ-9wD" id="b29-fG-R1J"/>
@@ -1159,7 +1159,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Invert X" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="iOP-kd-iJv">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
+                                                <font key="font" metaFont="label" size="13"/>
                                             </buttonCell>
                                             <connections>
                                                 <action selector="tapRightStickInvertXButton:" target="XfG-lQ-9wD" id="Uhl-Q9-7A2"/>
@@ -1170,7 +1170,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Invert Y" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="vXS-Ls-6sM">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
+                                                <font key="font" metaFont="label" size="13"/>
                                             </buttonCell>
                                             <connections>
                                                 <action selector="tapRightStickInvertYButton:" target="XfG-lQ-9wD" id="r9F-fY-xHB"/>
@@ -1181,7 +1181,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Normalize" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="uwD-og-JWh">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
+                                                <font key="font" metaFont="label" size="13"/>
                                             </buttonCell>
                                             <connections>
                                                 <action selector="tapRightStickNormalizeButton:" target="XfG-lQ-9wD" id="fpH-Py-kjR"/>
@@ -1192,7 +1192,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Linked" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="LhE-9e-DjI">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
+                                                <font key="font" metaFont="label" size="13"/>
                                             </buttonCell>
                                             <connections>
                                                 <action selector="tapRightStickLinkedButton:" target="XfG-lQ-9wD" id="BpF-Uc-1lB"/>
@@ -1249,7 +1249,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Swap Sticks" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="pQj-47-SpJ">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" metaFont="label" size="13"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="tapSwapSticksButton:" target="XfG-lQ-9wD" id="6fg-Va-X3m"/>
@@ -1260,7 +1260,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Pretend to 360 controller" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="EMI-pw-7Yv">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" metaFont="label" size="13"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="tapPretend360ControllerButton:" target="XfG-lQ-9wD" id="qGL-ED-eCd"/>
@@ -1281,7 +1281,7 @@
                                         <rect key="frame" x="109" y="-7" width="140" height="32"/>
                                         <buttonCell key="cell" type="push" title="Download Driver" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="L1m-GW-bb7">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
+                                            <font key="font" metaFont="label" size="13"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="clickDownloadDriverButton:" target="XfG-lQ-9wD" id="TSZ-eY-pTv"/>
@@ -1327,8 +1327,8 @@
         <scene sceneID="2JC-e5-Imf">
             <objects>
                 <viewController id="Xre-SY-rBh" customClass="SceneKitVC" customModule="DemoApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="f5M-Iy-8qY">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="355"/>
+                    <view key="view" misplaced="YES" id="f5M-Iy-8qY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="363"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="20l-HV-2dL">
@@ -1351,7 +1351,7 @@
                                                 </constraints>
                                                 <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="26w-45-abj">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
+                                                    <font key="font" metaFont="label" size="13"/>
                                                 </buttonCell>
                                                 <connections>
                                                     <action selector="tapButton1:" target="Xre-SY-rBh" id="TZG-n8-Voj"/>
@@ -1450,7 +1450,7 @@
                 </viewController>
                 <customObject id="VFW-uq-LYS" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1201" y="938"/>
+            <point key="canvasLocation" x="1207" y="972"/>
         </scene>
     </scenes>
     <resources>

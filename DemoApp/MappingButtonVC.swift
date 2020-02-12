@@ -118,7 +118,7 @@ extension MappingButtonVC: NSTableViewDataSource, NSTableViewDelegate {
         }
         return cell
     }
-    func tableViewSelectionDidChange(_ notification: NotificationObserver) {
+    func tableViewSelectionDidChange(_ notification: Notification) {
         guard tableView.selectedRow >= 0 else { return }
         print("\(#function) row \(tableView.selectedRow)")
     }
