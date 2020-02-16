@@ -37,7 +37,7 @@ class SceneHelper {
             let translate = CATransform3DTranslate(node.pivot, 0, 0, -CGFloat(value / 50))
             let rotate = CATransform3DRotate(translate, CGFloat.pi * CGFloat(sqrt(x * x + y * y) / 10), CGFloat(x), CGFloat(y), 0)
             node.transform = rotate
-            highlightNode(shouldHighlight: x != 0 || y != 0)
+            highlightNode(shouldHighlight: x != 0 || y != 0 || value != 0)
         }
         func tapButton(value: Float) {
             let translate = CATransform3DTranslate(node.pivot, 0, 0, -CGFloat(value / 50))
