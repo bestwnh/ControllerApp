@@ -94,8 +94,6 @@ private extension DeviceManager {
     
     func startMonitor(device: Device) {
         guard let hidDevice = device.hidDevice, let hidDevicePtrPtr = device.hidDevicePtrPtr else { return }
-        var devicePathCString:[CChar] = [CChar](repeating: 0, count: 128)
-        IORegistryEntryGetPath(device.rawDevice, "IOService", &devicePathCString)
         
         var elements: Unmanaged<CFArray>?
         guard hidDevice.copyMatchingElements(hidDevicePtrPtr, nil, &elements) == kIOReturnSuccess,
