@@ -61,7 +61,11 @@ class SceneHelper {
 
             SCNTransaction.begin()
 
-            material.emission.contents = shouldHighlight ? NSColor.red : NSColor.black
+            if let color = material.diffuse.contents as? NSColor, color == NSColor(0xcecece) {
+                material.multiply.contents = shouldHighlight ? NSColor.red : NSColor.white
+            } else {
+                material.emission.contents = shouldHighlight ? NSColor.red : NSColor.black
+            }
 
             SCNTransaction.commit()
         }

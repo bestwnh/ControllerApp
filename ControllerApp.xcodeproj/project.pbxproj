@@ -25,6 +25,7 @@
 		3A9839A22395D89500818D7E /* DeviceListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9839A12395D89500818D7E /* DeviceListVC.swift */; };
 		3A9839A423962D4200818D7E /* SceneKitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9839A323962D4200818D7E /* SceneKitVC.swift */; };
 		3A9839A82396308900818D7E /* xboxController.scn in Resources */ = {isa = PBXBuildFile; fileRef = 3A9839A72396308900818D7E /* xboxController.scn */; };
+		3AB11A3C2402D4F100619505 /* NSColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB11A3B2402D4F100619505 /* NSColorExtension.swift */; };
 		3AD134F623C29DB1009B1811 /* DeviceRumble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD134F523C29DB1009B1811 /* DeviceRumble.swift */; };
 		3AD134F823C2B8B0009B1811 /* MappingButtonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD134F723C2B8B0009B1811 /* MappingButtonVC.swift */; };
 		3AEDD7AA239D42410030C3EB /* IOExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEDD7A9239D42410030C3EB /* IOExtension.swift */; };
@@ -54,6 +55,7 @@
 		3A9839A12395D89500818D7E /* DeviceListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceListVC.swift; sourceTree = "<group>"; };
 		3A9839A323962D4200818D7E /* SceneKitVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitVC.swift; sourceTree = "<group>"; };
 		3A9839A72396308900818D7E /* xboxController.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = xboxController.scn; sourceTree = "<group>"; };
+		3AB11A3B2402D4F100619505 /* NSColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSColorExtension.swift; sourceTree = "<group>"; };
 		3AD134F523C29DB1009B1811 /* DeviceRumble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRumble.swift; sourceTree = "<group>"; };
 		3AD134F723C2B8B0009B1811 /* MappingButtonVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MappingButtonVC.swift; sourceTree = "<group>"; };
 		3AEDD7A9239D42410030C3EB /* IOExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOExtension.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				3A98399E2394FE3400818D7E /* CollectionExtension.swift */,
 				3AEDD7A9239D42410030C3EB /* IOExtension.swift */,
 				3A8C416B23F3E66200962929 /* NSBezierPathExtension.swift */,
+				3AB11A3B2402D4F100619505 /* NSColorExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 			files = (
 				3A53678C2381261200C9A5BD /* Device.swift in Sources */,
 				3A4D58E923E15C980068EFCA /* StickDeadzoneView.swift in Sources */,
+				3AB11A3C2402D4F100619505 /* NSColorExtension.swift in Sources */,
 				3A481CCC23D76DBF00297B50 /* BaseVC.swift in Sources */,
 				3A4D58EB23E328D90068EFCA /* MirrorShaders.metal in Sources */,
 				3A9839A02394FE3400818D7E /* CollectionExtension.swift in Sources */,

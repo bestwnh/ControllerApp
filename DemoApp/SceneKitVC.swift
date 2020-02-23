@@ -72,12 +72,46 @@ class SceneKitVC: BaseVC {
                 default: break
             }
         }.handle(by: observerBag)
+        
+        DistributedNotificationCenter.default.addObserver(self, selector: #selector(interfaceModeChanged(sender:)), name: NSNotification.Name(rawValue: "AppleInterfaceThemeChangedNotification"), object: nil)
     }
     
     override func viewWillAppear() {
         super.viewWillAppear()
 //        view.window?.isOpaque = false
 //        view.window?.backgroundColor = .clear
+    }
+    
+    @objc
+    func interfaceModeChanged(sender: NSNotification) {
+        let isDarkMode: Bool = {
+            if #available(OSX 10.14, *) {
+                if NSApp.effectiveAppearance == NSAppearance(named: .darkAqua) {
+                    return true
+                }
+            }
+            return false
+        }()
+        
+        if let node = scene.rootNode.childNode(withName: "body1", recursively: true) {
+            node.geometry?.materials.first?.diffuse.contents = isDarkMode ? NSColor(0x1d1d1d) : NSColor(0xcecece)
+        }
+        
+        if let node = scene.rootNode.childNode(withName: "button1a", recursively: true) {
+            node.geometry?.materials.first?.diffuse.contents = isDarkMode ? NSColor(0x1d1d1d) : NSColor(0xcecece)
+        }
+        
+        if let node = scene.rootNode.childNode(withName: "button2a", recursively: true) {
+            node.geometry?.materials.first?.diffuse.contents = isDarkMode ? NSColor(0x1d1d1d) : NSColor(0xcecece)
+        }
+        
+        if let node = scene.rootNode.childNode(withName: "button1b", recursively: true) {
+            node.geometry?.materials.first?.diffuse.contents = isDarkMode ? NSColor(0xcecece) : NSColor(0x282828)
+        }
+        
+        if let node = scene.rootNode.childNode(withName: "button2b", recursively: true) {
+            node.geometry?.materials.first?.diffuse.contents = isDarkMode ? NSColor(0xcecece) : NSColor(0x282828)
+        }
     }
     
     override func viewDidAppear() {
@@ -93,7 +127,14 @@ class SceneKitVC: BaseVC {
     }
     
     @IBAction func changeSlider1(_ sender: NSSlider) {
-       
+        configNodeLight(name: "cameraLeft", value: CGFloat(sender.floatValue * 20))
+        configNodeLight(name: "cameraRight", value: CGFloat(sender.floatValue * 20))
+        configNodeLight(name: "cameraTop", value: CGFloat(sender.floatValue * 10))
+
+    }
+    private func configNodeLight(name: String, value: CGFloat) {
+        guard let node = scene.rootNode.childNode(withName: name, recursively: true) else { return }
+        node.light?.intensity = value
     }
     @IBAction func changeSlider2(_ sender: NSSlider) {
 
