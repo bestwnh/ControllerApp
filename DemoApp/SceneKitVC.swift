@@ -130,14 +130,17 @@ class SceneKitVC: BaseVC {
         configNodeLight(name: "cameraLeft", value: CGFloat(sender.floatValue * 20))
         configNodeLight(name: "cameraRight", value: CGFloat(sender.floatValue * 20))
         configNodeLight(name: "cameraTop", value: CGFloat(sender.floatValue * 10))
-
+        
     }
     private func configNodeLight(name: String, value: CGFloat) {
         guard let node = scene.rootNode.childNode(withName: name, recursively: true) else { return }
         node.light?.intensity = value
     }
     @IBAction func changeSlider2(_ sender: NSSlider) {
-
+        if let node = scene.rootNode.childNode(withName: "button_cross", recursively: true) {
+            let rotate = CATransform3DRotate(node.pivot, CGFloat.pi * -CGFloat(sender.floatValue / 100 * 0.05), 1, 1, 0)
+            node.transform = rotate
+        }
     }
     
     private func config(layer: CAShapeLayer, addTo parentView: NSView) {
@@ -146,7 +149,7 @@ class SceneKitVC: BaseVC {
 
         layer.path = circularPath.cgPath
         layer.fillColor = NSColor.clear.cgColor
-        layer.strokeColor = NSColor.red.cgColor
+        layer.strokeColor = NSColor(red: 0.28, green: 0.55, blue: 0.21, alpha: 1.0).cgColor
         layer.lineCap = .butt
         layer.lineWidth = 10.0
         layer.strokeStart = 0

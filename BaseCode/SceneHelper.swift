@@ -21,6 +21,12 @@ class SceneHelper {
         configButtonPivot(scene: scene, nodeName: DeviceEvent.Mode.Button.back.nodeName)
         configButtonPivot(scene: scene, nodeName: DeviceEvent.Mode.Button.start.nodeName)
         configButtonPivot(scene: scene, nodeName: DeviceEvent.Mode.Button.home.nodeName)
+        
+        // cross button is four event in one button, just need to config one of them
+        configButtonPivot(scene: scene, nodeName: DeviceEvent.Mode.Button.left.nodeName)
+//        configButtonPivot(scene: scene, nodeName: DeviceEvent.Mode.Button.right.nodeName)
+//        configButtonPivot(scene: scene, nodeName: DeviceEvent.Mode.Button.up.nodeName)
+//        configButtonPivot(scene: scene, nodeName: DeviceEvent.Mode.Button.down.nodeName)
 
         configTriggerPivot(scene: scene, nodeName: DeviceEvent.Mode.Axis.leftTrigger.nodeName)
         configTriggerPivot(scene: scene, nodeName: DeviceEvent.Mode.Axis.rightTrigger.nodeName)
@@ -44,6 +50,11 @@ class SceneHelper {
             node.transform = translate
             highlightNode(shouldHighlight: value != 0)
         }
+        func tapCrossButton(x: Float, y: Float) {
+            let rotate = CATransform3DRotate(node.pivot, CGFloat.pi * -CGFloat(sqrt(x * x + y * y)) * 0.05, CGFloat(x), CGFloat(y), 0)
+            node.transform = rotate
+            highlightNode(shouldHighlight: x != 0 || y != 0)
+        }
         func tapTopButton(value: Float, reverse: Bool) {
             let scaleValue: CGFloat = 0.01 * (reverse ? -1 : 1)
             let rotate = CATransform3DRotate(node.pivot, CGFloat.pi * scaleValue * CGFloat(value), 0, 0, 1)
@@ -62,9 +73,9 @@ class SceneHelper {
             SCNTransaction.begin()
 
             if let color = material.diffuse.contents as? NSColor, color == NSColor(0xcecece) {
-                material.multiply.contents = shouldHighlight ? NSColor.red : NSColor.white
+                material.multiply.contents = shouldHighlight ? NSColor.gray : NSColor.white
             } else {
-                material.emission.contents = shouldHighlight ? NSColor.red : NSColor.black
+                material.emission.contents = shouldHighlight ? NSColor.gray : NSColor.black
             }
 
             SCNTransaction.commit()
@@ -92,7 +103,23 @@ class SceneHelper {
             if let value = DeviceManager.shared.deviceEvent(mode: event.mode)?.value {
                 tapButton(value: value)
             }
-        case .button(.up), .button(.down), .button(.left), .button(.right): break
+        case .button(.up), .button(.down), .button(.left), .button(.right):
+            if let up = DeviceManager.shared.deviceEvent(mode: .button(.up))?.value,
+                let down = DeviceManager.shared.deviceEvent(mode: .button(.down))?.value,
+                let left = DeviceManager.shared.deviceEvent(mode: .button(.left))?.value,
+                let right = DeviceManager.shared.deviceEvent(mode: .button(.right))?.value {
+                let x: Float = {
+                    if up > 0 { return 1 }
+                    if down > 0 { return -1 }
+                    return 0
+                }()
+                let y: Float = {
+                    if left > 0 { return 1 }
+                    if right > 0 { return -1 }
+                    return 0
+                }()
+                tapCrossButton(x: x, y: y)
+            }
         case .button(.lb):
             if let value = DeviceManager.shared.deviceEvent(mode: event.mode)?.value {
                 tapTopButton(value: value, reverse: false)
