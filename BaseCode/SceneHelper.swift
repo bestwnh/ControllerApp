@@ -10,7 +10,7 @@ import Foundation
 import SceneKit
 
 class SceneHelper {
-    static func basicConfig(scene: SCNScene) {
+    static func reset(scene: SCNScene) {
         configStickPivot(scene: scene, nodeName: DeviceEvent.Mode.Button.leftStick.nodeName)
         configStickPivot(scene: scene, nodeName: DeviceEvent.Mode.Button.rightStick.nodeName)
 
@@ -33,7 +33,20 @@ class SceneHelper {
         
         configTopButtonPivot(scene: scene, nodeName: DeviceEvent.Mode.Button.lb.nodeName, offset: 0.2)
         configTopButtonPivot(scene: scene, nodeName: DeviceEvent.Mode.Button.rb.nodeName, offset: -0.2)
+    }
+    static func highlightNode(_ node: SCNNode, shouldHighlight: Bool) {
+        
+        let material = node.geometry!.firstMaterial!
 
+        SCNTransaction.begin()
+
+        if let color = material.diffuse.contents as? NSColor, color == NSColor(0xcecece) {
+            material.multiply.contents = shouldHighlight ? NSColor.gray : NSColor.white
+        } else {
+            material.emission.contents = shouldHighlight ? NSColor.gray : NSColor.black
+        }
+
+        SCNTransaction.commit()
     }
     
     static func updateScene(scene: SCNScene, event: DeviceEvent) {
@@ -43,42 +56,28 @@ class SceneHelper {
             let translate = CATransform3DTranslate(node.pivot, 0, 0, -CGFloat(value / 50))
             let rotate = CATransform3DRotate(translate, CGFloat.pi * CGFloat(sqrt(x * x + y * y) / 10), CGFloat(x), CGFloat(y), 0)
             node.transform = rotate
-            highlightNode(shouldHighlight: x != 0 || y != 0 || value != 0)
+            highlightNode(node, shouldHighlight: x != 0 || y != 0 || value != 0)
         }
         func tapButton(value: Float) {
             let translate = CATransform3DTranslate(node.pivot, 0, 0, -CGFloat(value / 50))
             node.transform = translate
-            highlightNode(shouldHighlight: value != 0)
+            highlightNode(node, shouldHighlight: value != 0)
         }
         func tapCrossButton(x: Float, y: Float) {
             let rotate = CATransform3DRotate(node.pivot, CGFloat.pi * -CGFloat(sqrt(x * x + y * y)) * 0.05, CGFloat(x), CGFloat(y), 0)
             node.transform = rotate
-            highlightNode(shouldHighlight: x != 0 || y != 0)
+            highlightNode(node, shouldHighlight: x != 0 || y != 0)
         }
         func tapTopButton(value: Float, reverse: Bool) {
             let scaleValue: CGFloat = 0.01 * (reverse ? -1 : 1)
             let rotate = CATransform3DRotate(node.pivot, CGFloat.pi * scaleValue * CGFloat(value), 0, 0, 1)
             node.transform = rotate
-            highlightNode(shouldHighlight: value != 0)
+            highlightNode(node, shouldHighlight: value != 0)
         }
         func moveTrigger(value: Float) {
             let rotate = CATransform3DRotate(node.pivot, CGFloat.pi * -CGFloat(value * 0.08), 1, 0, 0)
             node.transform = rotate
-            highlightNode(shouldHighlight: value != 0)
-        }
-        func highlightNode(shouldHighlight: Bool) {
-            
-            let material = node.geometry!.firstMaterial!
-
-            SCNTransaction.begin()
-
-            if let color = material.diffuse.contents as? NSColor, color == NSColor(0xcecece) {
-                material.multiply.contents = shouldHighlight ? NSColor.gray : NSColor.white
-            } else {
-                material.emission.contents = shouldHighlight ? NSColor.gray : NSColor.black
-            }
-
-            SCNTransaction.commit()
+            highlightNode(node, shouldHighlight: value != 0)
         }
         
         switch event.mode {
@@ -134,33 +133,37 @@ class SceneHelper {
 
 fileprivate extension SceneHelper {
     static func configStickPivot(scene: SCNScene, nodeName: String) {
-        guard let stick = scene.rootNode.childNode(withName: nodeName, recursively: true) else { return }
+        guard let node = scene.rootNode.childNode(withName: nodeName, recursively: true) else { return }
         
-        let center = stick.boundingSphere.center
-        stick.pivot = SCNMatrix4MakeTranslation(center.x, center.y, center.z - 0.055)
-        stick.transform = stick.pivot
+        let center = node.boundingSphere.center
+        node.pivot = SCNMatrix4MakeTranslation(center.x, center.y, center.z - 0.055)
+        node.transform = node.pivot
+        highlightNode(node, shouldHighlight: false)
     }
     
     static func configButtonPivot(scene: SCNScene, nodeName: String) {
-        guard let stick = scene.rootNode.childNode(withName: nodeName, recursively: true) else { return }
+        guard let node = scene.rootNode.childNode(withName: nodeName, recursively: true) else { return }
         
-        let center = stick.boundingSphere.center
-        stick.pivot = SCNMatrix4MakeTranslation(center.x, center.y, center.z)
-        stick.transform = stick.pivot
+        let center = node.boundingSphere.center
+        node.pivot = SCNMatrix4MakeTranslation(center.x, center.y, center.z)
+        node.transform = node.pivot
+        highlightNode(node, shouldHighlight: false)
     }
     
     static func configTriggerPivot(scene: SCNScene, nodeName: String) {
-        guard let stick = scene.rootNode.childNode(withName: nodeName, recursively: true) else { return }
+        guard let node = scene.rootNode.childNode(withName: nodeName, recursively: true) else { return }
         
-        let center = stick.boundingSphere.center
-        stick.pivot = SCNMatrix4MakeTranslation(center.x, center.y, center.z + 0.3)
-        stick.transform = stick.pivot
+        let center = node.boundingSphere.center
+        node.pivot = SCNMatrix4MakeTranslation(center.x, center.y, center.z + 0.3)
+        node.transform = node.pivot
+        highlightNode(node, shouldHighlight: false)
     }
     static func configTopButtonPivot(scene: SCNScene, nodeName: String, offset: CGFloat) {
-        guard let stick = scene.rootNode.childNode(withName: nodeName, recursively: true) else { return }
+        guard let node = scene.rootNode.childNode(withName: nodeName, recursively: true) else { return }
         
-        let center = stick.boundingSphere.center
-        stick.pivot = SCNMatrix4MakeTranslation(center.x + offset, center.y, center.z)
-        stick.transform = stick.pivot
+        let center = node.boundingSphere.center
+        node.pivot = SCNMatrix4MakeTranslation(center.x + offset, center.y, center.z)
+        node.transform = node.pivot
+        highlightNode(node, shouldHighlight: false)
     }
 }

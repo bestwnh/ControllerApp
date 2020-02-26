@@ -165,4 +165,7 @@ class StickDeadzoneView: NSView {
         }
         needsDisplay = true
     }
+    func reset() {
+        config(deadzone: 0, isLinked: false, isNormalize: false, x: 0, y: 0)
+    }
 }

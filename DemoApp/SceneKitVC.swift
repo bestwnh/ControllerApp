@@ -23,7 +23,7 @@ class SceneKitVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        SceneHelper.basicConfig(scene: scene)
+        SceneHelper.reset(scene: scene)
         
         mainSCNView.scene = scene
         mainSCNView.scene?.background.contents = NSColor.clear
@@ -71,6 +71,11 @@ class SceneKitVC: BaseVC {
                     self.rightProgressLayer.strokeEnd = CGFloat(buttonEvent.value)
                 default: break
             }
+        }.handle(by: observerBag)
+        NotificationObserver.addObserver(target: NotificationObserver.Target.currentDeviceChanged) { [weak self] (_) in
+            guard let self = self else { return }
+            SceneHelper.reset(scene: self.scene)
+
         }.handle(by: observerBag)
         
         DistributedNotificationCenter.default.addObserver(self, selector: #selector(interfaceModeChanged(sender:)), name: NSNotification.Name(rawValue: "AppleInterfaceThemeChangedNotification"), object: nil)

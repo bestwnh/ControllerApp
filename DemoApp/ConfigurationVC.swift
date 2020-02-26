@@ -68,13 +68,16 @@ class ConfigurationVC: BaseVC {
             default: break
             }
         }.handle(by: observerBag)
-        NotificationObserver.addObserver(target: NotificationObserver.Target.deviceChanged) { [weak self] (_) in
+        NotificationObserver.addObserver(target: NotificationObserver.Target.currentDeviceChanged) { [weak self] (_) in
             guard let self = self else { return }
             self.handleDeviceChanged()
         }.handle(by: observerBag)
     }
     
     func handleDeviceChanged() {
+        leftCanvasView.reset()
+        rightCanvasView.reset()
+        
         if let device = DeviceManager.shared.currentDevice {
             output("binded device: \(device.displayName)")
             

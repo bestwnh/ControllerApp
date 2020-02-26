@@ -10,7 +10,8 @@ import Foundation
 
 extension NotificationObserver.Target {
     static let deviceEventTriggered = ObserverTarget<DeviceEvent>(name: "deviceEventTriggered")
-    static let deviceChanged = ObserverTarget<Nil>(name: "deviceChanged")
+    static let currentDeviceChanged = ObserverTarget<Nil>(name: "currentDeviceChanged")
+    static let deviceListChanged = ObserverTarget<Nil>(name: "deviceListChanged")
 }
 
 final class DeviceManager {
@@ -19,7 +20,7 @@ final class DeviceManager {
 
     private(set) var deviceList: [Device] = [] {
         didSet {
-            NotificationObserver.post(target: NotificationObserver.Target.deviceChanged, param: nil)
+            NotificationObserver.post(target: NotificationObserver.Target.deviceListChanged, param: nil)
         }
     }
     private(set) var currentDevice: Device? {
@@ -36,7 +37,7 @@ final class DeviceManager {
                 rumble?.startRumbleMotor(ffDevice: device.ffDevice)
             }
 
-            NotificationObserver.post(target: NotificationObserver.Target.deviceChanged, param: nil)
+            NotificationObserver.post(target: NotificationObserver.Target.currentDeviceChanged, param: nil)
         }
     }
     

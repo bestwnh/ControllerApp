@@ -17,7 +17,7 @@ class DeviceListVC: BaseVC {
         super.viewDidLoad()
         // Do view setup here.
         tableView.reloadData()
-        NotificationObserver.addObserver(target: NotificationObserver.Target.deviceChanged) { [weak self] (_) in
+        NotificationObserver.addObserver(target: NotificationObserver.Target.deviceListChanged) { [weak self] (_) in
             guard let self = self else { return }
             self.deviceList = DeviceManager.shared.deviceList
             self.tableView.reloadData()
@@ -33,7 +33,7 @@ extension DeviceListVC: NSTableViewDataSource, NSTableViewDelegate {
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         guard let cell = tableView.makeView(withIdentifier: tableColumn!.identifier, owner: self) as?  NSTableCellView else { return nil }
         let device = deviceList[row]
-        cell.textField?.stringValue = "\(device.displayName)(\(device.rawDevice))"
+        cell.textField?.stringValue = "\(device.serialNumber): \(device.displayName)"
         return cell
     }
     func tableViewSelectionDidChange(_ notification: Notification) {

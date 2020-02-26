@@ -31,7 +31,7 @@ class MappingButtonVC: BaseVC {
         // Do view setup here.
         tableView.reloadData()
 
-        NotificationObserver.addObserver(target: NotificationObserver.Target.deviceChanged) { [weak self] (_) in
+        NotificationObserver.addObserver(target: NotificationObserver.Target.currentDeviceChanged) { [weak self] (_) in
             self?.tableView.reloadData()
         }.handle(by: observerBag)
         
