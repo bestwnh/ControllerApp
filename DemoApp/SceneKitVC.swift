@@ -39,6 +39,7 @@ class SceneKitVC: BaseVC {
         leftSCNView.layer?.borderWidth = 2
         leftSCNView.layer?.borderColor = NSColor(deviceWhite: 0.5, alpha: 0.8).cgColor
         config(layer: leftProgressLayer, addTo: leftSCNView)
+        SceneHelper.mirror(sceneView: leftSCNView)
         
         rightSCNView.wantsLayer = true
         rightSCNView.scene = scene
@@ -49,15 +50,7 @@ class SceneKitVC: BaseVC {
         rightSCNView.layer?.borderWidth = 2
         rightSCNView.layer?.borderColor = NSColor(deviceWhite: 0.5, alpha: 0.8).cgColor
         config(layer: rightProgressLayer, addTo: rightSCNView)
-        
-        if let path = Bundle.main.path(forResource: "MirrorCamera", ofType: "plist") {
-            if let dict = NSDictionary(contentsOfFile: path)  {
-                let dict2 = dict as! [String : AnyObject]
-                let technique = SCNTechnique(dictionary:dict2)
-                leftSCNView.technique = technique
-                rightSCNView.technique = technique
-            }
-        }
+        SceneHelper.mirror(sceneView: rightSCNView)
         
         NotificationObserver.addObserver(target: NotificationObserver.Target.deviceEventTriggered) { [weak self] (buttonEvent) in
             guard let self = self else { return }
@@ -77,8 +70,22 @@ class SceneKitVC: BaseVC {
             SceneHelper.reset(scene: self.scene)
 
         }.handle(by: observerBag)
-        
-        DistributedNotificationCenter.default.addObserver(self, selector: #selector(interfaceModeChanged(sender:)), name: NSNotification.Name(rawValue: "AppleInterfaceThemeChangedNotification"), object: nil)
+        NotificationObserver.addObserver(target: NotificationObserver.Target.uiModeChanged) { [weak self] (_) in
+            
+            let cellColor = AppState.isDarkMode ? NSColor(0x1d1d1d) : NSColor(0xcecece)
+            let contentColor = AppState.isDarkMode ? NSColor(0xcecece) : NSColor(0x282828)
+            
+            func updateNode(name:String, color: NSColor) {
+                self?.scene.rootNode.childNode(withName: name, recursively: true)?
+                    .geometry?.materials.first?.diffuse.contents = color
+            }
+            updateNode(name: "body1", color: cellColor)
+            updateNode(name: "button1a", color: cellColor)
+            updateNode(name: "button2a", color: cellColor)
+            updateNode(name: "button1b", color: contentColor)
+            updateNode(name: "button2b", color: contentColor)
+
+        }.handle(by: observerBag)
     }
     
     override func viewWillAppear() {
@@ -87,45 +94,8 @@ class SceneKitVC: BaseVC {
 //        view.window?.backgroundColor = .clear
     }
     
-    @objc
-    func interfaceModeChanged(sender: NSNotification) {
-        let isDarkMode: Bool = {
-            if #available(OSX 10.14, *) {
-                if NSApp.effectiveAppearance == NSAppearance(named: .darkAqua) {
-                    return true
-                }
-            }
-            return false
-        }()
-        
-        if let node = scene.rootNode.childNode(withName: "body1", recursively: true) {
-            node.geometry?.materials.first?.diffuse.contents = isDarkMode ? NSColor(0x1d1d1d) : NSColor(0xcecece)
-        }
-        
-        if let node = scene.rootNode.childNode(withName: "button1a", recursively: true) {
-            node.geometry?.materials.first?.diffuse.contents = isDarkMode ? NSColor(0x1d1d1d) : NSColor(0xcecece)
-        }
-        
-        if let node = scene.rootNode.childNode(withName: "button2a", recursively: true) {
-            node.geometry?.materials.first?.diffuse.contents = isDarkMode ? NSColor(0x1d1d1d) : NSColor(0xcecece)
-        }
-        
-        if let node = scene.rootNode.childNode(withName: "button1b", recursively: true) {
-            node.geometry?.materials.first?.diffuse.contents = isDarkMode ? NSColor(0xcecece) : NSColor(0x282828)
-        }
-        
-        if let node = scene.rootNode.childNode(withName: "button2b", recursively: true) {
-            node.geometry?.materials.first?.diffuse.contents = isDarkMode ? NSColor(0xcecece) : NSColor(0x282828)
-        }
-    }
-    
-    override func viewDidAppear() {
-        super.viewDidAppear()
-        
-        
-    }
     @IBAction func tapButton1(_ sender: NSButton) {
-        print(DeviceManager.shared.currentDevice?.configuration)
+
     }
     @IBAction func changeCircleSlider(_ sender: NSSlider) {
         
@@ -142,10 +112,7 @@ class SceneKitVC: BaseVC {
         node.light?.intensity = value
     }
     @IBAction func changeSlider2(_ sender: NSSlider) {
-        if let node = scene.rootNode.childNode(withName: "button_cross", recursively: true) {
-            let rotate = CATransform3DRotate(node.pivot, CGFloat.pi * -CGFloat(sender.floatValue / 100 * 0.05), 1, 1, 0)
-            node.transform = rotate
-        }
+ 
     }
     
     private func config(layer: CAShapeLayer, addTo parentView: NSView) {

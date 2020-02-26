@@ -10,6 +10,12 @@ import Foundation
 import SceneKit
 
 class SceneHelper {
+    static func mirror(sceneView: SCNView) {
+        guard let filePath = Bundle.main.path(forResource: "MirrorCamera", ofType: "plist"),
+            let dict = NSDictionary(contentsOfFile: filePath) as? [String: AnyObject] else { return }
+        let technique = SCNTechnique(dictionary:dict)
+        sceneView.technique = technique
+    }
     static func reset(scene: SCNScene) {
         configStickPivot(scene: scene, nodeName: DeviceEvent.Mode.Button.leftStick.nodeName)
         configStickPivot(scene: scene, nodeName: DeviceEvent.Mode.Button.rightStick.nodeName)

@@ -43,7 +43,6 @@ struct DriverHelper {
         do {
             let data = try Data(contentsOf: file)
             let plist = try PropertyListSerialization.propertyList(from: data, options: [], format: nil)
-//            print(plist)
             return plist as? [String: Any] ?? [:]
         } catch {
             print("load file: \(file) failed with error: \(error)")

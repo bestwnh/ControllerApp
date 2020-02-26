@@ -12,6 +12,8 @@
 		3A4D58E923E15C980068EFCA /* StickDeadzoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D58E823E15C980068EFCA /* StickDeadzoneView.swift */; };
 		3A4D58EB23E328D90068EFCA /* MirrorShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D58EA23E328D90068EFCA /* MirrorShaders.metal */; };
 		3A4D58ED23E329340068EFCA /* MirrorCamera.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A4D58EC23E329340068EFCA /* MirrorCamera.plist */; };
+		3A4DAAD42406832400E383CB /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4DAAD32406832400E383CB /* NotificationExtension.swift */; };
+		3A4DAAD8240685FC00E383CB /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4DAAD7240685FC00E383CB /* AppState.swift */; };
 		3A53677F23811FC800C9A5BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A53677E23811FC800C9A5BD /* AppDelegate.swift */; };
 		3A53678123811FC800C9A5BD /* ConfigurationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A53678023811FC800C9A5BD /* ConfigurationVC.swift */; };
 		3A53678323811FCA00C9A5BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A53678223811FCA00C9A5BD /* Assets.xcassets */; };
@@ -42,6 +44,8 @@
 		3A4D58E823E15C980068EFCA /* StickDeadzoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickDeadzoneView.swift; sourceTree = "<group>"; };
 		3A4D58EA23E328D90068EFCA /* MirrorShaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = MirrorShaders.metal; sourceTree = "<group>"; };
 		3A4D58EC23E329340068EFCA /* MirrorCamera.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = MirrorCamera.plist; sourceTree = "<group>"; };
+		3A4DAAD32406832400E383CB /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
+		3A4DAAD7240685FC00E383CB /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		3A53677C23811FC800C9A5BD /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A53677E23811FC800C9A5BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A53678023811FC800C9A5BD /* ConfigurationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationVC.swift; sourceTree = "<group>"; };
@@ -87,6 +91,26 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		3A4DAAD5240685A400E383CB /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				3A2828FE2365D75B00CC93FA /* IOUSBDetector.swift */,
+				3A481CC923D76A8600297B50 /* NotificationObserver.swift */,
+				3AFBF3972361EF6B00522537 /* DriverHelper.swift */,
+				3AEDD7AF239E97A70030C3EB /* SceneHelper.swift */,
+				3A4DAAD7240685FC00E383CB /* AppState.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		3A4DAAD6240685B500E383CB /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				3A481CCB23D76DBF00297B50 /* BaseVC.swift */,
+			);
+			path = Share;
+			sourceTree = "<group>";
+		};
 		3A53677D23811FC800C9A5BD /* DemoApp */ = {
 			isa = PBXGroup;
 			children = (
@@ -110,11 +134,8 @@
 		3A92E80E238C9A5000EF837A /* BaseCode */ = {
 			isa = PBXGroup;
 			children = (
-				3AFBF3972361EF6B00522537 /* DriverHelper.swift */,
-				3A2828FE2365D75B00CC93FA /* IOUSBDetector.swift */,
-				3AEDD7AF239E97A70030C3EB /* SceneHelper.swift */,
-				3A481CC923D76A8600297B50 /* NotificationObserver.swift */,
-				3A481CCB23D76DBF00297B50 /* BaseVC.swift */,
+				3A4DAAD6240685B500E383CB /* Share */,
+				3A4DAAD5240685A400E383CB /* Helper */,
 				3AAB5DAF23844624009F7465 /* Manager */,
 				3A2829022366EBBD00CC93FA /* Model */,
 				3A98399D2394FE2000818D7E /* Extension */,
@@ -129,6 +150,7 @@
 				3AEDD7A9239D42410030C3EB /* IOExtension.swift */,
 				3A8C416B23F3E66200962929 /* NSBezierPathExtension.swift */,
 				3AB11A3B2402D4F100619505 /* NSColorExtension.swift */,
+				3A4DAAD32406832400E383CB /* NotificationExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -242,10 +264,12 @@
 				3AEDD7B0239E97A70030C3EB /* SceneHelper.swift in Sources */,
 				3AEDD7AC239DC7790030C3EB /* DeviceConfiguration.swift in Sources */,
 				3A9839A22395D89500818D7E /* DeviceListVC.swift in Sources */,
+				3A4DAAD42406832400E383CB /* NotificationExtension.swift in Sources */,
 				3A983999238F421900818D7E /* DeviceManager.swift in Sources */,
 				3A53678D23814E0300C9A5BD /* DriverHelper.swift in Sources */,
 				3AEDD7AA239D42410030C3EB /* IOExtension.swift in Sources */,
 				3A8C416C23F3E66200962929 /* NSBezierPathExtension.swift in Sources */,
+				3A4DAAD8240685FC00E383CB /* AppState.swift in Sources */,
 				3A9839A423962D4200818D7E /* SceneKitVC.swift in Sources */,
 				3A53678123811FC800C9A5BD /* ConfigurationVC.swift in Sources */,
 				3A53677F23811FC800C9A5BD /* AppDelegate.swift in Sources */,

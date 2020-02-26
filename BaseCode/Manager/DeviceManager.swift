@@ -8,12 +8,6 @@
 
 import Foundation
 
-extension NotificationObserver.Target {
-    static let deviceEventTriggered = ObserverTarget<DeviceEvent>(name: "deviceEventTriggered")
-    static let currentDeviceChanged = ObserverTarget<Nil>(name: "currentDeviceChanged")
-    static let deviceListChanged = ObserverTarget<Nil>(name: "deviceListChanged")
-}
-
 final class DeviceManager {
     static let shared = DeviceManager()
     private init() {}
