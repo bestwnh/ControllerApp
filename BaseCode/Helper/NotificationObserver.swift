@@ -60,6 +60,11 @@ class NotificationObserver {
             callback(target.parse(userInfo: notification.userInfo))
         }
     }
+    static func addDistributedObserver<A>(target: ObserverTarget<A>, callback: @escaping (A?)->()) -> NSObjectProtocol {
+        return DistributedNotificationCenter.default.addObserver(forName: target.name, object: nil, queue: .main) { (notification) in
+            callback(target.parse(userInfo: notification.userInfo))
+        }
+    }
     static func post<A>(target: ObserverTarget<A>, param: A? = nil) {
         NotificationCenter.default.post(name: target.name, object: nil, userInfo: target.userInfo(param: param))
     }

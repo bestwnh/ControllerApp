@@ -70,7 +70,7 @@ class SceneKitVC: BaseVC {
             SceneHelper.reset(scene: self.scene)
 
         }.handle(by: observerBag)
-        NotificationObserver.addObserver(target: NotificationObserver.Target.uiModeChanged) { [weak self] (_) in
+        NotificationObserver.addDistributedObserver(target: NotificationObserver.Target.DistributedNotification.uiModeChanged) { [weak self] (_) in
             
             let cellColor = AppState.isDarkMode ? NSColor(0x1d1d1d) : NSColor(0xcecece)
             let contentColor = AppState.isDarkMode ? NSColor(0xcecece) : NSColor(0x282828)
