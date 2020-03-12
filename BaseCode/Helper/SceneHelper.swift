@@ -16,6 +16,9 @@ class SceneHelper {
         let technique = SCNTechnique(dictionary:dict)
         sceneView.technique = technique
     }
+    static func configTriggerSceneView(_ sceneView: SCNView) {
+        
+    }
     static func reset(scene: SCNScene) {
         configStickPivot(scene: scene, nodeName: DeviceEvent.Mode.Button.leftStick.nodeName)
         configStickPivot(scene: scene, nodeName: DeviceEvent.Mode.Button.rightStick.nodeName)

@@ -40,6 +40,7 @@ class Device {
     var configuration: DeviceConfiguration {
         didSet {
             DriverHelper.saveDeviceConfiguration(rawDevice: rawDevice, configuration: configuration)
+            NotificationObserver.post(target: NotificationObserver.Target.deviceConfigurationChanged)
         }
     }
     

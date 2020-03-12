@@ -30,25 +30,17 @@ class SceneKitVC: BaseVC {
         mainSCNView.allowsCameraControl = false
         mainSCNView.pointOfView = scene.rootNode.childNode(withName: "cameraTop", recursively: true)
 
-        leftSCNView.wantsLayer = true
         leftSCNView.scene = scene
         leftSCNView.scene?.background.contents = NSColor.clear
         leftSCNView.allowsCameraControl = false
         leftSCNView.pointOfView = scene.rootNode.childNode(withName: "cameraLeft", recursively: true)
-        leftSCNView.layer?.cornerRadius = 25
-        leftSCNView.layer?.borderWidth = 2
-        leftSCNView.layer?.borderColor = NSColor(deviceWhite: 0.5, alpha: 0.8).cgColor
         config(layer: leftProgressLayer, addTo: leftSCNView)
         SceneHelper.mirror(sceneView: leftSCNView)
         
-        rightSCNView.wantsLayer = true
         rightSCNView.scene = scene
         rightSCNView.scene?.background.contents = NSColor.clear
         rightSCNView.allowsCameraControl = false
         rightSCNView.pointOfView = scene.rootNode.childNode(withName: "cameraRight", recursively: true)
-        rightSCNView.layer?.cornerRadius = 25
-        rightSCNView.layer?.borderWidth = 2
-        rightSCNView.layer?.borderColor = NSColor(deviceWhite: 0.5, alpha: 0.8).cgColor
         config(layer: rightProgressLayer, addTo: rightSCNView)
         SceneHelper.mirror(sceneView: rightSCNView)
         
@@ -116,6 +108,11 @@ class SceneKitVC: BaseVC {
     }
     
     private func config(layer: CAShapeLayer, addTo parentView: NSView) {
+        parentView.wantsLayer = true
+        parentView.layer?.cornerRadius = 25
+        parentView.layer?.borderWidth = 2
+        parentView.layer?.borderColor = NSColor(deviceWhite: 0.5, alpha: 0.8).cgColor
+        
         let width = parentView.bounds.width
         let circularPath = NSBezierPath(roundedRect: parentView.bounds, xRadius: width * 0.5, yRadius: width * 0.5)
 
