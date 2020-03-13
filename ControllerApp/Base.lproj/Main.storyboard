@@ -687,8 +687,8 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Controller Configuration" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" animationBehavior="default" id="IQv-IB-iLA">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+                    <window key="window" title="Controller Configuration" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="IQv-IB-iLA">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="940" height="650"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
@@ -708,7 +708,7 @@
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="MainVC" customModule="ControllerApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="m2S-Jp-Qdl">
+                    <view key="view" id="m2S-Jp-Qdl" customClass="BaseView" customModule="ControllerApp" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="940" height="651"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -810,16 +810,62 @@
                                     <constraint firstAttribute="height" constant="60" id="zLO-c7-gPL"/>
                                 </constraints>
                             </customView>
+                            <containerView placeholderIntrinsicWidth="171" placeholderIntrinsicHeight="80" translatesAutoresizingMaskIntoConstraints="NO" id="SDO-L0-b9d">
+                                <rect key="frame" x="737" y="556" width="171" height="80"/>
+                                <connections>
+                                    <segue destination="ezj-rd-Gza" kind="embed" id="IY4-s8-1Fe"/>
+                                </connections>
+                            </containerView>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wq4-uO-0Yd">
+                                <rect key="frame" x="400" y="271" width="255" height="44"/>
+                                <subviews>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DCb-RA-yfL" customClass="CheckboxButton" customModule="ControllerApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="255" height="16"/>
+                                        <buttonCell key="cell" type="bevel" title="Swap Sticks" bezelStyle="regularSquare" image="checkbox" imagePosition="left" alignment="left" alternateImage="checkbox_selected" state="on" inset="2" id="6Fl-SZ-ijY">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" size="16" name="DINCondensed-Bold"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="toggleSwapStickButton:" target="XfG-lQ-9wD" id="lbt-5b-egS"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZC2-Ob-yoF" customClass="CheckboxButton" customModule="ControllerApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="255" height="16"/>
+                                        <buttonCell key="cell" type="bevel" title="Pretend to  360 Controller" bezelStyle="regularSquare" image="checkbox" imagePosition="left" alignment="left" alternateImage="checkbox_selected" state="on" inset="2" id="6gh-NS-jmZ">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" size="16" name="DINCondensed-Bold"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="togglePretendTo360ControllerButton:" target="XfG-lQ-9wD" id="05Y-Jo-NnU"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ZC2-Ob-yoF" secondAttribute="trailing" id="1CB-CN-BWC"/>
+                                    <constraint firstAttribute="trailing" secondItem="DCb-RA-yfL" secondAttribute="trailing" id="jZC-cv-w8y"/>
+                                </constraints>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="02s-nT-5iz" firstAttribute="trailing" secondItem="opy-T3-kMk" secondAttribute="trailing" id="12L-le-GAE"/>
+                            <constraint firstAttribute="trailing" secondItem="SDO-L0-b9d" secondAttribute="trailing" constant="32" id="5NW-fy-Jc0"/>
                             <constraint firstAttribute="bottom" secondItem="dRo-N4-YhD" secondAttribute="bottom" id="5eM-1E-vlC"/>
+                            <constraint firstItem="SDO-L0-b9d" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="15" id="5j9-oE-RKT"/>
                             <constraint firstAttribute="trailing" secondItem="dRo-N4-YhD" secondAttribute="trailing" id="6tn-k9-w45"/>
                             <constraint firstAttribute="bottom" secondItem="NFc-bG-rtx" secondAttribute="bottom" constant="32" id="7Qr-FT-ZVG"/>
                             <constraint firstItem="mUS-xC-4YN" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="33" id="881-qM-rLp"/>
                             <constraint firstItem="NXV-gE-BBf" firstAttribute="leading" secondItem="02s-nT-5iz" secondAttribute="leading" id="8ij-oy-1Q7"/>
                             <constraint firstItem="Za3-SM-hQg" firstAttribute="top" secondItem="02s-nT-5iz" secondAttribute="top" constant="74" id="9BC-ZU-OyU"/>
                             <constraint firstItem="02s-nT-5iz" firstAttribute="leading" secondItem="Za3-SM-hQg" secondAttribute="leading" constant="20" id="EtT-Wk-gpW"/>
+                            <constraint firstItem="wq4-uO-0Yd" firstAttribute="bottom" secondItem="02s-nT-5iz" secondAttribute="bottom" id="H0R-GS-PzW"/>
                             <constraint firstItem="HfM-y1-tmf" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="170" id="NQU-fI-Pgk"/>
                             <constraint firstItem="02s-nT-5iz" firstAttribute="top" secondItem="NXV-gE-BBf" secondAttribute="bottom" constant="8" id="Ok7-cO-HIi"/>
                             <constraint firstItem="02s-nT-5iz" firstAttribute="leading" secondItem="Mw1-ux-6uN" secondAttribute="trailing" id="RU2-c0-18R"/>
@@ -836,16 +882,25 @@
                             <constraint firstItem="dRo-N4-YhD" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="nqC-t2-qVW"/>
                             <constraint firstItem="Mw1-ux-6uN" firstAttribute="top" secondItem="Za3-SM-hQg" secondAttribute="bottom" constant="5" id="pAD-JO-swl"/>
                             <constraint firstItem="dRo-N4-YhD" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="rL3-F7-S9y"/>
+                            <constraint firstItem="wq4-uO-0Yd" firstAttribute="leading" secondItem="02s-nT-5iz" secondAttribute="leading" constant="115" id="tmK-1X-uTd"/>
                             <constraint firstItem="02s-nT-5iz" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="xQn-fJ-rLN"/>
+                            <constraint firstItem="wq4-uO-0Yd" firstAttribute="trailing" secondItem="02s-nT-5iz" secondAttribute="trailing" id="xoy-iR-41F"/>
                             <constraint firstAttribute="trailing" secondItem="HfM-y1-tmf" secondAttribute="trailing" constant="35" id="xys-Hb-t5B"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="ib_BackgroundColor">
+                                <color key="value" name="BackgroundColor"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
                         <outlet property="controllerSceneView" destination="02s-nT-5iz" id="TRi-EY-AFV"/>
                         <outlet property="leftStickDeadzoneView" destination="Mw1-ux-6uN" id="nrh-hR-3Wv"/>
                         <outlet property="leftTriggerSceneView" destination="NXV-gE-BBf" id="DgX-OS-mN5"/>
+                        <outlet property="pretendTo360ControllerButton" destination="ZC2-Ob-yoF" id="bct-VF-gIm"/>
                         <outlet property="rightStickDeadzoneView" destination="7vK-12-eWz" id="cGP-wh-66C"/>
                         <outlet property="rightTriggerSceneView" destination="opy-T3-kMk" id="lqU-z4-N1w"/>
+                        <outlet property="swapStickButton" destination="DCb-RA-yfL" id="5eQ-3H-3Kp"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -1135,32 +1190,53 @@
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView id="7xU-Yx-dAp" customClass="DeviceCell" customModule="ControllerApp" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="5" width="322" height="20"/>
+                                                        <tableCellView misplaced="YES" id="7xU-Yx-dAp" customClass="DeviceCell" customModule="ControllerApp" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="5" width="322" height="36"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nZ9-Py-cPC">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="322" height="20"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="322" height="32"/>
                                                                     <subviews>
                                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YzB-Yn-4zt">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                                            <rect key="frame" x="0.0" y="8" width="24" height="17"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="height" constant="20" id="hbw-uR-3NO"/>
-                                                                                <constraint firstAttribute="width" constant="20" id="uFM-8b-Ahb"/>
+                                                                                <constraint firstAttribute="height" constant="17" id="hbw-uR-3NO"/>
+                                                                                <constraint firstAttribute="width" constant="24" id="uFM-8b-Ahb"/>
                                                                             </constraints>
                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="controller_thumb" id="D2F-tm-NpO"/>
                                                                         </imageView>
-                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZgO-sZ-Ec9">
-                                                                            <rect key="frame" x="28" y="2" width="296" height="16"/>
-                                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Device Name One" usesSingleLineMode="YES" id="cEZ-0o-HC4">
-                                                                                <font key="font" size="16" name="DINCondensed-Bold"/>
-                                                                                <color key="textColor" name="MainText"/>
-                                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                                            </textFieldCell>
-                                                                        </textField>
+                                                                        <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fJ1-Tf-34D">
+                                                                            <rect key="frame" x="34" y="1" width="288" height="30"/>
+                                                                            <subviews>
+                                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZgO-sZ-Ec9">
+                                                                                    <rect key="frame" x="-2" y="14" width="91" height="16"/>
+                                                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Device Name One" usesSingleLineMode="YES" id="cEZ-0o-HC4">
+                                                                                        <font key="font" size="16" name="DINCondensed-Bold"/>
+                                                                                        <color key="textColor" name="MainText"/>
+                                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                                    </textFieldCell>
+                                                                                </textField>
+                                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3jk-MB-uXs">
+                                                                                    <rect key="frame" x="-2" y="0.0" width="53" height="14"/>
+                                                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="SN: 000000" usesSingleLineMode="YES" id="CiK-Bx-hOK">
+                                                                                        <font key="font" size="14" name="DINCondensed-Bold"/>
+                                                                                        <color key="textColor" name="SubtitleText"/>
+                                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                                    </textFieldCell>
+                                                                                </textField>
+                                                                            </subviews>
+                                                                            <visibilityPriorities>
+                                                                                <integer value="1000"/>
+                                                                                <integer value="1000"/>
+                                                                            </visibilityPriorities>
+                                                                            <customSpacing>
+                                                                                <real value="3.4028234663852886e+38"/>
+                                                                                <real value="3.4028234663852886e+38"/>
+                                                                            </customSpacing>
+                                                                        </stackView>
                                                                     </subviews>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="20" id="6Xo-gS-eVV"/>
+                                                                        <constraint firstAttribute="height" constant="32" id="6Xo-gS-eVV"/>
                                                                     </constraints>
                                                                     <visibilityPriorities>
                                                                         <integer value="1000"/>
@@ -1180,6 +1256,7 @@
                                                             </constraints>
                                                             <connections>
                                                                 <outlet property="nameLabel" destination="ZgO-sZ-Ec9" id="Isk-Jo-6AC"/>
+                                                                <outlet property="snLabel" destination="3jk-MB-uXs" id="JrL-FZ-fVf"/>
                                                             </connections>
                                                         </tableCellView>
                                                     </prototypeCellViews>
@@ -1218,7 +1295,7 @@
                 </viewController>
                 <customObject id="wdY-Z7-bJn" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-627" y="1288"/>
+            <point key="canvasLocation" x="-627.5" y="1288"/>
         </scene>
         <!--Map ButtonVC-->
         <scene sceneID="ES4-Qa-JaS">
@@ -1235,7 +1312,7 @@
                             <stackView distribution="fill" orientation="horizontal" alignment="bottom" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4gt-H1-Avu">
                                 <rect key="frame" x="30" y="5" width="164" height="18"/>
                                 <subviews>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="vxo-tk-Qm5">
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="vxo-tk-Qm5" customClass="BaseView" customModule="ControllerApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="79" height="18"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="IA1-ZG-RdU">
@@ -1254,15 +1331,15 @@
                                             <constraint firstItem="IA1-ZG-RdU" firstAttribute="top" secondItem="vxo-tk-Qm5" secondAttribute="top" constant="3" id="UFB-gI-YMK"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="ib_BackgroundColor">
-                                                <color key="value" name="MapButtonTitle"/>
-                                            </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="ib_CornerRadius">
                                                 <real key="value" value="2"/>
                                             </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="ib_BackgroundColor">
+                                                <color key="value" name="MapButtonBg"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </customView>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="MLq-pg-beP">
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="MLq-pg-beP" customClass="BaseView" customModule="ControllerApp" customModuleProvider="target">
                                         <rect key="frame" x="87" y="0.0" width="77" height="18"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="hTD-DT-S9f">
@@ -1281,11 +1358,11 @@
                                             <constraint firstItem="hTD-DT-S9f" firstAttribute="top" secondItem="MLq-pg-beP" secondAttribute="top" constant="3" id="v8x-yi-agb"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="ib_BackgroundColor">
-                                                <color key="value" name="MapButtonTitle"/>
-                                            </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="ib_CornerRadius">
                                                 <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="ib_BackgroundColor">
+                                                <color key="value" name="MapButtonBg"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </customView>
@@ -1472,29 +1549,230 @@
             </objects>
             <point key="canvasLocation" x="749" y="1319"/>
         </scene>
+        <!--Display SettingVC-->
+        <scene sceneID="kFP-7k-bqV">
+            <objects>
+                <viewController id="ezj-rd-Gza" customClass="DisplaySettingVC" customModule="ControllerApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="c2P-he-JMe">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="41"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="3" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="amY-zJ-rqm">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="41"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mP5-AF-NRu">
+                                        <rect key="frame" x="-2" y="25" width="70" height="16"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Display Mode" usesSingleLineMode="YES" id="ydc-BU-3yf">
+                                            <font key="font" size="16" name="DINCondensed-Bold"/>
+                                            <color key="textColor" name="SegmentText"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="w19-ED-OaY" customClass="BaseView" customModule="ControllerApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="174" height="22"/>
+                                        <subviews>
+                                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" translatesAutoresizingMaskIntoConstraints="NO" id="t6y-Lw-Slq">
+                                                <rect key="frame" x="0.0" y="0.0" width="174" height="22"/>
+                                                <subviews>
+                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="P2l-qJ-nFS" customClass="BaseView" customModule="ControllerApp" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="75" height="22"/>
+                                                        <subviews>
+                                                            <textField horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="9Xf-W7-Zfv">
+                                                                <rect key="frame" x="8" y="3" width="59" height="16"/>
+                                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="By system" usesSingleLineMode="YES" id="ncO-Y2-iTt">
+                                                                    <font key="font" size="16" name="DINCondensed-Bold"/>
+                                                                    <color key="textColor" name="SegmentText"/>
+                                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                            </textField>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="9Xf-W7-Zfv" firstAttribute="centerY" secondItem="P2l-qJ-nFS" secondAttribute="centerY" id="49D-IB-dOO"/>
+                                                            <constraint firstAttribute="trailing" secondItem="9Xf-W7-Zfv" secondAttribute="trailing" constant="10" id="dmF-Kh-25F"/>
+                                                            <constraint firstItem="9Xf-W7-Zfv" firstAttribute="leading" secondItem="P2l-qJ-nFS" secondAttribute="leading" constant="10" id="jRP-QR-FYF"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="ib_CornerRadius">
+                                                                <real key="value" value="2"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </customView>
+                                                    <customView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0SF-fp-08U" userLabel="Line">
+                                                        <rect key="frame" x="75" y="4" width="1" height="14"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="1" id="RJ1-u9-hQe"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="ib_BackgroundColor">
+                                                                <color key="value" red="1" green="1" blue="1" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </customView>
+                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="YEs-ux-Fnu" customClass="BaseView" customModule="ControllerApp" customModuleProvider="target">
+                                                        <rect key="frame" x="76" y="0.0" width="49" height="22"/>
+                                                        <subviews>
+                                                            <textField horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="YcB-gm-pHd">
+                                                                <rect key="frame" x="8" y="3" width="33" height="16"/>
+                                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Light" usesSingleLineMode="YES" id="0d2-Ta-hrn">
+                                                                    <font key="font" size="16" name="DINCondensed-Bold"/>
+                                                                    <color key="textColor" name="SegmentText"/>
+                                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                            </textField>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="YcB-gm-pHd" secondAttribute="trailing" constant="10" id="MiZ-f3-Pds"/>
+                                                            <constraint firstItem="YcB-gm-pHd" firstAttribute="leading" secondItem="YEs-ux-Fnu" secondAttribute="leading" constant="10" id="pSn-Ye-553"/>
+                                                            <constraint firstItem="YcB-gm-pHd" firstAttribute="centerY" secondItem="YEs-ux-Fnu" secondAttribute="centerY" id="wwu-vB-Q4T"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="ib_CornerRadius">
+                                                                <real key="value" value="2"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </customView>
+                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="Ejv-io-MBN" userLabel="Line">
+                                                        <rect key="frame" x="125" y="4" width="1" height="14"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="1" id="GCn-jr-qrY"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="ib_BackgroundColor">
+                                                                <color key="value" red="1" green="1" blue="1" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </customView>
+                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="DbK-T3-oES" customClass="BaseView" customModule="ControllerApp" customModuleProvider="target">
+                                                        <rect key="frame" x="126" y="0.0" width="48" height="22"/>
+                                                        <subviews>
+                                                            <textField horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="mVp-7f-3RL">
+                                                                <rect key="frame" x="8" y="3" width="32" height="16"/>
+                                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Dark" usesSingleLineMode="YES" id="vRm-sJ-3q5">
+                                                                    <font key="font" size="16" name="DINCondensed-Bold"/>
+                                                                    <color key="textColor" name="SegmentText"/>
+                                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                            </textField>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="mVp-7f-3RL" firstAttribute="centerY" secondItem="DbK-T3-oES" secondAttribute="centerY" id="02d-bp-7ay"/>
+                                                            <constraint firstItem="mVp-7f-3RL" firstAttribute="leading" secondItem="DbK-T3-oES" secondAttribute="leading" constant="10" id="1Ri-Cz-nJK"/>
+                                                            <constraint firstAttribute="trailing" secondItem="mVp-7f-3RL" secondAttribute="trailing" constant="10" id="djl-a4-aZP"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="ib_CornerRadius">
+                                                                <real key="value" value="2"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </customView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="22" id="BbO-bJ-5mz"/>
+                                                    <constraint firstItem="0SF-fp-08U" firstAttribute="top" secondItem="t6y-Lw-Slq" secondAttribute="top" constant="4" id="N0H-zr-Oe4"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Ejv-io-MBN" secondAttribute="bottom" constant="4" id="Qej-nZ-2f9"/>
+                                                    <constraint firstAttribute="bottom" secondItem="0SF-fp-08U" secondAttribute="bottom" constant="4" id="SbV-dK-Imh"/>
+                                                    <constraint firstItem="Ejv-io-MBN" firstAttribute="top" secondItem="t6y-Lw-Slq" secondAttribute="top" constant="4" id="u6C-st-IfJ"/>
+                                                </constraints>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="t6y-Lw-Slq" secondAttribute="trailing" id="Xwy-77-RUT"/>
+                                            <constraint firstItem="t6y-Lw-Slq" firstAttribute="leading" secondItem="w19-ED-OaY" secondAttribute="leading" id="lJR-2E-skT"/>
+                                            <constraint firstAttribute="bottom" secondItem="t6y-Lw-Slq" secondAttribute="bottom" id="n1Z-q0-Kxx"/>
+                                            <constraint firstItem="t6y-Lw-Slq" firstAttribute="top" secondItem="w19-ED-OaY" secondAttribute="top" id="wop-Ws-th4"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="ib_BackgroundColor">
+                                                <color key="value" name="SegmentBg"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="ib_CornerRadius">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </customView>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="amY-zJ-rqm" secondAttribute="bottom" id="6IO-VM-wg9"/>
+                            <constraint firstAttribute="trailing" secondItem="amY-zJ-rqm" secondAttribute="trailing" id="6L0-bc-SFg"/>
+                            <constraint firstItem="amY-zJ-rqm" firstAttribute="leading" secondItem="c2P-he-JMe" secondAttribute="leading" id="GQi-su-7pL"/>
+                            <constraint firstItem="amY-zJ-rqm" firstAttribute="top" secondItem="c2P-he-JMe" secondAttribute="top" id="iwl-58-Ix2"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bySystemButton" destination="P2l-qJ-nFS" id="ywg-0I-5zi"/>
+                        <outlet property="darkButton" destination="DbK-T3-oES" id="rSY-JH-aju"/>
+                        <outlet property="displayModeView" destination="w19-ED-OaY" id="9VI-1E-RYD"/>
+                        <outlet property="lightButton" destination="YEs-ux-Fnu" id="LJk-Qu-VjY"/>
+                        <outlet property="line1" destination="0SF-fp-08U" id="lfH-sc-AHH"/>
+                        <outlet property="line2" destination="Ejv-io-MBN" id="HSq-m4-Hrl"/>
+                    </connections>
+                </viewController>
+                <customObject id="avn-pd-q6h" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="815" y="754"/>
+        </scene>
     </scenes>
     <resources>
         <image name="bg" width="937" height="651"/>
         <image name="checkbox" width="16" height="16"/>
         <image name="checkbox_selected" width="16" height="16"/>
-        <image name="controller_thumb" width="20" height="10"/>
+        <image name="controller_thumb" width="24" height="17"/>
         <image name="devicelist_bg" width="387" height="187"/>
         <image name="leftstick_bg" width="180" height="202"/>
         <image name="leftstick_line" width="53" height="20"/>
         <image name="mapbtn_bg" width="348" height="200"/>
         <image name="rightstick_bg" width="180" height="202"/>
         <image name="rightstick_line" width="105" height="58"/>
+        <namedColor name="BackgroundColor">
+            <color red="0.82352941176470584" green="0.83137254901960789" blue="0.83137254901960789" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="DeviceListTitle">
             <color red="0.0" green="0.50588235294117645" blue="0.73333333333333328" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="MainText">
             <color red="0.0" green="0.34901960784313724" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="MapButtonBg">
+            <color red="0.0" green="0.50588235294117645" blue="0.73333333333333328" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="MapButtonTitle">
             <color red="0.96470588235294119" green="0.98431372549019602" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="SegmentBg">
+            <color red="1" green="1" blue="1" alpha="0.80043278837203979" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SegmentText">
+            <color red="0.0" green="0.50588235294117645" blue="0.73333333333333328" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="StickTitle">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SubtitleText">
+            <color red="0.61568627450980395" green="0.73725490196078436" blue="0.80784313725490198" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

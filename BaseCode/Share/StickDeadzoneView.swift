@@ -27,13 +27,17 @@ class StickDeadzoneView: NSView {
         wantsLayer = true
         layer?.borderColor = NSColor(0x7ec3ec).cgColor
         layer?.borderWidth = 1
-        layer?.backgroundColor = NSColor(0x1E1E1E).cgColor
+    }
+    override func updateLayer() {
+        super.updateLayer()
+        
+        layer?.backgroundColor = AppState.isDarkMode ? NSColor(0x1E1E1E).cgColor : NSColor(0xDDDDDD).cgColor
     }
     override func draw(_ dirtyRect: NSRect) {
         let canvasSize = dirtyRect.size
         let pointWidth: CGFloat = 4
 //        let validAreaColor = NSColor(0x478C36)
-        let validAreaColor = NSColor(0x06415e)
+        let validAreaColor = AppState.isDarkMode ? NSColor(0x06415e) : NSColor(0xB1DCF0)
 
         let valuePercent: CGFloat = (CGFloat(self.deadzone) / 32768 * 100).rounded() * 0.01 // keep two decimal number to prevent the incorrect tiny space between two area
         let deadzoneColor = NSColor(0x1E1E1E)

@@ -11,6 +11,7 @@ import Cocoa
 class DeviceCell: NSTableCellView {
     
     @IBOutlet weak var nameLabel: NSTextField!
+    @IBOutlet weak var snLabel: NSTextField!
     
 }
 
@@ -42,7 +43,8 @@ extension DeviceListVC: NSTableViewDataSource, NSTableViewDelegate {
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         guard let cell = tableView.makeView(withIdentifier: tableColumn!.identifier, owner: self) as? DeviceCell else { return nil }
         let device = deviceList[row]
-        cell.nameLabel?.stringValue = "\(device.serialNumber): \(device.displayName)"
+        cell.nameLabel.stringValue = device.displayName
+        cell.snLabel.stringValue = "SN: \(device.serialNumber)"
         return cell
     }
     func tableViewSelectionDidChange(_ notification: Notification) {

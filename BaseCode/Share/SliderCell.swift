@@ -14,7 +14,8 @@ class SliderCell: NSSliderCell {
         let bg = NSBezierPath(roundedRect: knobRect,
                               xRadius: knobRect.width * 0.5,
                               yRadius: knobRect.height * 0.5)
-        NSColor(0xfafeff).setFill()
+        let color = AppState.isDarkMode ? NSColor(0xfafeff) : NSColor(0x9f9f9f)
+        color.setFill()
         bg.fill()
     }
     
@@ -39,10 +40,12 @@ class SliderCell: NSSliderCell {
         var leftRect = rect
         leftRect.size.width = finalWidth
         let bg = NSBezierPath(roundedRect: rect, xRadius: barRadius, yRadius: barRadius)
-        NSColor(0x1c5773).setFill()
+        let bgColor = AppState.isDarkMode ? NSColor(0x1c5773) : NSColor(0xe1e5e7)
+        bgColor.setFill()
         bg.fill()
         let active = NSBezierPath(roundedRect: leftRect, xRadius: barRadius, yRadius: barRadius)
-        NSColor(0x7ec3ec).setFill()
+        let activeColor = AppState.isDarkMode ? NSColor(0x7ec3ec) : NSColor(0x0081bb)
+        activeColor.setFill()
         active.fill()
     }
     

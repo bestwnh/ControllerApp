@@ -9,16 +9,6 @@
 import Cocoa
 
 extension NSView {
-    @IBInspectable var ib_BackgroundColor: NSColor? {
-        set {
-            wantsLayer = true
-            layer?.backgroundColor = newValue?.cgColor
-        }
-        get {
-            guard let cgColor = layer?.backgroundColor else { return nil}
-            return NSColor(cgColor: cgColor)
-        }
-    }
     @IBInspectable var ib_CornerRadius: CGFloat {
         set {
             wantsLayer = true
@@ -44,4 +34,13 @@ extension NSView {
         }
         get { return layer?.borderWidth ?? 0 }
     }
+    func hide(when shouldHide: Bool = true) {
+        guard isHidden != shouldHide else { return }
+        isHidden = shouldHide
+    }
+    func show(when shouldShow: Bool = true) {
+        guard isHidden != !shouldShow else { return }
+        isHidden = !shouldShow
+    }
+    
 }

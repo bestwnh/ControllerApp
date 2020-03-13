@@ -20,6 +20,9 @@ class MainVC: BaseVC {
     private let scene = SCNScene(named: "xboxController.scn")!
     private lazy var leftTriggerCircle = TriggerCircle(sceneView: leftTriggerSceneView, side: .left)
     private lazy var rightTriggerCircle = TriggerCircle(sceneView: rightTriggerSceneView, side: .right)
+    
+    @IBOutlet weak var swapStickButton: CheckboxButton!
+    @IBOutlet weak var pretendTo360ControllerButton: CheckboxButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +31,7 @@ class MainVC: BaseVC {
         
         initSceneView()
         
-        self.view.wantsLayer = true
-        self.view.layer?.backgroundColor = NSColor(named: "Background")?.cgColor
+        updateOtherSetting()
         
         NotificationObserver.addDistributedObserver(target: NotificationObserver.Target.DistributedNotification.uiModeChanged) { [weak self] (_) in
             
@@ -51,7 +53,9 @@ class MainVC: BaseVC {
         NotificationObserver.addObserver(target: NotificationObserver.Target.currentDeviceChanged) { [weak self] (_) in
             guard let self = self else { return }
             SceneHelper.reset(scene: self.scene)
-
+            self.updateLeftStickDeadzoneView()
+            self.updateRightStickDeadzoneView()
+            self.updateOtherSetting()
         }.handle(by: observerBag)
         
         NotificationObserver.addObserver(target: NotificationObserver.Target.deviceConfigurationChanged) { [weak self] (_) in
@@ -81,6 +85,14 @@ class MainVC: BaseVC {
         }.handle(by: observerBag)
     }
 
+    @IBAction func toggleSwapStickButton(_ sender: NSButton) {
+        guard let device = DeviceManager.shared.currentDevice else { return }
+        device.configuration.swapSticks = sender.boolState
+    }
+    @IBAction func togglePretendTo360ControllerButton(_ sender: NSButton) {
+        guard let device = DeviceManager.shared.currentDevice else { return }
+        device.configuration.pretend360 = sender.boolState
+    }
 }
 
 private extension MainVC {
@@ -98,7 +110,7 @@ private extension MainVC {
         SceneHelper.mirror(sceneView: rightTriggerSceneView)
         rightTriggerCircle.config(percent: 0)
     }
-    private func updateLeftStickDeadzoneView(x: CGFloat? = nil, y: CGFloat? = nil) {
+    func updateLeftStickDeadzoneView(x: CGFloat? = nil, y: CGFloat? = nil) {
         guard let configuration = DeviceManager.shared.currentDevice?.configuration else { return }
         leftStickDeadzoneView.config(deadzone: configuration.deadzoneLeft,
                                      isLinked: configuration.linkedLeft,
@@ -106,12 +118,25 @@ private extension MainVC {
                                      x: x,
                                      y: y)
     }
-    private func updateRightStickDeadzoneView(x: CGFloat? = nil, y: CGFloat? = nil) {
+    func updateRightStickDeadzoneView(x: CGFloat? = nil, y: CGFloat? = nil) {
         guard let configuration = DeviceManager.shared.currentDevice?.configuration else { return }
         rightStickDeadzoneView.config(deadzone: configuration.deadzoneRight,
                                       isLinked: configuration.linkedRight,
                                       isNormalize: configuration.normalizeRight,
                                       x: x,
                                       y: y)
+    }
+    func updateOtherSetting() {
+        if let configuration = DeviceManager.shared.currentDevice?.configuration {
+            self.swapStickButton.boolState = configuration.swapSticks
+            self.pretendTo360ControllerButton.boolState = configuration.pretend360
+            self.swapStickButton.isEnabled = true
+            self.pretendTo360ControllerButton.isEnabled = true
+        } else {
+            self.swapStickButton.boolState = false
+            self.pretendTo360ControllerButton.boolState = false
+            self.swapStickButton.isEnabled = false
+            self.pretendTo360ControllerButton.isEnabled = false
+        }
     }
 }

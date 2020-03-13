@@ -68,4 +68,7 @@ class NotificationObserver {
     static func post<A>(target: ObserverTarget<A>, param: A? = nil) {
         NotificationCenter.default.post(name: target.name, object: nil, userInfo: target.userInfo(param: param))
     }
+    static func postDistributed<A>(target: ObserverTarget<A>, param: A? = nil) {
+        DistributedNotificationCenter.default.post(name: target.name, object: nil, userInfo: target.userInfo(param: param))
+    }
 }

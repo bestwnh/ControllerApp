@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "controller_thumb_lm.png",
+      "filename" : "game_controller_lm.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -12,12 +12,12 @@
           "value" : "dark"
         }
       ],
-      "filename" : "controller_thumb_dm.png",
+      "filename" : "game_controller_dm.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "controller_thumb_lm@2x.png",
+      "filename" : "game_controller_lm@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
@@ -28,12 +28,12 @@
           "value" : "dark"
         }
       ],
-      "filename" : "controller_thumb_dm@2x.png",
+      "filename" : "game_controller_dm@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "controller_thumb_lm@3x.png",
+      "filename" : "game_controller_lm@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     },
@@ -44,7 +44,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "controller_thumb_dm@3x.png",
+      "filename" : "game_controller_dm@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
