@@ -14,7 +14,7 @@ final class DeviceManager {
 
     private(set) var deviceList: [Device] = [] {
         didSet {
-            NotificationObserver.post(target: NotificationObserver.Target.deviceListChanged, param: nil)
+            NotificationObserver.post(target: NotificationObserver.Target.deviceListChanged)
         }
     }
     private(set) var currentDevice: Device? {

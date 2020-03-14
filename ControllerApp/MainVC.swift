@@ -53,14 +53,14 @@ class MainVC: BaseVC {
         NotificationObserver.addObserver(target: NotificationObserver.Target.currentDeviceChanged) { [weak self] (_) in
             guard let self = self else { return }
             SceneHelper.reset(scene: self.scene)
-            self.updateLeftStickDeadzoneView()
-            self.updateRightStickDeadzoneView()
+            self.updateStickDeadzoneView(side: .left)
+            self.updateStickDeadzoneView(side: .right)
             self.updateOtherSetting()
         }.handle(by: observerBag)
         
         NotificationObserver.addObserver(target: NotificationObserver.Target.deviceConfigurationChanged) { [weak self] (_) in
-            self?.updateLeftStickDeadzoneView()
-            self?.updateRightStickDeadzoneView()
+            self?.updateStickDeadzoneView(side: .left)
+            self?.updateStickDeadzoneView(side: .right)
         }.handle(by: observerBag)
         
         NotificationObserver.addObserver(target: NotificationObserver.Target.deviceEventTriggered) { [weak self] (buttonEvent) in
@@ -69,13 +69,13 @@ class MainVC: BaseVC {
             SceneHelper.updateScene(scene: self.scene, event: buttonEvent)
             switch buttonEvent.mode {
             case .axis(.leftStickX):
-                self.updateLeftStickDeadzoneView(x: CGFloat(buttonEvent.value))
+                self.updateStickDeadzoneView(side: .left, x: CGFloat(buttonEvent.value))
             case .axis(.leftStickY):
-                self.updateLeftStickDeadzoneView(y: CGFloat(buttonEvent.value))
+                self.updateStickDeadzoneView(side: .left, y: CGFloat(buttonEvent.value))
             case .axis(.rightStickX):
-                self.updateRightStickDeadzoneView(x: CGFloat(buttonEvent.value))
+                self.updateStickDeadzoneView(side: .right, x: CGFloat(buttonEvent.value))
             case .axis(.rightStickY):
-                self.updateRightStickDeadzoneView(y: CGFloat(buttonEvent.value))
+                self.updateStickDeadzoneView(side: .right, y: CGFloat(buttonEvent.value))
             case .axis(.leftTrigger):
                 self.leftTriggerCircle.config(percent: CGFloat(buttonEvent.value))
             case .axis(.rightTrigger):
@@ -92,6 +92,7 @@ class MainVC: BaseVC {
     @IBAction func togglePretendTo360ControllerButton(_ sender: NSButton) {
         guard let device = DeviceManager.shared.currentDevice else { return }
         device.configuration.pretend360 = sender.boolState
+        DeviceManager.shared.updateDeviceList()
     }
 }
 
@@ -110,22 +111,34 @@ private extension MainVC {
         SceneHelper.mirror(sceneView: rightTriggerSceneView)
         rightTriggerCircle.config(percent: 0)
     }
-    func updateLeftStickDeadzoneView(x: CGFloat? = nil, y: CGFloat? = nil) {
+
+    func updateStickDeadzoneView(side: StickVC.Side, x: CGFloat? = nil, y: CGFloat? = nil) {
         guard let configuration = DeviceManager.shared.currentDevice?.configuration else { return }
-        leftStickDeadzoneView.config(deadzone: configuration.deadzoneLeft,
-                                     isLinked: configuration.linkedLeft,
-                                     isNormalize: configuration.normalizeLeft,
-                                     x: x,
-                                     y: y)
+        let targetView: StickDeadzoneView = {
+            switch (side, configuration.swapSticks) {
+            case (.left, false), (.left, true):
+                return leftStickDeadzoneView
+            case (.right, true), (.right, false):
+                return rightStickDeadzoneView
+            }
+        }()
+        
+        switch (side, configuration.swapSticks) {
+        case (.left, false), (.right, true):
+            targetView.config(deadzone: configuration.deadzoneLeft,
+                              isLinked: configuration.linkedLeft,
+                              isNormalize: configuration.normalizeLeft,
+                              x: x,
+                              y: y)
+        case (.left, true), (.right, false):
+            targetView.config(deadzone: configuration.deadzoneRight,
+                              isLinked: configuration.linkedRight,
+                              isNormalize: configuration.normalizeRight,
+                              x: x,
+                              y: y)
+        }
     }
-    func updateRightStickDeadzoneView(x: CGFloat? = nil, y: CGFloat? = nil) {
-        guard let configuration = DeviceManager.shared.currentDevice?.configuration else { return }
-        rightStickDeadzoneView.config(deadzone: configuration.deadzoneRight,
-                                      isLinked: configuration.linkedRight,
-                                      isNormalize: configuration.normalizeRight,
-                                      x: x,
-                                      y: y)
-    }
+
     func updateOtherSetting() {
         if let configuration = DeviceManager.shared.currentDevice?.configuration {
             self.swapStickButton.boolState = configuration.swapSticks

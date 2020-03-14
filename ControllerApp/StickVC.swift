@@ -9,7 +9,7 @@
 import Cocoa
 
 class StickVC: BaseVC {
-    private enum Side {
+    enum Side {
         case left
         case right
     }
@@ -21,11 +21,15 @@ class StickVC: BaseVC {
     @IBOutlet weak var deadzoneSlider: NSSlider!
     
     private var side: Side {
+        let switchSide: Bool = {
+            guard let swapStick = DeviceManager.shared.currentDevice?.configuration.swapSticks else { return false }
+            return swapStick
+        }()
         switch title {
         case .some("LeftStick"):
-            return .left
+            return switchSide ? .right : .left
         case .some("RightStick"):
-            return .right
+            return switchSide ? .left : .right
         default:
             return .left
         }
@@ -36,6 +40,9 @@ class StickVC: BaseVC {
         
         updateView()
         NotificationObserver.addObserver(target: NotificationObserver.Target.currentDeviceChanged) { [weak self] _ in
+            self?.updateView()
+        }.handle(by: observerBag)
+        NotificationObserver.addObserver(target: NotificationObserver.Target.deviceConfigurationChanged) { [weak self] (_) in
             self?.updateView()
         }.handle(by: observerBag)
     }
