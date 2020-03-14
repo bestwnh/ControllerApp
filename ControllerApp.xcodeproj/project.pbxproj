@@ -113,7 +113,7 @@
 		3AB11A3B2402D4F100619505 /* NSColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSColorExtension.swift; sourceTree = "<group>"; };
 		3AD134F523C29DB1009B1811 /* DeviceRumble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRumble.swift; sourceTree = "<group>"; };
 		3AD134F723C2B8B0009B1811 /* MappingButtonVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MappingButtonVC.swift; sourceTree = "<group>"; };
-		3AE799C52415313E00DF95A1 /* ControllerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ControllerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AE799C52415313E00DF95A1 /* Controller Configuration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Controller Configuration.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AE799C72415313F00DF95A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3AE799C92415313F00DF95A1 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		3AE799CB2415314100DF95A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -266,7 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				3A53677C23811FC800C9A5BD /* DemoApp.app */,
-				3AE799C52415313E00DF95A1 /* ControllerApp.app */,
+				3AE799C52415313E00DF95A1 /* Controller Configuration.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -305,7 +305,7 @@
 			);
 			name = ControllerApp;
 			productName = ControllerApp;
-			productReference = 3AE799C52415313E00DF95A1 /* ControllerApp.app */;
+			productReference = 3AE799C52415313E00DF95A1 /* Controller Configuration.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -521,7 +521,7 @@
 					"@executable_path/../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.galvin.ControllerApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Controller Configuration";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -541,7 +541,7 @@
 					"@executable_path/../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.galvin.ControllerApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Controller Configuration";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
