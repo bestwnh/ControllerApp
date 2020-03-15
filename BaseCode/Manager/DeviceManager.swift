@@ -63,7 +63,6 @@ extension DeviceManager {
             guard let self = self else { return }
             // wait a second for get device ready
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                print("Usb device changed.")
                 self.updateDeviceList()
             }
         }
@@ -151,7 +150,7 @@ private extension DeviceManager {
             return
         }
         
-        print("started.")
+        print("start monitor usb controller.")
     }
     
     func stopMonitor(device: Device) {

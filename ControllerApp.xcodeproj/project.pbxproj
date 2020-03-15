@@ -7,46 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A481CCA23D76A8600297B50 /* NotificationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A481CC923D76A8600297B50 /* NotificationObserver.swift */; };
-		3A481CCC23D76DBF00297B50 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A481CCB23D76DBF00297B50 /* BaseVC.swift */; };
-		3A4A23D42417E0E600EDB6B6 /* NSButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4A23D32417E0E600EDB6B6 /* NSButtonExtension.swift */; };
 		3A4A23D52417E0E600EDB6B6 /* NSButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4A23D32417E0E600EDB6B6 /* NSButtonExtension.swift */; };
 		3A4A23D82417F06F00EDB6B6 /* DeviceListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4A23D62417F06F00EDB6B6 /* DeviceListVC.swift */; };
 		3A4A23DA2417F83E00EDB6B6 /* MapButtonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4A23D92417F83E00EDB6B6 /* MapButtonVC.swift */; };
-		3A4A23DC2417FD0400EDB6B6 /* NSViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4A23DB2417FD0400EDB6B6 /* NSViewExtension.swift */; };
 		3A4A23DD2417FD0400EDB6B6 /* NSViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4A23DB2417FD0400EDB6B6 /* NSViewExtension.swift */; };
-		3A4D58E923E15C980068EFCA /* StickDeadzoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D58E823E15C980068EFCA /* StickDeadzoneView.swift */; };
-		3A4D58EB23E328D90068EFCA /* MirrorShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D58EA23E328D90068EFCA /* MirrorShaders.metal */; };
-		3A4D58ED23E329340068EFCA /* MirrorCamera.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A4D58EC23E329340068EFCA /* MirrorCamera.plist */; };
-		3A4DAAD42406832400E383CB /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4DAAD32406832400E383CB /* NotificationExtension.swift */; };
-		3A4DAAD8240685FC00E383CB /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4DAAD7240685FC00E383CB /* AppState.swift */; };
-		3A53677F23811FC800C9A5BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A53677E23811FC800C9A5BD /* AppDelegate.swift */; };
-		3A53678123811FC800C9A5BD /* ConfigurationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A53678023811FC800C9A5BD /* ConfigurationVC.swift */; };
-		3A53678323811FCA00C9A5BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A53678223811FCA00C9A5BD /* Assets.xcassets */; };
-		3A53678623811FCA00C9A5BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A53678423811FCA00C9A5BD /* Main.storyboard */; };
-		3A53678C2381261200C9A5BD /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2829002366EBB800CC93FA /* Device.swift */; };
-		3A53678D23814E0300C9A5BD /* DriverHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFBF3972361EF6B00522537 /* DriverHelper.swift */; };
-		3A53678E23814E0600C9A5BD /* IOUSBDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2828FE2365D75B00CC93FA /* IOUSBDetector.swift */; };
 		3A57B31D241BD72E00E3E902 /* DisplaySettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A57B31C241BD72E00E3E902 /* DisplaySettingVC.swift */; };
 		3A57B31F241BEC3D00E3E902 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A57B31E241BEC3D00E3E902 /* BaseView.swift */; };
 		3A57B321241E2BE500E3E902 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A57B320241E2BE500E3E902 /* UserDefaultManager.swift */; };
-		3A60E14A24178D33005AD764 /* CheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A60E14924178D33005AD764 /* CheckboxButton.swift */; };
 		3A60E14B24178D33005AD764 /* CheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A60E14924178D33005AD764 /* CheckboxButton.swift */; };
-		3A6E2FAE2415B14000353C43 /* TriggerCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6E2FAD2415B14000353C43 /* TriggerCircle.swift */; };
 		3A6E2FAF2415B14000353C43 /* TriggerCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6E2FAD2415B14000353C43 /* TriggerCircle.swift */; };
 		3A6E2FB12415B95400353C43 /* StickVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6E2FB02415B95400353C43 /* StickVC.swift */; };
 		3A6E2FB32415BB6E00353C43 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6E2FB22415BB6E00353C43 /* UIHelper.swift */; };
-		3A6E2FB42415BB7200353C43 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6E2FB22415BB6E00353C43 /* UIHelper.swift */; };
 		3A6E2FB62415C05D00353C43 /* SliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6E2FB52415C05D00353C43 /* SliderCell.swift */; };
-		3A8C416C23F3E66200962929 /* NSBezierPathExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C416B23F3E66200962929 /* NSBezierPathExtension.swift */; };
-		3A983999238F421900818D7E /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A983997238F421900818D7E /* DeviceManager.swift */; };
-		3A9839A02394FE3400818D7E /* CollectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A98399E2394FE3400818D7E /* CollectionExtension.swift */; };
-		3A9839A22395D89500818D7E /* DeviceListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9839A12395D89500818D7E /* DeviceListVC.swift */; };
-		3A9839A423962D4200818D7E /* SceneKitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9839A323962D4200818D7E /* SceneKitVC.swift */; };
-		3A9839A82396308900818D7E /* xboxController.scn in Resources */ = {isa = PBXBuildFile; fileRef = 3A9839A72396308900818D7E /* xboxController.scn */; };
-		3AB11A3C2402D4F100619505 /* NSColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB11A3B2402D4F100619505 /* NSColorExtension.swift */; };
-		3AD134F623C29DB1009B1811 /* DeviceRumble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD134F523C29DB1009B1811 /* DeviceRumble.swift */; };
-		3AD134F823C2B8B0009B1811 /* MappingButtonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD134F723C2B8B0009B1811 /* MappingButtonVC.swift */; };
 		3AE799C82415313F00DF95A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE799C72415313F00DF95A1 /* AppDelegate.swift */; };
 		3AE799CA2415313F00DF95A1 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE799C92415313F00DF95A1 /* MainVC.swift */; };
 		3AE799CC2415314100DF95A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AE799CB2415314100DF95A1 /* Assets.xcassets */; };
@@ -71,10 +43,6 @@
 		3AE799E624153A2000DF95A1 /* MirrorShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D58EA23E328D90068EFCA /* MirrorShaders.metal */; };
 		3AE799E724153A2000DF95A1 /* MirrorCamera.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A4D58EC23E329340068EFCA /* MirrorCamera.plist */; };
 		3AE799E824153A3500DF95A1 /* StickDeadzoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D58E823E15C980068EFCA /* StickDeadzoneView.swift */; };
-		3AEDD7AA239D42410030C3EB /* IOExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEDD7A9239D42410030C3EB /* IOExtension.swift */; };
-		3AEDD7AC239DC7790030C3EB /* DeviceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEDD7AB239DC7790030C3EB /* DeviceConfiguration.swift */; };
-		3AEDD7AE239DF3BB0030C3EB /* DeviceEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEDD7AD239DF3BB0030C3EB /* DeviceEvent.swift */; };
-		3AEDD7B0239E97A70030C3EB /* SceneHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEDD7AF239E97A70030C3EB /* SceneHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,13 +59,6 @@
 		3A4D58EC23E329340068EFCA /* MirrorCamera.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = MirrorCamera.plist; sourceTree = "<group>"; };
 		3A4DAAD32406832400E383CB /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
 		3A4DAAD7240685FC00E383CB /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
-		3A53677C23811FC800C9A5BD /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A53677E23811FC800C9A5BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3A53678023811FC800C9A5BD /* ConfigurationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationVC.swift; sourceTree = "<group>"; };
-		3A53678223811FCA00C9A5BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		3A53678523811FCA00C9A5BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		3A53678723811FCA00C9A5BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3A53678823811FCA00C9A5BD /* DemoApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DemoApp.entitlements; sourceTree = "<group>"; };
 		3A57B31C241BD72E00E3E902 /* DisplaySettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySettingVC.swift; sourceTree = "<group>"; };
 		3A57B31E241BEC3D00E3E902 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		3A57B320241E2BE500E3E902 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
@@ -109,12 +70,9 @@
 		3A8C416B23F3E66200962929 /* NSBezierPathExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSBezierPathExtension.swift; sourceTree = "<group>"; };
 		3A983997238F421900818D7E /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
 		3A98399E2394FE3400818D7E /* CollectionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionExtension.swift; sourceTree = "<group>"; };
-		3A9839A12395D89500818D7E /* DeviceListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceListVC.swift; sourceTree = "<group>"; };
-		3A9839A323962D4200818D7E /* SceneKitVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitVC.swift; sourceTree = "<group>"; };
 		3A9839A72396308900818D7E /* xboxController.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = xboxController.scn; sourceTree = "<group>"; };
 		3AB11A3B2402D4F100619505 /* NSColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSColorExtension.swift; sourceTree = "<group>"; };
 		3AD134F523C29DB1009B1811 /* DeviceRumble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRumble.swift; sourceTree = "<group>"; };
-		3AD134F723C2B8B0009B1811 /* MappingButtonVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MappingButtonVC.swift; sourceTree = "<group>"; };
 		3AE799C52415313E00DF95A1 /* Controller Configuration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Controller Configuration.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AE799C72415313F00DF95A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3AE799C92415313F00DF95A1 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -130,13 +88,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		3A53677923811FC800C9A5BD /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		3AE799C22415313E00DF95A1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -182,22 +133,6 @@
 				3A57B31E241BEC3D00E3E902 /* BaseView.swift */,
 			);
 			path = Share;
-			sourceTree = "<group>";
-		};
-		3A53677D23811FC800C9A5BD /* DemoApp */ = {
-			isa = PBXGroup;
-			children = (
-				3A53677E23811FC800C9A5BD /* AppDelegate.swift */,
-				3A53678023811FC800C9A5BD /* ConfigurationVC.swift */,
-				3A9839A12395D89500818D7E /* DeviceListVC.swift */,
-				3AD134F723C2B8B0009B1811 /* MappingButtonVC.swift */,
-				3A9839A323962D4200818D7E /* SceneKitVC.swift */,
-				3A53678223811FCA00C9A5BD /* Assets.xcassets */,
-				3A53678423811FCA00C9A5BD /* Main.storyboard */,
-				3A53678723811FCA00C9A5BD /* Info.plist */,
-				3A53678823811FCA00C9A5BD /* DemoApp.entitlements */,
-			);
-			path = DemoApp;
 			sourceTree = "<group>";
 		};
 		3A92E80E238C9A5000EF837A /* BaseCode */ = {
@@ -259,7 +194,6 @@
 			isa = PBXGroup;
 			children = (
 				3A92E80E238C9A5000EF837A /* BaseCode */,
-				3A53677D23811FC800C9A5BD /* DemoApp */,
 				3AE799C62415313F00DF95A1 /* ControllerApp */,
 				3AFBF3822361EC5E00522537 /* Products */,
 			);
@@ -268,7 +202,6 @@
 		3AFBF3822361EC5E00522537 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3A53677C23811FC800C9A5BD /* DemoApp.app */,
 				3AE799C52415313E00DF95A1 /* Controller Configuration.app */,
 			);
 			name = Products;
@@ -277,23 +210,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3A53677B23811FC800C9A5BD /* DemoApp */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3A53678B23811FCA00C9A5BD /* Build configuration list for PBXNativeTarget "DemoApp" */;
-			buildPhases = (
-				3A53677823811FC800C9A5BD /* Sources */,
-				3A53677923811FC800C9A5BD /* Frameworks */,
-				3A53677A23811FC800C9A5BD /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = DemoApp;
-			productName = DemoApp;
-			productReference = 3A53677C23811FC800C9A5BD /* DemoApp.app */;
-			productType = "com.apple.product-type.application";
-		};
 		3AE799C42415313E00DF95A1 /* ControllerApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3AE799D42415314200DF95A1 /* Build configuration list for PBXNativeTarget "ControllerApp" */;
@@ -321,9 +237,6 @@
 				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = GalvinLi;
 				TargetAttributes = {
-					3A53677B23811FC800C9A5BD = {
-						CreatedOnToolsVersion = 11.2.1;
-					};
 					3AE799C42415313E00DF95A1 = {
 						CreatedOnToolsVersion = 11.4;
 					};
@@ -342,24 +255,12 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3A53677B23811FC800C9A5BD /* DemoApp */,
 				3AE799C42415313E00DF95A1 /* ControllerApp */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		3A53677A23811FC800C9A5BD /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3A4D58ED23E329340068EFCA /* MirrorCamera.plist in Resources */,
-				3A53678323811FCA00C9A5BD /* Assets.xcassets in Resources */,
-				3A9839A82396308900818D7E /* xboxController.scn in Resources */,
-				3A53678623811FCA00C9A5BD /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		3AE799C32415313E00DF95A1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -374,41 +275,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		3A53677823811FC800C9A5BD /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3A53678C2381261200C9A5BD /* Device.swift in Sources */,
-				3A4D58E923E15C980068EFCA /* StickDeadzoneView.swift in Sources */,
-				3AB11A3C2402D4F100619505 /* NSColorExtension.swift in Sources */,
-				3A481CCC23D76DBF00297B50 /* BaseVC.swift in Sources */,
-				3A4A23D42417E0E600EDB6B6 /* NSButtonExtension.swift in Sources */,
-				3A4D58EB23E328D90068EFCA /* MirrorShaders.metal in Sources */,
-				3A9839A02394FE3400818D7E /* CollectionExtension.swift in Sources */,
-				3AD134F823C2B8B0009B1811 /* MappingButtonVC.swift in Sources */,
-				3AD134F623C29DB1009B1811 /* DeviceRumble.swift in Sources */,
-				3A481CCA23D76A8600297B50 /* NotificationObserver.swift in Sources */,
-				3AEDD7B0239E97A70030C3EB /* SceneHelper.swift in Sources */,
-				3AEDD7AC239DC7790030C3EB /* DeviceConfiguration.swift in Sources */,
-				3A9839A22395D89500818D7E /* DeviceListVC.swift in Sources */,
-				3A4DAAD42406832400E383CB /* NotificationExtension.swift in Sources */,
-				3A983999238F421900818D7E /* DeviceManager.swift in Sources */,
-				3A53678D23814E0300C9A5BD /* DriverHelper.swift in Sources */,
-				3AEDD7AA239D42410030C3EB /* IOExtension.swift in Sources */,
-				3A8C416C23F3E66200962929 /* NSBezierPathExtension.swift in Sources */,
-				3A4DAAD8240685FC00E383CB /* AppState.swift in Sources */,
-				3A9839A423962D4200818D7E /* SceneKitVC.swift in Sources */,
-				3A53678123811FC800C9A5BD /* ConfigurationVC.swift in Sources */,
-				3A4A23DC2417FD0400EDB6B6 /* NSViewExtension.swift in Sources */,
-				3A6E2FAE2415B14000353C43 /* TriggerCircle.swift in Sources */,
-				3A53677F23811FC800C9A5BD /* AppDelegate.swift in Sources */,
-				3A60E14A24178D33005AD764 /* CheckboxButton.swift in Sources */,
-				3AEDD7AE239DF3BB0030C3EB /* DeviceEvent.swift in Sources */,
-				3A6E2FB42415BB7200353C43 /* UIHelper.swift in Sources */,
-				3A53678E23814E0600C9A5BD /* IOUSBDetector.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		3AE799C12415313E00DF95A1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -451,14 +317,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		3A53678423811FCA00C9A5BD /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3A53678523811FCA00C9A5BD /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		3AE799CD2415314200DF95A1 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -470,46 +328,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		3A53678923811FCA00C9A5BD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = DemoApp/DemoApp.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 52G28TQG59;
-				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = DemoApp/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.galvin.DemoApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		3A53678A23811FCA00C9A5BD /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = DemoApp/DemoApp.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 52G28TQG59;
-				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = DemoApp/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.galvin.DemoApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
 		3AE799D22415314200DF95A1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -666,15 +484,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3A53678B23811FCA00C9A5BD /* Build configuration list for PBXNativeTarget "DemoApp" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3A53678923811FCA00C9A5BD /* Debug */,
-				3A53678A23811FCA00C9A5BD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		3AE799D42415314200DF95A1 /* Build configuration list for PBXNativeTarget "ControllerApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
