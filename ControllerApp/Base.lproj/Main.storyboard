@@ -580,7 +580,7 @@
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nZ9-Py-cPC">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="322" height="32"/>
+                                                                    <rect key="frame" x="5" y="0.0" width="317" height="32"/>
                                                                     <subviews>
                                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YzB-Yn-4zt">
                                                                             <rect key="frame" x="0.0" y="8" width="24" height="17"/>
@@ -591,7 +591,7 @@
                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="controller_thumb" id="D2F-tm-NpO"/>
                                                                         </imageView>
                                                                         <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fJ1-Tf-34D">
-                                                                            <rect key="frame" x="34" y="1" width="288" height="30"/>
+                                                                            <rect key="frame" x="34" y="1" width="283" height="30"/>
                                                                             <subviews>
                                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZgO-sZ-Ec9">
                                                                                     <rect key="frame" x="-2" y="14" width="91" height="16"/>
@@ -637,7 +637,7 @@
                                                                 <constraint firstItem="nZ9-Py-cPC" firstAttribute="top" secondItem="7xU-Yx-dAp" secondAttribute="top" id="Rvf-L5-rAp"/>
                                                                 <constraint firstAttribute="trailing" secondItem="nZ9-Py-cPC" secondAttribute="trailing" id="Xbb-ur-Fan"/>
                                                                 <constraint firstAttribute="bottom" secondItem="nZ9-Py-cPC" secondAttribute="bottom" id="ehF-3B-Ruv"/>
-                                                                <constraint firstItem="nZ9-Py-cPC" firstAttribute="leading" secondItem="7xU-Yx-dAp" secondAttribute="leading" id="rjr-xs-eUE"/>
+                                                                <constraint firstItem="nZ9-Py-cPC" firstAttribute="leading" secondItem="7xU-Yx-dAp" secondAttribute="leading" constant="5" id="rjr-xs-eUE"/>
                                                             </constraints>
                                                             <connections>
                                                                 <outlet property="nameLabel" destination="ZgO-sZ-Ec9" id="Isk-Jo-6AC"/>
@@ -660,6 +660,54 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
+                            <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XTA-fp-RjS">
+                                <rect key="frame" x="113" y="70" width="171" height="45"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MU6-rA-l6e">
+                                        <rect key="frame" x="-2" y="29" width="175" height="16"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Seem like the driver not installed." id="CjO-kV-X0y">
+                                            <font key="font" size="16" name="DINCondensed-Bold"/>
+                                            <color key="textColor" name="MainText"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="OHP-gc-aWc" customClass="BaseView" customModule="ControllerApp" customModuleProvider="target">
+                                        <rect key="frame" x="4" y="0.0" width="163" height="21"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="P1q-OO-juS">
+                                                <rect key="frame" x="8" y="3" width="147" height="15"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Download driver" usesSingleLineMode="YES" id="2E9-vw-prO">
+                                                    <font key="font" size="15" name="DINCondensed-Bold"/>
+                                                    <color key="textColor" name="StickTitle"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="P1q-OO-juS" secondAttribute="trailing" constant="10" id="5WP-Wk-foI"/>
+                                            <constraint firstItem="P1q-OO-juS" firstAttribute="top" secondItem="OHP-gc-aWc" secondAttribute="top" constant="3" id="7h6-6g-AiO"/>
+                                            <constraint firstAttribute="bottom" secondItem="P1q-OO-juS" secondAttribute="bottom" constant="3" id="EeL-ws-4YC"/>
+                                            <constraint firstItem="P1q-OO-juS" firstAttribute="leading" secondItem="OHP-gc-aWc" secondAttribute="leading" constant="10" id="lN4-av-RUH"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="ib_BackgroundColor">
+                                                <color key="value" name="MapButtonBg"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="ib_CornerRadius">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </customView>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Jw9-SK-BoT" firstAttribute="top" secondItem="KzY-RR-SxA" secondAttribute="bottom" constant="-5" id="GSL-nz-JWe"/>
@@ -667,14 +715,18 @@
                             <constraint firstItem="cv6-BO-q8m" firstAttribute="leading" secondItem="Jw9-SK-BoT" secondAttribute="leading" constant="36" id="Tsp-eJ-HKe"/>
                             <constraint firstItem="cv6-BO-q8m" firstAttribute="top" secondItem="Jw9-SK-BoT" secondAttribute="top" constant="22" id="Ud0-f6-BE0"/>
                             <constraint firstItem="KzY-RR-SxA" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fEI-hz-icU" secondAttribute="leading" id="Uwr-cu-dGe"/>
+                            <constraint firstItem="XTA-fp-RjS" firstAttribute="centerX" secondItem="cv6-BO-q8m" secondAttribute="centerX" id="dqI-hc-fm6"/>
                             <constraint firstAttribute="trailing" secondItem="KzY-RR-SxA" secondAttribute="trailing" constant="8" id="hb4-Ff-o2Y"/>
                             <constraint firstItem="Jw9-SK-BoT" firstAttribute="trailing" secondItem="cv6-BO-q8m" secondAttribute="trailing" constant="26" id="jL0-tJ-HJU"/>
                             <constraint firstItem="Jw9-SK-BoT" firstAttribute="leading" secondItem="fEI-hz-icU" secondAttribute="leading" id="ppj-NL-PH9"/>
+                            <constraint firstItem="XTA-fp-RjS" firstAttribute="centerY" secondItem="cv6-BO-q8m" secondAttribute="centerY" id="u8i-7c-Bez"/>
                             <constraint firstItem="Jw9-SK-BoT" firstAttribute="bottom" secondItem="cv6-BO-q8m" secondAttribute="bottom" constant="20" id="vb9-ib-jvB"/>
                             <constraint firstAttribute="trailing" secondItem="Jw9-SK-BoT" secondAttribute="trailing" id="wZT-vT-ULL"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="downloadDriverButton" destination="P1q-OO-juS" id="Qml-eM-NvF"/>
+                        <outlet property="downloadDriverView" destination="XTA-fp-RjS" id="vdu-rE-cna"/>
                         <outlet property="tableView" destination="Lwz-6V-8ge" id="ZoD-BU-Yct"/>
                     </connections>
                 </viewController>
