@@ -29,6 +29,7 @@
 		3A53678E23814E0600C9A5BD /* IOUSBDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2828FE2365D75B00CC93FA /* IOUSBDetector.swift */; };
 		3A57B31D241BD72E00E3E902 /* DisplaySettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A57B31C241BD72E00E3E902 /* DisplaySettingVC.swift */; };
 		3A57B31F241BEC3D00E3E902 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A57B31E241BEC3D00E3E902 /* BaseView.swift */; };
+		3A57B321241E2BE500E3E902 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A57B320241E2BE500E3E902 /* UserDefaultManager.swift */; };
 		3A60E14A24178D33005AD764 /* CheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A60E14924178D33005AD764 /* CheckboxButton.swift */; };
 		3A60E14B24178D33005AD764 /* CheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A60E14924178D33005AD764 /* CheckboxButton.swift */; };
 		3A6E2FAE2415B14000353C43 /* TriggerCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6E2FAD2415B14000353C43 /* TriggerCircle.swift */; };
@@ -99,6 +100,7 @@
 		3A53678823811FCA00C9A5BD /* DemoApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DemoApp.entitlements; sourceTree = "<group>"; };
 		3A57B31C241BD72E00E3E902 /* DisplaySettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySettingVC.swift; sourceTree = "<group>"; };
 		3A57B31E241BEC3D00E3E902 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		3A57B320241E2BE500E3E902 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
 		3A60E14924178D33005AD764 /* CheckboxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxButton.swift; sourceTree = "<group>"; };
 		3A6E2FAD2415B14000353C43 /* TriggerCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriggerCircle.swift; sourceTree = "<group>"; };
 		3A6E2FB02415B95400353C43 /* StickVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickVC.swift; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				3A983997238F421900818D7E /* DeviceManager.swift */,
+				3A57B320241E2BE500E3E902 /* UserDefaultManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 				3AE799D62415319600DF95A1 /* IOUSBDetector.swift in Sources */,
 				3AE799DA2415319600DF95A1 /* AppState.swift in Sources */,
 				3AE799D92415319600DF95A1 /* SceneHelper.swift in Sources */,
+				3A57B321241E2BE500E3E902 /* UserDefaultManager.swift in Sources */,
 				3A4A23DA2417F83E00EDB6B6 /* MapButtonVC.swift in Sources */,
 				3AE799D82415319600DF95A1 /* DriverHelper.swift in Sources */,
 				3A57B31F241BEC3D00E3E902 /* BaseView.swift in Sources */,

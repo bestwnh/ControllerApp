@@ -9,11 +9,7 @@
 import Cocoa
 
 class DisplaySettingVC: BaseVC {
-    enum DisplayMode {
-        case bySystem
-        case light
-        case dark
-    }
+    
     @IBOutlet weak var displayModeView: NSView!
     @IBOutlet weak var bySystemButton: BaseView!
     @IBOutlet weak var lightButton: BaseView!
@@ -21,13 +17,16 @@ class DisplaySettingVC: BaseVC {
     @IBOutlet weak var line1: NSView!
     @IBOutlet weak var line2: NSView!
     
-    var currentDisplayMode: DisplayMode = .bySystem {
+    @IBOutlet weak var highlightEventButton: CheckboxButton!
+    
+    var currentDisplayMode: UserSetting.DisplayMode = .bySystem {
         didSet {
             guard currentDisplayMode != oldValue else { return }
             
             if #available(OSX 10.14, *) {
                 updateDisplayModeView()
                 NotificationObserver.postDistributed(target: NotificationObserver.Target.DistributedNotification.uiModeChanged)
+                UserDefaultManager.shared.userSetting.displayMode = currentDisplayMode
             } else {
                 // Fallback on earlier versions
             }
@@ -37,7 +36,10 @@ class DisplaySettingVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        highlightEventButton.boolState = UserDefaultManager.shared.userSetting.shouldHighlightEvent
+        
         if #available(OSX 10.14, *) {
+            currentDisplayMode = UserDefaultManager.shared.userSetting.displayMode
             displayModeView.show()
             updateDisplayModeView()
             
@@ -51,6 +53,10 @@ class DisplaySettingVC: BaseVC {
         
     }
     
+    @IBAction func toggleHighlightEventButton(_ sender: CheckboxButton) {
+        UserDefaultManager.shared.userSetting.shouldHighlightEvent = sender.boolState
+        NotificationObserver.post(target: NotificationObserver.Target.deviceEventTriggered)
+    }
     
 }
 

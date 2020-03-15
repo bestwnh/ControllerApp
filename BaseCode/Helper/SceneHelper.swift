@@ -44,7 +44,7 @@ class SceneHelper {
         configTopButtonPivot(scene: scene, nodeName: DeviceEvent.Mode.Button.rb.nodeName, offset: -0.2)
     }
     static func highlightNode(_ node: SCNNode, shouldHighlight: Bool) {
-        
+        let shouldHighlight = shouldHighlight && UserDefaultManager.shared.userSetting.shouldHighlightEvent
         let material = node.geometry!.firstMaterial!
 
         SCNTransaction.begin()
