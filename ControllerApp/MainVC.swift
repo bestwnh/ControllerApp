@@ -30,23 +30,13 @@ class MainVC: BaseVC {
         SceneHelper.reset(scene: scene)
         
         initSceneView()
-        
+        updateSceneView()
+
         updateOtherSetting()
         
         NotificationObserver.addDistributedObserver(target: NotificationObserver.Target.DistributedNotification.uiModeChanged) { [weak self] (_) in
             
-            let cellColor = AppState.isDarkMode ? NSColor(0x1d1d1d) : NSColor(0xcecece)
-            let contentColor = AppState.isDarkMode ? NSColor(0xcecece) : NSColor(0x282828)
-            
-            func updateNode(name:String, color: NSColor) {
-                self?.scene.rootNode.childNode(withName: name, recursively: true)?
-                    .geometry?.materials.first?.diffuse.contents = color
-            }
-            updateNode(name: "body1", color: cellColor)
-            updateNode(name: "button1a", color: cellColor)
-            updateNode(name: "button2a", color: cellColor)
-            updateNode(name: "button1b", color: contentColor)
-            updateNode(name: "button2b", color: contentColor)
+            self?.updateSceneView()
 
         }.handle(by: observerBag)
         
@@ -110,6 +100,21 @@ private extension MainVC {
         rightTriggerSceneView.pointOfView = scene.rootNode.childNode(withName: "cameraRight", recursively: true)
         SceneHelper.mirror(sceneView: rightTriggerSceneView)
         rightTriggerCircle.config(percent: 0)
+    }
+    
+    func updateSceneView() {
+        let cellColor = AppState.isDarkMode ? NSColor(0x1d1d1d) : NSColor(0xcecece)
+        let contentColor = AppState.isDarkMode ? NSColor(0xcecece) : NSColor(0x282828)
+        
+        func updateNode(name:String, color: NSColor) {
+            self.scene.rootNode.childNode(withName: name, recursively: true)?
+                .geometry?.materials.first?.diffuse.contents = color
+        }
+        updateNode(name: "body1", color: cellColor)
+        updateNode(name: "button1a", color: cellColor)
+        updateNode(name: "button2a", color: cellColor)
+        updateNode(name: "button1b", color: contentColor)
+        updateNode(name: "button2b", color: contentColor)
     }
 
     func updateStickDeadzoneView(side: StickVC.Side, x: CGFloat? = nil, y: CGFloat? = nil) {
