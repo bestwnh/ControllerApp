@@ -33,26 +33,30 @@
             <objects>
                 <viewController id="nce-hU-sVb" sceneMemberID="viewController">
                     <view key="view" id="no0-tF-Kq8">
-                        <rect key="frame" x="0.0" y="0.0" width="470" height="810"/>
+                        <rect key="frame" x="0.0" y="0.0" width="470" height="662"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ena-Bb-VRB">
-                                <rect key="frame" x="20" y="20" width="430" height="770"/>
+                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="1" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ena-Bb-VRB">
+                                <rect key="frame" x="20" y="20" width="430" height="622"/>
                                 <subviews>
                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aGy-oo-qhv">
-                                        <rect key="frame" x="199" y="738" width="32" height="32"/>
+                                        <rect key="frame" x="151" y="494" width="128" height="128"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="128" id="6bB-oy-JPm"/>
+                                            <constraint firstAttribute="height" constant="128" id="EHL-ea-hnx"/>
+                                        </constraints>
                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="2jm-vb-0ye"/>
                                     </imageView>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FaI-JB-nvv">
-                                        <rect key="frame" x="123" y="714" width="184" height="16"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Controller Configuration V1.0" id="1HA-hX-6KY">
+                                        <rect key="frame" x="124" y="477" width="182" height="16"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Controller Configuration v1.0" id="1HA-hX-6KY">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wlo-Vl-Ovk">
-                                        <rect key="frame" x="70" y="690" width="291" height="16"/>
+                                        <rect key="frame" x="70" y="460" width="291" height="16"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Copyright © 2020 GalvinLi. All rights reserved." id="ZTg-Wp-onQ">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -60,20 +64,20 @@
                                         </textFieldCell>
                                     </textField>
                                     <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="OXi-H9-ebg">
-                                        <rect key="frame" x="15" y="0.0" width="400" height="682"/>
+                                        <rect key="frame" x="15" y="0.0" width="400" height="459"/>
                                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="E6m-ta-Lyz">
-                                            <rect key="frame" x="0.0" y="0.0" width="400" height="682"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="400" height="459"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textView editable="NO" drawsBackground="NO" importsGraphics="NO" horizontallyResizable="YES" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" spellingCorrection="YES" id="99v-LD-Jqb">
-                                                    <rect key="frame" x="0.0" y="96" width="400" height="682"/>
+                                                    <rect key="frame" x="0.0" y="96" width="400" height="459"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    <size key="minSize" width="400" height="682"/>
+                                                    <size key="minSize" width="400" height="459"/>
                                                     <size key="maxSize" width="1342" height="10000000"/>
                                                     <attributedString key="textStorage">
-                                                        <fragment content="I'm an iOS developer who love to make thing great.   Contact me: Email: ">
+                                                        <fragment content=" I'm an iOS developer who love to make thing great. Feel free to contact me: Email: ">
                                                             <attributes>
                                                                 <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                 <font key="NSFont" metaFont="system"/>
@@ -445,6 +449,145 @@
                                                                 </paragraphStyle>
                                                             </attributes>
                                                         </fragment>
+                                                        <fragment content="  ">
+                                                            <attributes>
+                                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural">
+                                                                    <tabStops>
+                                                                        <textTab alignment="left" location="28.299999237060547">
+                                                                            <options/>
+                                                                        </textTab>
+                                                                        <textTab alignment="left" location="56.650001525878906">
+                                                                            <options/>
+                                                                        </textTab>
+                                                                        <textTab alignment="left" location="85">
+                                                                            <options/>
+                                                                        </textTab>
+                                                                        <textTab alignment="left" location="113.34999847412109">
+                                                                            <options/>
+                                                                        </textTab>
+                                                                        <textTab alignment="left" location="141.69999694824219">
+                                                                            <options/>
+                                                                        </textTab>
+                                                                        <textTab alignment="left" location="170.05000305175781">
+                                                                            <options/>
+                                                                        </textTab>
+                                                                        <textTab alignment="left" location="198.39999389648438">
+                                                                            <options/>
+                                                                        </textTab>
+                                                                        <textTab alignment="left" location="226.75">
+                                                                            <options/>
+                                                                        </textTab>
+                                                                        <textTab alignment="left" location="255.10000610351562">
+                                                                            <options/>
+                                                                        </textTab>
+                                                                        <textTab alignment="left" location="283.45001220703125">
+                                                                            <options/>
+                                                                        </textTab>
+                                                                        <textTab alignment="left" location="311.79998779296875">
+                                                                            <options/>
+                                                                        </textTab>
+                                                                        <textTab alignment="left" location="340.14999389648438">
+                                                                            <options/>
+                                                                        </textTab>
+                                                                    </tabStops>
+                                                                </paragraphStyle>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="This app is fully open source: ">
+                                                            <attributes>
+                                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                <font key="NSFont" size="13" name="HelveticaNeue"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural">
+                                                                    <tabStops>
+                                                                        <textTab alignment="left" location="28.299999237060547">
+                                                                            <options/>
+                                                                        </textTab>
+                                                                        <textTab alignment="left" location="56.650001525878906">
+                                                                            <options/>
+                                                                        </textTab>
+                                                                        <textTab alignment="left" location="85">
+                                                                            <options/>
+                                                                        </textTab>
+                                                                        <textTab alignment="left" location="113.34999847412109">
+                                                                            <options/>
+                                                                        </textTab>
+                                                                        <textTab alignment="left" location="141.69999694824219">
+                                                                            <options/>
+                                                                        </textTab>
+                                                                        <textTab alignment="left" location="170.05000305175781">
+                                                                            <options/>
+                                                                        </textTab>
+                                                                        <textTab alignment="left" location="198.39999389648438">
+                                                                            <options/>
+                                                                        </textTab>
+                                                                        <textTab alignment="left" location="226.75">
+                                                                            <options/>
+                                                                        </textTab>
+                                                                        <textTab alignment="left" location="255.10000610351562">
+                                                                            <options/>
+                                                                        </textTab>
+                                                                        <textTab alignment="left" location="283.45001220703125">
+                                                                            <options/>
+                                                                        </textTab>
+                                                                        <textTab alignment="left" location="311.79998779296875">
+                                                                            <options/>
+                                                                        </textTab>
+                                                                        <textTab alignment="left" location="340.14999389648438">
+                                                                            <options/>
+                                                                        </textTab>
+                                                                    </tabStops>
+                                                                </paragraphStyle>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="https://github.com/bestwnh/ControllerApp">
+                                                            <attributes>
+                                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                <font key="NSFont" size="13" name="HelveticaNeue"/>
+                                                                <url key="NSLink" string="https://github.com/bestwnh/ControllerApp"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural">
+                                                                    <tabStops>
+                                                                        <textTab alignment="left" location="28.299999237060547">
+                                                                            <options/>
+                                                                        </textTab>
+                                                                        <textTab alignment="left" location="56.650001525878906">
+                                                                            <options/>
+                                                                        </textTab>
+                                                                        <textTab alignment="left" location="85">
+                                                                            <options/>
+                                                                        </textTab>
+                                                                        <textTab alignment="left" location="113.34999847412109">
+                                                                            <options/>
+                                                                        </textTab>
+                                                                        <textTab alignment="left" location="141.69999694824219">
+                                                                            <options/>
+                                                                        </textTab>
+                                                                        <textTab alignment="left" location="170.05000305175781">
+                                                                            <options/>
+                                                                        </textTab>
+                                                                        <textTab alignment="left" location="198.39999389648438">
+                                                                            <options/>
+                                                                        </textTab>
+                                                                        <textTab alignment="left" location="226.75">
+                                                                            <options/>
+                                                                        </textTab>
+                                                                        <textTab alignment="left" location="255.10000610351562">
+                                                                            <options/>
+                                                                        </textTab>
+                                                                        <textTab alignment="left" location="283.45001220703125">
+                                                                            <options/>
+                                                                        </textTab>
+                                                                        <textTab alignment="left" location="311.79998779296875">
+                                                                            <options/>
+                                                                        </textTab>
+                                                                        <textTab alignment="left" location="340.14999389648438">
+                                                                            <options/>
+                                                                        </textTab>
+                                                                    </tabStops>
+                                                                </paragraphStyle>
+                                                            </attributes>
+                                                        </fragment>
                                                         <fragment content="  The original 3D model is from ">
                                                             <attributes>
                                                                 <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -584,7 +727,7 @@
                                                                 </paragraphStyle>
                                                             </attributes>
                                                         </fragment>
-                                                        <fragment content="Yue feng Jiang ">
+                                                        <fragment content="Yue feng Jiang">
                                                             <attributes>
                                                                 <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                 <font key="NSFont" metaFont="system"/>
@@ -632,8 +775,7 @@
                                                             </attributes>
                                                         </fragment>
                                                         <fragment>
-                                                            <string key="content">help to make some huge improvement to make it work as you see. 
-Driver Project Home:
+                                                            <string key="content">(a really great 3D modeler) help to make some huge improvement on the model.  ------------------------------------------------------  The controller driver is also open source:
 </string>
                                                             <attributes>
                                                                 <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -776,9 +918,7 @@ Cg
                                                                 </paragraphStyle>
                                                             </attributes>
                                                         </fragment>
-                                                        <fragment>
-                                                            <string key="content">
-This project is a fork of the </string>
+                                                        <fragment content=" The driver project is a fork of the ">
                                                             <attributes>
                                                                 <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                 <font key="NSFont" metaFont="system"/>
@@ -961,7 +1101,7 @@ This project is a fork of the </string>
                 </viewController>
                 <customObject id="ga5-eg-eO0" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1475" y="130"/>
+            <point key="canvasLocation" x="1475" y="-39"/>
         </scene>
         <!--Application-->
         <scene sceneID="JPo-4y-FX3">
@@ -2158,7 +2298,7 @@ This project is a fork of the </string>
         <image name="rightstick_bg" width="180" height="202"/>
         <image name="rightstick_line" width="105" height="58"/>
         <namedColor name="BackgroundColor">
-            <color red="0.84705882352941175" green="0.85490196078431369" blue="0.85490196078431369" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.95686274509803926" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="DeviceListTitle">
             <color red="0.0" green="0.50588235294117645" blue="0.73333333333333328" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
