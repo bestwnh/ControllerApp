@@ -2,7 +2,7 @@
 # Controller Configuration
 ## A native macOS configuration app for 360Controller driver 🎮
 
-This is a macOS app for configuration your controller which driver by [360Controller](https://github.com/360Controller/360Controller), support 10.13+
+This is a macOS app for configuration your controller which driver by [360Controller](https://github.com/360Controller/360Controller), support macOS 10.13+
 
 You may know the [360Controller](https://github.com/360Controller/360Controller) already had a system preference plugin for configuration, so why would I make a new one?
 
