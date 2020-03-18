@@ -11,22 +11,23 @@ Because I want to make a **better** one. Let's see how it get better.
 ## Modern UI with better support for Dark Mode
 You can choose your own display mode
 
-![Dark Mode image]()
+![Dark Mode image](/GithubImages/dark_mode.png)
 
-![Light Mode image]()
+![Light Mode image](/GithubImages/light_mode.png)
 
 ## Better visualization for button event
 
-![button event gif]()
+![button event gif](/GithubImages/button_event.gif)
 
 ## Better visualization for stick configuration
 
-![visualization for stick configuration gif]()
+![visualization for stick configuration gif](/GithubImages/stick_configuration.gif)
 
 ## Now you can map only one button
 
-![map one button gif]()
+![map one button gif](/GithubImages/map_button.gif)
 
+Why not just [download the lastest version](https://github.com/bestwnh/ControllerApp/releases) and give it a try?
 
 Next Step:
 - [ ] 🔤Name your controller
@@ -35,7 +36,7 @@ Next Step:
 - [ ] 🥚An Easter egg
 
 
-If you have any ideas, feel free to open an issue or contact me in these way:
+If you have any ideas, feel free to [open an issue](https://github.com/bestwnh/ControllerApp/issues) or contact me in these way:
 * Email: b02437@gmail.com
 * Github: https://github.com/bestwnh
 * Twitter: https://twitter.com/GalvinLi
