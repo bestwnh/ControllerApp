@@ -29,12 +29,6 @@ You can choose your own display mode
 
 Why not just [download the lastest version](https://github.com/bestwnh/ControllerApp/releases) and give it a try?
 
-## Next Step:
-- [ ] 🔤Name your controller
-- [ ] 🗂Highlight the button that map different
-- [ ] 🇨🇳Chinese localization
-- [ ] 🥚An Easter egg
-
 If you have any ideas, feel free to [open an issue](https://github.com/bestwnh/ControllerApp/issues) or contact me in these way:
 * Email: b02437@gmail.com
 * Github: https://github.com/bestwnh
